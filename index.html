@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TOXI Parfums — Alta Perfumería</title>
+  <meta name="description" content="TOXI Parfums: fragancias de autor creadas con ingredientes excepcionales. Descubre nuestra colección de perfumes de lujo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <div class="topbar">Envío gratis en compras superiores a $80 · Muestras de regalo en cada pedido</div>
+
+  <!-- Navegación -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="#inicio" class="logo">TOXI<span>Parfums</span></a>
+      <nav class="nav" id="nav">
+        <a href="#coleccion">Colección</a>
+        <a href="#descubre">Encuentra tu aroma</a>
+        <a href="#historia">La Maison</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <p class="eyebrow">Nueva colección · Otoño 2026</p>
+          <h1>El arte de<br /><em>dejar huella</em></h1>
+          <p class="hero__lead">Fragancias de autor elaboradas en pequeños lotes con las materias primas más nobles del mundo. Cada frasco cuenta una historia; la tuya comienza aquí.</p>
+          <div class="hero__actions">
+            <a href="#coleccion" class="btn btn--primary">Descubrir colección</a>
+            <a href="#descubre" class="btn btn--ghost">Encuentra tu aroma</a>
+          </div>
+        </div>
+        <div class="hero__visual reveal">
+          <div class="hero__glow"></div>
+          <div class="bottle bottle--hero" style="--c1:#e9c9a1;--c2:#a8743d;">
+            <div class="bottle__cap"></div>
+            <div class="bottle__neck"></div>
+            <div class="bottle__body"><span>TOXI</span><small>Noir Absolu</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__features container">
+        <div><strong>100%</strong><span>Ingredientes de origen ético</span></div>
+        <div><strong>+12h</strong><span>Duración en la piel</span></div>
+        <div><strong>30 días</strong><span>Devolución sin preguntas</span></div>
+      </div>
+    </section>
+
+    <!-- Colección -->
+    <section class="section" id="coleccion">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Nuestra colección</p>
+          <h2>Fragancias que definen momentos</h2>
+          <p>Desde maderas profundas hasta florales luminosos. Filtra por familia olfativa y descubre tu firma.</p>
+        </div>
+
+        <div class="filters reveal" id="filters">
+          <button class="filter is-active" data-filter="todos">Todos</button>
+          <button class="filter" data-filter="amaderado">Amaderados</button>
+          <button class="filter" data-filter="floral">Florales</button>
+          <button class="filter" data-filter="oriental">Orientales</button>
+          <button class="filter" data-filter="fresco">Frescos</button>
+        </div>
+
+        <div class="products" id="products"></div>
+      </div>
+    </section>
+
+    <!-- Banner editorial -->
+    <section class="editorial">
+      <div class="container editorial__inner reveal">
+        <p class="eyebrow eyebrow--light">Edición limitada</p>
+        <h2>Oud Imperial</h2>
+        <p>Solo 500 frascos numerados a mano. Oud de Laos, rosa de Taif y ámbar gris en una composición que trasciende el tiempo.</p>
+        <button class="btn btn--light" data-add="oud-imperial">Reservar el mío — $240</button>
+      </div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="section section--soft" id="descubre">
+      <div class="container quiz">
+        <div class="section__head reveal">
+          <p class="eyebrow">Asesor olfativo</p>
+          <h2>Encuentra tu aroma ideal</h2>
+          <p>Responde tres preguntas y te recomendaremos la fragancia perfecta para ti.</p>
+        </div>
+        <div class="quiz__card reveal" id="quiz">
+          <div class="quiz__progress"><span id="quizBar"></span></div>
+          <div id="quizBody"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Historia -->
+    <section class="section" id="historia">
+      <div class="container story">
+        <div class="story__visual reveal">
+          <div class="story__frame">
+            <div class="bottle bottle--sm" style="--c1:#f3d6dc;--c2:#b56576;">
+              <div class="bottle__cap"></div><div class="bottle__neck"></div>
+              <div class="bottle__body"><span>TOXI</span></div>
+            </div>
+            <div class="bottle bottle--sm bottle--offset" style="--c1:#d9e7e0;--c2:#4f7c6b;">
+              <div class="bottle__cap"></div><div class="bottle__neck"></div>
+              <div class="bottle__body"><span>TOXI</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="story__text reveal">
+          <p class="eyebrow">La Maison</p>
+          <h2>Perfumería de autor desde 2012</h2>
+          <p>TOXI nació en un pequeño taller con una convicción: el perfume no es un accesorio, es una extensión de quien lo lleva. Nuestros perfumistas recorren el mundo buscando las esencias más puras — vetiver de Haití, jazmín de Grasse, sándalo de Mysore.</p>
+          <p>Cada fragancia se macera durante ocho semanas antes de ser embotellada a mano, garantizando una profundidad y una estela inigualables.</p>
+          <div class="stats">
+            <div><strong data-count="14">0</strong><span>Años de oficio</span></div>
+            <div><strong data-count="38">0</strong><span>Países</span></div>
+            <div><strong data-count="120">0</strong><span>Mil clientes</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opiniones -->
+    <section class="section section--soft" id="opiniones">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Opiniones</p>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="testimonials">
+          <figure class="testimonial reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>“Noir Absolu se ha convertido en mi firma. Me preguntan qué llevo puesto cada vez que salgo.”</blockquote>
+            <figcaption>Valentina R. · Buenos Aires</figcaption>
+          </figure>
+          <figure class="testimonial reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>“La duración es increíble. Me lo pongo por la mañana y por la noche sigue ahí, suave y elegante.”</blockquote>
+            <figcaption>Martín G. · Madrid</figcaption>
+          </figure>
+          <figure class="testimonial reveal">
+            <div class="stars">★★★★★</div>
+            <blockquote>“El packaging, las muestras de regalo, la atención… se nota el cuidado en cada detalle.”</blockquote>
+            <figcaption>Camila S. · Ciudad de México</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contacto">
+      <div class="container newsletter__inner reveal">
+        <div>
+          <h2>Únete al Círculo TOXI</h2>
+          <p>Acceso anticipado a lanzamientos, ediciones limitadas y un 10% de descuento en tu primera compra.</p>
+        </div>
+        <form class="newsletter__form" id="newsletterForm" novalidate>
+          <input type="email" id="email" placeholder="Tu correo electrónico" aria-label="Correo electrónico" required />
+          <button type="submit" class="btn btn--primary">Suscribirme</button>
+          <p class="form-msg" id="formMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a href="#inicio" class="logo logo--light">TOXI<span>Parfums</span></a>
+        <p>Alta perfumería de autor. Creada con pasión, embotellada a mano.</p>
+      </div>
+      <div>
+        <h4>Tienda</h4>
+        <a href="#coleccion">Colección</a>
+        <a href="#coleccion">Sets de regalo</a>
+        <a href="#coleccion">Muestras</a>
+      </div>
+      <div>
+        <h4>Ayuda</h4>
+        <a href="#contacto">Envíos y devoluciones</a>
+        <a href="#contacto">Preguntas frecuentes</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div>
+        <h4>Visítanos</h4>
+        <p>Av. de las Esencias 1240<br />Lun – Sáb · 10:00 a 20:00<br />hola@toxiparfums.com</p>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="year"></span> TOXI Parfums. Todos los derechos reservados.</span>
+      <span>Privacidad · Términos</span>
+    </div>
+  </footer>
+
+  <!-- Carrito -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart" id="cart" aria-label="Carrito de compras">
+    <div class="cart__head">
+      <h3>Tu carrito</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="cart__items" id="cartItems"></div>
+    <div class="cart__foot">
+      <div class="cart__total"><span>Subtotal</span><strong id="cartTotal">$0</strong></div>
+      <p class="cart__note">Impuestos y envío calculados al finalizar la compra.</p>
+      <button class="btn btn--primary btn--block" id="checkoutBtn">Finalizar compra</button>
+    </div>
+  </aside>
+
+  <!-- Modal producto -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__box">
+      <button class="icon-btn modal__close" id="modalClose" aria-label="Cerrar">✕</button>
+      <div class="modal__content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
