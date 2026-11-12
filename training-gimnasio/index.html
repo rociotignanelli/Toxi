@@ -218,8 +218,9 @@
         <label>Teléfono de contacto *<input name="telefono" type="tel" autocomplete="tel" inputmode="tel" placeholder="Ej: 11 2345-6789" required /></label>
         <label>DNI *<input name="dni" inputmode="numeric" required /></label>
         <label class="full">Email<input name="email" type="email" autocomplete="email" placeholder="Opcional" /></label>
-        <label>Provincia *<input name="provincia" autocomplete="address-level1" required /></label>
-        <label>Localidad *<input name="localidad" autocomplete="address-level2" required /></label>
+        <label>Provincia *<select name="provincia" id="selProvincia" autocomplete="address-level1" required><option value="">Elegí tu provincia</option></select></label>
+        <label>Localidad *<select name="localidad" id="selLocalidad" autocomplete="address-level2" required disabled><option value="">Primero elegí la provincia</option></select></label>
+        <label class="full" id="otraLocalidadWrap" hidden>Escribí tu localidad *<input name="localidadOtra" autocomplete="address-level2" /></label>
         <label>Código postal *<input name="cp" autocomplete="postal-code" inputmode="numeric" required /></label>
         <label>Calle y número *<input name="direccion" autocomplete="address-line1" required /></label>
         <label>Piso / Depto<input name="depto" autocomplete="address-line2" placeholder="Opcional" /></label>
@@ -255,6 +256,7 @@
     </div>
   </div>
 
+  <script src="localidades.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

@@ -928,7 +928,7 @@ async function copiar(texto) {
 
 /* ---------- Paso 2: datos de envío ---------- */
 const CLAVE_DATOS = "training-gimnasio-datos-envio";
-const CAMPOS = ["nombre", "telefono", "dni", "email", "provincia", "localidad", "cp", "direccion", "depto", "referencias", "comentarios"];
+const CAMPOS = ["nombre", "telefono", "dni", "email", "provincia", "localidad", "localidadOtra", "cp", "direccion", "depto", "referencias", "comentarios"];
 const OBLIGATORIOS = ["nombre", "telefono", "dni", "provincia", "localidad", "cp", "direccion"];
 const conNumero = () => WHATSAPP_NUMERO.replace(/\D/g, "") !== "";
 
@@ -945,6 +945,8 @@ function leerDatos() {
   const f = $("#cartStep2");
   const d = {};
   CAMPOS.forEach((c) => { d[c] = f.elements[c].value.trim().replace(/\s+/g, " "); });
+  d.localidadElegida = d.localidad;
+  if (d.localidad === OTRA) d.localidad = d.localidadOtra;
   const pago = f.querySelector('input[name="pago"]:checked');
   d.pago = pago ? pago.value : "";
   return d;
@@ -955,6 +957,7 @@ function validarDatos(d) {
   const errores = [];
   CAMPOS.forEach((c) => f.elements[c].classList.remove("invalid"));
   OBLIGATORIOS.forEach((c) => { if (!d[c]) errores.push(c); });
+  if (d.localidadElegida === OTRA && !d.localidadOtra) errores.push("localidadOtra");
   if (d.telefono && d.telefono.replace(/\D/g, "").length < 8) errores.push("telefono");
   if (d.dni && !/^\d{7,8}$/.test(d.dni.replace(/\D/g, ""))) errores.push("dni");
   if (d.cp && !/^[A-Za-z]?\d{4}[A-Za-z]{0,3}$/.test(d.cp.replace(/\s/g, ""))) errores.push("cp");
@@ -973,9 +976,59 @@ function cargarDatos() {
   try {
     const d = JSON.parse(localStorage.getItem(CLAVE_DATOS) || "{}");
     const f = $("#cartStep2");
-    CAMPOS.forEach((c) => { if (typeof d[c] === "string" && !f.elements[c].value) f.elements[c].value = d[c]; });
+    ["nombre", "telefono", "dni", "email", "cp", "direccion", "depto", "referencias", "comentarios"].forEach((c) => {
+      if (typeof d[c] === "string" && !f.elements[c].value) f.elements[c].value = d[c];
+    });
+    if (d.provincia && LOCALIDADES[d.provincia] && !f.elements.provincia.value) {
+      f.elements.provincia.value = d.provincia;
+      llenarLocalidades(d.provincia);
+      if (LOCALIDADES[d.provincia].includes(d.localidad)) f.elements.localidad.value = d.localidad;
+      else if (d.localidad) { f.elements.localidad.value = OTRA; f.elements.localidadOtra.value = d.localidad; }
+      mostrarOtra();
+    }
   } catch { /* nada guardado */ }
 }
+
+/* ---------- Provincias y localidades ---------- */
+const OTRA = "__otra";
+const LOCALIDADES = window.LOCALIDADES || {};
+
+function opciones(lista) {
+  return lista.map((n) => `<option value="${escapar(n)}">${escapar(n)}</option>`).join("");
+}
+
+function llenarProvincias() {
+  $("#selProvincia").innerHTML = `<option value="">Elegí tu provincia</option>` + opciones(Object.keys(LOCALIDADES));
+}
+
+function llenarLocalidades(provincia) {
+  const sel = $("#selLocalidad");
+  const lista = LOCALIDADES[provincia];
+  if (!lista) {
+    sel.innerHTML = `<option value="">Primero elegí la provincia</option>`;
+    sel.disabled = true;
+    return;
+  }
+  sel.innerHTML = `<option value="">Elegí tu localidad</option>` + opciones(lista) +
+    `<option value="${OTRA}">Mi localidad no está en la lista</option>`;
+  sel.disabled = false;
+}
+
+function mostrarOtra() {
+  const otra = $("#selLocalidad").value === OTRA;
+  $("#otraLocalidadWrap").hidden = !otra;
+  if (!otra) $("#cartStep2").elements.localidadOtra.value = "";
+}
+
+$("#selProvincia").addEventListener("change", (e) => {
+  llenarLocalidades(e.target.value);
+  mostrarOtra();
+});
+$("#selLocalidad").addEventListener("change", () => {
+  mostrarOtra();
+  if ($("#selLocalidad").value === OTRA) $("#cartStep2").elements.localidadOtra.focus();
+});
+llenarProvincias();
 
 $("#cartNext").addEventListener("click", () => {
   if (!carrito.length) return;
@@ -985,6 +1038,7 @@ $("#cartNext").addEventListener("click", () => {
 });
 $("#cartBack").addEventListener("click", () => mostrarPaso(1));
 $("#cartStep2").addEventListener("submit", (e) => { e.preventDefault(); $("#cartCheckout").click(); });
+$("#cartStep2").addEventListener("change", (e) => { if (e.target.tagName === "SELECT") e.target.classList.remove("invalid"); });
 $("#cartStep2").addEventListener("input", (e) => {
   if (e.target.name === "pago") {
     $("#payMethods").classList.remove("invalid");
