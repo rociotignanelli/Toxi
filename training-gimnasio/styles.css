@@ -127,8 +127,8 @@ img, svg { display: block; }
 .card__actions .btn { flex: 1; }
 .grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
 
-.card__media--dark, .detail__main--dark { background: #0b0b0c; }
-.card__media--dark img, .detail__main--dark img { padding: 0; }
+.card__media.card__media--dark, .detail__main.detail__main--dark { background: #0b0b0c; }
+.card__media.card__media--dark img, .detail__main.detail__main--dark img { padding: 0; }
 .price-old { color: var(--muted); font-size: .85rem; font-weight: 600; }
 
 /* Ventana de detalle */

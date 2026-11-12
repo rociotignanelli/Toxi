@@ -5,7 +5,7 @@ Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Est�
 Para verla, abrí `index.html` en el navegador.
 
 ## Productos
-El catálogo tiene 28 productos con sus precios:
+El catálogo tiene 29 productos con sus precios:
 
 | Código | Producto | Precio |
 |---|---|---|
@@ -28,15 +28,16 @@ El catálogo tiene 28 productos con sus precios:
 | TG-17 | Banco de abdominales Randers ARG-203 | $110.000 de contado |
 | TG-18 | Kit barra, mancuernas y discos | $110.000 de contado |
 | TG-19 | Mancuerna hexagonal maciza 5 kg | $30.000 de contado |
-| TG-20 | Cinta de correr Atletis X900 (30% OFF) | $235.000 |
+| TG-20 | Cinta de correr Atletis X900 (30% OFF, antes $335.000) | $235.000 |
 | TG-21 | Cinta profesional Movement LX160 G4 | $2.800.000 en 18 cuotas sin interés |
-| TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $330.000) | $214.500 |
+| TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $500.000) | $325.000 · 3 cuotas sin interés con tarjeta de crédito |
 | TG-23 | Multigimnasio Body Skull | $1.000.500 en 12 cuotas sin interés |
 | TG-24 | Rack multifuncional Body Skull | $820.000 en 12 cuotas sin interés |
 | TG-25 | Prensa 45° Sonnos M100 | $2.800.000 en 18 cuotas sin interés |
 | TG-26 | Barra de dominadas (torre de calistenia) | $200.000 |
 | TG-27 | Mini tramp MIR Fitness | Consultar precio |
 | TG-28 | Tatami encastrable de goma EVA | Consultar precio |
+| TG-29 | Cama de Pilates reformer completa (35% OFF, antes $350.000) | $227.500 |
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
@@ -49,3 +50,7 @@ Al tocar "Finalizar compra" se piden los datos para el envío (nombre y apellido
 Recién con los datos obligatorios completos, "Enviar pedido por WhatsApp" abre WhatsApp con el pedido (productos, cantidades, precios, total y el enlace a la foto de cada producto), la forma de pago y los datos de envío.
 
 Para que el mensaje llegue escrito solo al chat del negocio, completá `WHATSAPP_NUMERO` en `script.js` con el número, solo dígitos y con código de país (Argentina: 549 + característica sin 0 + número sin 15, por ejemplo `5491123456789`). Si queda vacío, se abre `WHATSAPP_LINK` y el pedido se copia para que el cliente lo pegue en el chat.
+
+## Página publicada y enlaces por producto
+La página está en https://traininggimnacio.netlify.app/
+Cada producto tiene su propio enlace, que abre directamente su detalle: el código en minúscula después de `#`, por ejemplo https://traininggimnacio.netlify.app/#tg-29 (cama de Pilates). Sirve para publicidades y para compartir un producto por WhatsApp.

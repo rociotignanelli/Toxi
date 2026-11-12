@@ -443,6 +443,7 @@ const PRODUCTOS = [
     nombre: "Cinta de correr X900",
     categoria: "cintas",
     precio: 235000,
+    precioAnterior: 335000,
     condicion: null,
     etiqueta: "30% OFF",
     fondoOscuro: true,
@@ -460,8 +461,12 @@ const PRODUCTOS = [
       "Peso máximo del usuario: 120 kg",
       "Plegable con ruedas de transporte",
       "Seguridad: llave de seguridad y apagado automático tras 45 min",
+      "Medidas del producto: 130 x 73 x 174 cm",
+      "Medidas plegada: 140 x 72 x 94 cm",
+      "Peso neto: 64 kg · Peso bruto: 74 kg",
+      "Embalaje: 32,5 x 76 x 169 cm",
     ],
-    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo.jpg", "img/atletis-x900-promo-2.jpg"],
+    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo-3.jpg", "img/atletis-x900-promo.jpg", "img/atletis-x900-promo-2.jpg"],
   },
   {
     codigo: "TG-21",
@@ -496,9 +501,9 @@ const PRODUCTOS = [
     marca: "Olmo",
     nombre: "Multigym Fit 44",
     categoria: "fuerza",
-    precio: 214500,
-    precioAnterior: 330000,
-    condicion: null,
+    precio: 325000,
+    precioAnterior: 500000,
+    condicion: "3 cuotas sin interés con tarjeta de crédito",
     etiqueta: "35% OFF",
     resumen: "Multigym para tren superior e inferior con pesas antiruido, peso graduable de a 5 kg y 6 meses de garantía.",
     descripcion: "El Olmo Fit 44 es un multigym completo para entrenar tren superior e inferior en un solo equipo: polea alta para dorsales, mariposa para pecho, banco Scott para bíceps, sillón de cuádriceps y femorales y polea baja con cadena. Está construido en caño de acero con pintura epoxi de alta resistencia, color negro, y sus pesas recubiertas en plástico funcionan con un sistema antiruido. El esfuerzo se gradúa de a 5 kg con un sistema de clavijas y produce una fuerza de tracción de 90 kg. Incluye manual de armado paso a paso; consultá por armado a domicilio o en el local.",
@@ -513,9 +518,10 @@ const PRODUCTOS = [
       "Construido en caño de acero con pintura epoxi de alta resistencia",
       "Color negro",
       "Guía de armado paso a paso; armado a domicilio o en el local (consultar)",
-      "Garantía: 6 meses",
+      "Garantía oficial: 6 meses",
+      "Todas las tarjetas de crédito en 3 cuotas sin interés",
     ],
-    fotos: ["img/olmo-fit44-1.jpg", "img/olmo-fit44-promo.jpg"],
+    fotos: ["img/olmo-fit44-1.jpg", "img/olmo-fit44-promo-2.jpg", "img/olmo-fit44-promo.jpg"],
   },
   {
     codigo: "TG-23",
@@ -647,6 +653,32 @@ const PRODUCTOS = [
     ],
     fotos: ["img/tatami-eva-1.jpg"],
   },
+  {
+    codigo: "TG-29",
+    marca: "",
+    nombre: "Cama de Pilates reformer completa",
+    categoria: "pilates",
+    precio: 227500,
+    precioAnterior: 350000,
+    condicion: null,
+    etiqueta: "35% OFF",
+    fondoOscuro: true,
+    resumen: "Cama reformer de madera natural y estructura metálica, con resortes regulables y poleas. Plegable con ruedas.",
+    descripcion: "Cama reformer de Pilates completa con base de madera natural, estructura metálica sólida, rieles deslizantes y carro acolchado antideslizante. Está diseñada para ofrecer un movimiento suave y estable, con resortes de tensión regulable para progresar en los ejercicios, poleas, correas con agarres y barra ajustable. Es plegable y tiene ruedas, así que se guarda en poco espacio. Ideal para Pilates clásico y contemporáneo, movilidad, elongación y equilibrio, rehabilitación suave y entrenamientos en casa o en estudios personales.",
+    specs: [
+      "Base de madera natural",
+      "Estructura de metal sólida",
+      "Carro acolchado con tapizado antideslizante",
+      "Poleas deslizantes de movimiento suave",
+      "Resortes de tensión regulable",
+      "Barra ajustable",
+      "Sistema plegable con ruedas",
+      "Color: madera + negro",
+      "Medidas: largo total 185 cm · largo hasta la base de apoyo 138 cm · ancho trasero 30 cm · ancho delantero 58 cm · alto máximo 50 cm",
+      "Incluye: cama completa, caja de resortes, correas, poleas y agarres, barra ajustable, ruedas de transporte y manual de armado y mantenimiento",
+    ],
+    fotos: ["img/pilates-1.jpg", "img/pilates-promo.jpg"],
+  },
 ];
 
 const CATEGORIAS = [
@@ -659,6 +691,7 @@ const CATEGORIAS = [
   { id: "airbike", nombre: "Airbike" },
   { id: "fuerza", nombre: "Fuerza" },
   { id: "peso-libre", nombre: "Peso libre" },
+  { id: "pilates", nombre: "Pilates" },
   { id: "jumping", nombre: "Jumping" },
   { id: "pisos", nombre: "Pisos" },
 ];
@@ -752,10 +785,13 @@ function abrirDetalle(codigo) {
     </div>`;
   $("#modal").hidden = false;
   document.body.style.overflow = "hidden";
+  const hash = "#" + p.codigo.toLowerCase();
+  if (location.hash !== hash) history.replaceState(null, "", hash);
   $("#modalClose").focus();
 }
 
 function cerrarDetalle() {
+  if (/^#tg-\d+$/i.test(location.hash)) history.replaceState(null, "", location.pathname + location.search);
   $("#modal").hidden = true;
   if (!$("#cart").classList.contains("open")) document.body.style.overflow = "";
 }
@@ -1147,3 +1183,11 @@ renderCarrito();
 $("#shipHelp").textContent = conNumero()
   ? "Se abre WhatsApp con tu pedido y tus datos ya escritos. Solo tenés que tocar enviar."
   : "Se abre WhatsApp y copiamos tu pedido con tus datos: pegalo en el chat y envialo.";
+
+/* Enlace directo a un producto: https://traininggimnacio.netlify.app/#tg-29 abre su detalle */
+function abrirDesdeEnlace() {
+  const m = location.hash.match(/^#(tg-\d+)$/i);
+  if (m && buscarProducto(m[1].toUpperCase())) abrirDetalle(m[1].toUpperCase());
+}
+window.addEventListener("hashchange", abrirDesdeEnlace);
+abrirDesdeEnlace();
