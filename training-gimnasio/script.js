@@ -239,16 +239,101 @@ const PRODUCTOS = [
     ],
     fotos: ["img/fitage-vital-stroll-1.jpg", "img/fitage-vital-stroll-2.jpg", "img/fitage-vital-stroll-promo.jpg"],
   },
+  {
+    codigo: "TG-11",
+    marca: "Daiwa",
+    nombre: "Elíptico 2 en 1 con asiento",
+    categoria: "elipticos",
+    precio: 208000,
+    condicion: "Al contado",
+    etiqueta: "35% OFF · Super oferta",
+    resumen: "Elíptico con asiento: se usa parado como elíptico o sentado como bicicleta. Monitor digital y resistencia regulable.",
+    descripcion: "El elíptico Daiwa combina dos equipos en uno: de pie funciona como elíptico, con brazos móviles para trabajar el cuerpo completo, y con el asiento se usa como bicicleta fija. Tiene un monitor digital que muestra velocidad, tiempo, distancia y calorías (con modo de recorrido automático), perillas para ajustar los brazos y estructura de acero negro. Ideal para hacer cardio en casa ocupando poco espacio.",
+    specs: [
+      "Marca Daiwa",
+      "2 en 1: elíptico de pie y bicicleta con asiento",
+      "Brazos móviles para trabajar tren superior e inferior",
+      "Monitor digital: velocidad, tiempo, distancia, calorías y modo scan",
+      "Resistencia regulable",
+      "Estructura de acero negro",
+      "Barra estabilizadora con regatones",
+    ],
+    fotos: ["img/eliptico-daiwa-1.jpg", "img/eliptico-daiwa-2.jpg", "img/eliptico-daiwa-3.jpg", "img/eliptico-daiwa-promo.jpg"],
+  },
+  {
+    codigo: "TG-12",
+    marca: "Olmo",
+    nombre: "Elíptico Fit 305",
+    categoria: "elipticos",
+    precio: 820000,
+    condicion: "De contado",
+    etiqueta: "Uso residencial",
+    resumen: "Elíptico de uso residencial con brazos móviles, manijas fijas con sensores de pulso y monitor digital.",
+    descripcion: "El Olmo Fit 305 es un elíptico de uso residencial para hacer cardio completo y de bajo impacto en casa. Tiene brazos móviles para trabajar brazos y piernas a la vez, manijas fijas con sensores de pulso, monitor digital en el centro del manubrio y una perilla para regular la resistencia. La transmisión está cubierta por una carcasa negra y roja, y los pedales son amplios y con textura antideslizante.",
+    specs: [
+      "Marca Olmo, modelo Fit 305",
+      "Uso residencial",
+      "Brazos móviles para entrenar tren superior e inferior",
+      "Manijas fijas con sensores de pulso",
+      "Monitor digital",
+      "Perilla para regular la resistencia",
+      "Pedales amplios antideslizantes",
+      "Transmisión cubierta",
+      "Barras estabilizadoras con regatones",
+    ],
+    fotos: ["img/eliptico-olmo-305-1.jpg", "img/eliptico-olmo-305-2.jpg", "img/eliptico-olmo-305-promo.jpg"],
+  },
+  {
+    codigo: "TG-13",
+    marca: "",
+    nombre: "Pisos encastrables de goma EVA x4",
+    categoria: "pisos",
+    precio: 45000,
+    condicion: "De contado",
+    etiqueta: "Pack x4",
+    resumen: "Pack de 4 placas encastrables de 60 x 60 cm en goma EVA de alta densidad. Para gimnasios y hogares.",
+    descripcion: "Pack de 4 alfombras de ejercicio encastrables en espuma EVA de alta densidad. Las placas se unen como un rompecabezas, así que podés cubrir el espacio que necesites y desarmarlas para guardarlas. Protegen el piso, amortiguan impactos y reducen ruidos, ideales para debajo de bicicletas, cintas y zonas de peso libre o para entrenar en el suelo. Uso para gimnasios y hogares.",
+    specs: [
+      "Se entrega con 4 alfombras de ejercicio encastrables",
+      "Medidas de cada placa: 60 x 60 x 1,2 cm",
+      "Material: espuma EVA de alta densidad",
+      "Peso de cada placa: 300 g",
+      "Superficie texturada antideslizante",
+      "Uso para gimnasios y hogares",
+    ],
+    fotos: ["img/piso-eva-1.jpg", "img/piso-eva-2.jpg", "img/piso-eva-promo.jpg"],
+  },
+  {
+    codigo: "TG-14",
+    marca: "",
+    nombre: "Piso de caucho virgen 90 x 90 cm",
+    categoria: "pisos",
+    precio: 38000,
+    condicion: "De contado",
+    etiqueta: "Uso gym y hogares",
+    resumen: "Placa de caucho virgen de 90 x 90 cm y 10 mm de espesor. Resistente y firme, para gimnasios y hogares.",
+    descripcion: "Placa de caucho virgen de 90 x 90 cm y 10 mm de espesor, pensada para pisos de gimnasio y espacios de entrenamiento en casa. El caucho es firme y resistente: protege el piso de golpes y del peso de las máquinas, amortigua impactos y no se desliza. Se colocan una al lado de la otra para cubrir toda la superficie.",
+    specs: [
+      "Material: caucho virgen",
+      "Medidas: 90 x 90 cm",
+      "Espesor: 10 mm",
+      "Protege el piso y amortigua impactos",
+      "Uso para gimnasios y hogares",
+    ],
+    fotos: ["img/piso-caucho-1.jpg", "img/piso-caucho-2.jpg", "img/piso-caucho-promo.jpg"],
+  },
 ];
 
 const CATEGORIAS = [
   { id: "todos", nombre: "Todos" },
   { id: "spinning", nombre: "Bicicletas de spinning" },
   { id: "fijas", nombre: "Bicicletas fijas" },
+  { id: "elipticos", nombre: "Elípticos" },
   { id: "remo", nombre: "Remo" },
   { id: "airbike", nombre: "Airbike" },
   { id: "fuerza", nombre: "Fuerza" },
   { id: "jumping", nombre: "Jumping" },
+  { id: "pisos", nombre: "Pisos" },
 ];
 
 /* ---------------- Utilidades ---------------- */
@@ -257,6 +342,7 @@ const nombreCategoria = (id) => (CATEGORIAS.find((c) => c.id === id) || {}).nomb
 const formatoPrecio = (n) => `${MONEDA.simbolo} ${Number(n).toLocaleString(MONEDA.locale)}`;
 const tienePrecio = (p) => typeof p.precio === "number" && !Number.isNaN(p.precio);
 const escapar = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const nombreCompleto = (p) => [p.marca, p.nombre].filter(Boolean).join(" ");
 const buscarProducto = (codigo) => PRODUCTOS.find((p) => p.codigo === codigo);
 
 let filtroActivo = "todos";
@@ -287,10 +373,10 @@ function renderGrid() {
       <button class="card__media" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
         <span class="card__code">${p.codigo}</span>
         ${p.etiqueta ? `<span class="card__tag">${escapar(p.etiqueta)}</span>` : ""}
-        <img src="${p.fotos[0]}" alt="${escapar(p.marca + " " + p.nombre)}" loading="lazy" />
+        <img src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" loading="lazy" />
       </button>
       <div class="card__body">
-        <p class="card__brand">${escapar(p.marca)} · ${nombreCategoria(p.categoria)}</p>
+        <p class="card__brand">${[p.marca, nombreCategoria(p.categoria)].filter(Boolean).map(escapar).join(" · ")}</p>
         <h3 class="card__title">${escapar(p.nombre)}</h3>
         <p class="card__desc">${escapar(p.resumen)}</p>
         <div class="card__foot">
@@ -310,7 +396,7 @@ function renderTabla() {
   $("#priceTable").innerHTML = PRODUCTOS.map((p) => `
     <tr>
       <td>${p.codigo}</td>
-      <td>${escapar(p.marca)} ${escapar(p.nombre)}</td>
+      <td>${escapar(nombreCompleto(p))}</td>
       <td>${nombreCategoria(p.categoria)}</td>
       <td class="right">${tienePrecio(p) ? formatoPrecio(p.precio) + (p.condicion ? ` <small>${escapar(p.condicion.toLowerCase())}</small>` : "") : "Consultar"}</td>
     </tr>`).join("");
@@ -322,13 +408,13 @@ function abrirDetalle(codigo) {
   if (!p) return;
   $("#modalBody").innerHTML = `
     <div class="detail__gallery">
-      <div class="detail__main"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(p.marca + " " + p.nombre)}" /></div>
+      <div class="detail__main"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" /></div>
       <div class="detail__thumbs">
         ${p.fotos.map((f, i) => `<button class="detail__thumb${i === 0 ? " active" : ""}" data-foto="${f}"><img src="${f}" alt="Foto ${i + 1}" /></button>`).join("")}
       </div>
     </div>
     <div class="detail__info">
-      <p class="card__brand">${p.codigo} · ${escapar(p.marca)} · ${nombreCategoria(p.categoria)}</p>
+      <p class="card__brand">${[p.codigo, p.marca, nombreCategoria(p.categoria)].filter(Boolean).map(escapar).join(" · ")}</p>
       <h2 id="modalTitle" class="detail__title">${escapar(p.nombre)}</h2>
       ${p.etiqueta ? `<span class="detail__tag">${escapar(p.etiqueta)}</span>` : ""}
       <div class="detail__price">${precioHTML(p)}</div>
@@ -378,7 +464,7 @@ document.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-codigo]");
   if (!btn) return;
   const p = buscarProducto(btn.dataset.codigo);
-  const linea = `${p.codigo} ${p.marca} ${p.nombre}`;
+  const linea = `${p.codigo} ${nombreCompleto(p)}`;
   const msg = $("#mensaje");
   if (!msg.value.includes(p.codigo)) msg.value = msg.value.trim() ? `${msg.value.trim()}\n${linea}` : linea;
   if (!$("#modal").hidden) cerrarDetalle();
