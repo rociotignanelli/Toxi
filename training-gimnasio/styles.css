@@ -180,7 +180,7 @@ img, svg { display: block; }
 .showroom__gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
 .showroom__gallery img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
 .showroom__text h3 { font-family: var(--display); font-weight: 400; font-size: 2.4rem; line-height: 1; margin-bottom: 14px; }
-.showroom__text p:not(.eyebrow) { color: var(--muted); margin-bottom: 24px; }
+.showroom__text p:not(.eyebrow) { color: var(--muted); margin-bottom: 20px; }
 
 /* Contacto */
 .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
@@ -291,6 +291,13 @@ img, svg { display: block; }
 .pay-info { font-size: .85rem; color: #ddd; }
 .contact__pay { list-style: none; display: grid; gap: 6px; margin-top: 18px; }
 
+.address { display: flex; gap: 10px; align-items: flex-start; color: #ddd; }
+.address svg { flex: none; width: 22px; height: 22px; fill: none; stroke: var(--red); stroke-width: 2; margin-top: 2px; }
+.showroom__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.contact__pay a { color: #fff; text-decoration: underline; }
+.footer__info { display: grid; gap: 4px; text-align: right; padding-right: 70px; }
+.footer__info a { color: #ddd; text-decoration: underline; }
+
 /* Aviso */
 .toast { position: fixed; left: 50%; top: 86px; z-index: 130; transform: translate(-50%, -20px); background: #fff; color: var(--black); padding: 12px 20px; border-radius: var(--radius); font-weight: 600; font-size: .9rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100% - 40px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
@@ -310,6 +317,7 @@ img, svg { display: block; }
   .menu-toggle { margin-left: 8px; }
   .cart-btn { margin-left: auto; }
   .ship__grid { grid-template-columns: 1fr; }
+  .footer__info { text-align: left; padding-right: 0; padding-bottom: 70px; }
   .contact__actions .btn { min-width: 0; width: 100%; }
   .detail { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
   .detail__title { font-size: 2rem; }
