@@ -17,7 +17,7 @@ const MONEDA = { simbolo: "$", locale: "es-AR" };
    WHATSAPP_LINK: enlace de WhatsApp Business. Se usa para los botones de contacto y, si no hay
    número cargado, también para el pedido (en ese caso el pedido se copia y el cliente lo pega). */
 const WHATSAPP_LINK = "https://wa.me/message/5KOZEMFL74WVM1";
-const WHATSAPP_NUMERO = "";
+const WHATSAPP_NUMERO = "5493765530096";
 
 const PRODUCTOS = [
   {
