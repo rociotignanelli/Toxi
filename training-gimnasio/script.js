@@ -858,6 +858,7 @@ function renderCarrito() {
       </div>`;
   }).join("");
   $("#cartTotal").textContent = formatoPrecio(total);
+  $("#cartCheckout").href = linkWhatsapp(mensajePedido());
   $("#cartNote").textContent = sinPrecio
     ? `${sinPrecio === 1 ? "Un producto tiene" : sinPrecio + " productos tienen"} precio a consultar y no se suma al total.`
     : "Precios de contado o según la condición de cada producto. Confirmamos stock y envío por WhatsApp.";
@@ -904,15 +905,11 @@ async function copiar(texto) {
 }
 
 function finalizarCompra() {
-  if (!carrito.length) return;
-  const texto = mensajePedido();
-  const conNumero = WHATSAPP_NUMERO.replace(/\D/g, "") !== "";
-  window.open(linkWhatsapp(texto), "_blank", "noopener");
-  if (!conNumero) {
-    copiar(texto).then((ok) => aviso(ok
-      ? "Copiamos tu pedido: pegalo en el chat de WhatsApp y envialo."
-      : "Abrimos WhatsApp: contanos qué productos elegiste."));
-  }
+  // El botón es un enlace a WhatsApp: el navegador lo abre solo. Acá copiamos el pedido.
+  if (!carrito.length || WHATSAPP_NUMERO.replace(/\D/g, "")) return;
+  copiar(mensajePedido()).then((ok) => aviso(ok
+    ? "Copiamos tu pedido: pegalo en el chat de WhatsApp y envialo."
+    : "Se abrió WhatsApp: contanos qué productos elegiste."));
 }
 
 function abrirCarrito() {
