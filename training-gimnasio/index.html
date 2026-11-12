@@ -35,7 +35,7 @@
       <div class="hero__content">
         <p class="eyebrow">Equipamiento profesional</p>
         <h1>Maquinaria para<br /><span>gimnasios</span> que rinde</h1>
-        <p class="hero__text">Cardio, musculación y peso libre de uso intensivo. Equipamos gimnasios, clubes y espacios de entrenamiento con estructura reforzada, garantía y asesoramiento.</p>
+        <p class="hero__text">Bicicletas de spinning, simuladores de remo, airbikes y racks de las mejores marcas: Randers, Enerfit y Assault. Equipá tu gimnasio o tu casa con asesoramiento y stock disponible.</p>
         <div class="hero__actions">
           <a href="#catalogo" class="btn btn--red">Ver maquinaria</a>
           <a href="#contacto" class="btn btn--ghost">Armar mi gimnasio</a>
@@ -68,7 +68,7 @@
       <div class="section__head">
         <p class="eyebrow">Catálogo</p>
         <h2>Nuestra maquinaria</h2>
-        <p class="section__sub">Cada equipo tiene un código. Consultanos por el código para recibir precio, stock y tiempos de entrega.</p>
+        <p class="section__sub">Tocá cualquier producto para ver sus fotos, la descripción completa y todas sus características.</p>
       </div>
 
       <div class="toolbar">
@@ -148,7 +148,7 @@
       <form class="form" id="contactForm" novalidate>
         <label>Nombre<input type="text" name="nombre" required /></label>
         <label>Teléfono o email<input type="text" name="contacto" required /></label>
-        <label>Equipos de interés<textarea name="mensaje" id="mensaje" rows="4" placeholder="Ej: TG-01, TG-07 x2"></textarea></label>
+        <label>Equipos de interés<textarea name="mensaje" id="mensaje" rows="4" placeholder="Ej: TG-01 Randers ARG-845SP"></textarea></label>
         <button type="submit" class="btn btn--black">Enviar consulta</button>
         <p class="form__msg" id="formMsg" role="status"></p>
       </form>
@@ -163,14 +163,15 @@
       </a>
       <p>© <span id="year"></span> Training Gimnasio. Maquinaria profesional para gimnasios.</p>
     </div>
-    <details class="container credits">
-      <summary>Créditos de las fotos</summary>
-      <p>Fotos de referencia de Wikimedia Commons y Openverse (Flickr y otros), usadas según sus licencias libres. Cada foto enlaza a su fuente.</p>
-      <ul id="creditos"></ul>
-    </details>
   </footer>
 
-  <script src="fotos.js"></script>
+  <div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal__box">
+      <button class="modal__close" id="modalClose" aria-label="Cerrar">&times;</button>
+      <div class="detail" id="modalBody"></div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

@@ -4,12 +4,18 @@ Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Est�
 
 Para verla, abrí `index.html` en el navegador.
 
-## Cómo cargar los precios
-En `script.js`, dentro de la lista `PRODUCTOS`, buscá el equipo por su código (TG-01, TG-02, …) y completá `precio` con el número sin puntos, por ejemplo `precio: 1850000`.
-Si `precio` queda en `null`, la página muestra "Consultar precio".
-El precio se actualiza solo en la tarjeta del catálogo y en la lista de precios.
+## Productos
+El catálogo tiene 5 productos con sus precios:
 
-## Fotos
-Las fotos de los equipos están en `img/` y sus datos (autor, licencia y enlace a la fuente) en `fotos.js`. Son fotos reales con licencia libre (Wikimedia Commons y Openverse) y se acreditan al pie de la página, en "Créditos de las fotos".
-Para poner una foto propia, guardala en `img/` y cambiá `archivo` en `fotos.js` (y borrá o reemplazá los datos de crédito).
-Los equipos sin foto muestran un dibujo.
+| Código | Producto | Precio |
+|---|---|---|
+| TG-01 | Bicicleta de spinning Randers ARG-845SP (35% OFF) | $227.000 al contado |
+| TG-02 | Bicicleta de spinning indoor Enerfit (negra o blanca) | $420.000 de contado |
+| TG-03 | Simulador de remo Randers (solo 10 unidades) | $895.750 |
+| TG-04 | Airbike Assault Classic Pro | $3.750.000 |
+| TG-05 | Rack multifunción Randers ARG 154 | $275.000 |
+
+Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
+
+## Cómo editar productos y precios
+Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.
