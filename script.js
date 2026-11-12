@@ -106,9 +106,10 @@ $("#filters").addEventListener("click", (e) => {
 });
 
 /* ---------- Carrito ---------- */
-let cart = JSON.parse(localStorage.getItem("toxi-cart") || "[]");
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("toxi-cart") || "[]"); } catch { cart = []; }
 
-const saveCart = () => localStorage.setItem("toxi-cart", JSON.stringify(cart));
+const saveCart = () => { try { localStorage.setItem("toxi-cart", JSON.stringify(cart)); } catch {} };
 
 function addToCart(id, ml = 50) {
   const p = findProduct(id);
