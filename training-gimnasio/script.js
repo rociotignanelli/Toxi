@@ -866,12 +866,20 @@ function renderCarrito() {
     : "Precios de contado o según la condición de cada producto. Confirmamos stock y envío por WhatsApp.";
 }
 
+// Enlace público a la foto principal del producto (solo cuando la página está publicada en internet).
+function urlFoto(p) {
+  if (!/^https?:$/.test(location.protocol)) return "";
+  try { return new URL(p.fotos[0], location.href).href; } catch { return ""; }
+}
+
 function mensajePedido(datos) {
   const { total, sinPrecio } = totalesCarrito();
   const lineas = carrito.map((i) => {
     const p = buscarProducto(i.codigo);
     const precio = tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "precio a consultar";
-    return `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""}`;
+    const linea = `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""}`;
+    const foto = urlFoto(p);
+    return foto ? `${linea}\n   Foto: ${foto}` : linea;
   });
   const msg = [
     "¡Hola Training Gimnasio! Quiero realizar esta compra desde la página web:",
