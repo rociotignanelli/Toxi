@@ -12,91 +12,91 @@ const MONEDA = { simbolo: "$", locale: "es-AR" };
 const PRODUCTOS = [
   // ---------- CARDIO ----------
   { codigo: "TG-01", nombre: "Cinta de correr profesional", categoria: "cardio", icono: "cinta",
-    descripcion: "Motor AC de uso continuo, ideal para gimnasios con alto tránsito.",
+    descripcion: "Cinta de uso comercial con consola de programas, pasamanos con sensores de pulso y banda ancha amortiguada. Preparada para funcionar muchas horas por día.",
     specs: ["Motor 4 HP AC", "0–22 km/h", "Inclinación 15%", "Usuario 180 kg"], precio: null },
   { codigo: "TG-02", nombre: "Bicicleta de spinning", categoria: "cardio", icono: "spinning",
-    descripcion: "Volante de inercia pesado y resistencia magnética regulable.",
+    descripcion: "Bicicleta de ciclismo indoor con volante de inercia, manubrio y asiento regulables en altura y profundidad, y freno de emergencia. Ideal para salas de clases grupales.",
     specs: ["Volante 20 kg", "Freno magnético", "Usuario 150 kg"], precio: null },
   { codigo: "TG-03", nombre: "Bicicleta fija vertical", categoria: "cardio", icono: "bici",
-    descripcion: "Consola con programas de entrenamiento y medición de pulso.",
+    descripcion: "Bicicleta vertical con consola digital, manubrio ergonómico y resistencia regulable. Cómoda para entrenar cardio de forma progresiva.",
     specs: ["16 niveles", "Monitor LCD", "Usuario 150 kg"], precio: null },
   { codigo: "TG-04", nombre: "Elíptico profesional", categoria: "cardio", icono: "eliptico",
-    descripcion: "Movimiento natural de bajo impacto con zancada amplia.",
+    descripcion: "Elíptico de uso comercial con brazos móviles y pedales amplios. Trabaja el tren superior y el inferior sin impacto en las articulaciones.",
     specs: ["Zancada 50 cm", "20 niveles", "Usuario 160 kg"], precio: null },
   { codigo: "TG-05", nombre: "Remo de aire", categoria: "cardio", icono: "remo",
-    descripcion: "Resistencia por aire, trabajo de cuerpo completo.",
-    specs: ["10 niveles", "Monitor de rendimiento", "Plegable"], precio: null },
+    descripcion: "Remo con monorriel de aluminio, asiento deslizante y monitor de rendimiento. Trabaja piernas, espalda y brazos en un mismo movimiento.",
+    specs: ["Resistencia por aire", "Monitor de rendimiento", "Se guarda vertical"], precio: null },
   { codigo: "TG-06", nombre: "Escaladora", categoria: "cardio", icono: "escaladora",
-    descripcion: "Escalera rotativa de alta intensidad para piernas y glúteos.",
+    descripcion: "Escalera rotativa de alta intensidad para piernas y glúteos, con pasamanos laterales y consola de programas.",
     specs: ["Velocidad variable", "Pasamanos", "Usuario 160 kg"], precio: null },
 
   // ---------- MUSCULACIÓN ----------
-  { codigo: "TG-07", nombre: "Prensa 45°", categoria: "musculacion", icono: "prensa",
-    descripcion: "Estructura reforzada con carro sobre rodamientos lineales.",
+  { codigo: "TG-07", nombre: "Prensa de piernas", categoria: "musculacion", icono: "prensa",
+    descripcion: "Prensa de carga con discos, con plataforma amplia antideslizante, respaldo acolchado y trabas de seguridad. Para cuádriceps, glúteos e isquiotibiales.",
     specs: ["Carga con discos", "Respaldo regulable", "Capacidad 500 kg"], precio: null },
   { codigo: "TG-08", nombre: "Máquina Smith", categoria: "musculacion", icono: "smith",
-    descripcion: "Barra guiada con seguros, para sentadillas, press y más.",
-    specs: ["Guías lineales", "Trabas de seguridad", "Barra contrapesada"], precio: null },
-  { codigo: "TG-09", nombre: "Poleas cruzadas (crossover)", categoria: "musculacion", icono: "crossover",
-    descripcion: "Dos torres de polea con altura regulable y barra de dominadas.",
-    specs: ["2 x 90 kg de placas", "Poleas regulables", "Barra dominadas"], precio: null },
+    descripcion: "Barra guiada sobre rieles con ganchos de seguridad en cada altura y soportes para guardar discos. Permite sentadillas, press y estocadas con control.",
+    specs: ["Guías lineales", "Trabas de seguridad", "Porta discos"], precio: null },
+  { codigo: "TG-09", nombre: "Poleas dobles (functional trainer)", categoria: "musculacion", icono: "crossover",
+    descripcion: "Estación de doble polea con altura regulable, pilas de placas independientes y barra de dominadas. Permite cruces de pecho y cientos de ejercicios con cable.",
+    specs: ["2 pilas de placas", "Poleas regulables", "Barra dominadas"], precio: null },
   { codigo: "TG-10", nombre: "Dorsalera / polea al pecho", categoria: "musculacion", icono: "dorsalera",
-    descripcion: "Jalón al pecho y remo bajo en una sola estación.",
-    specs: ["Pila 100 kg", "Asiento regulable", "Rodilleras"], precio: null },
+    descripcion: "Estación de jalón al pecho con polea alta, rodilleras regulables y asiento acolchado. Para dorsales, bíceps y hombros.",
+    specs: ["Polea alta", "Rodilleras regulables", "Barra larga incluida"], precio: null },
   { codigo: "TG-11", nombre: "Sillón de cuádriceps", categoria: "musculacion", icono: "cuadriceps",
-    descripcion: "Extensión de piernas con rango de movimiento ajustable.",
-    specs: ["Pila 80 kg", "Respaldo regulable", "Tapizado reforzado"], precio: null },
+    descripcion: "Máquina de extensión de piernas con respaldo regulable, rodillo acolchado ajustable y pila de placas. Tapizado reforzado para uso intensivo.",
+    specs: ["Pila 80 kg", "Respaldo regulable", "Rodillo ajustable"], precio: null },
   { codigo: "TG-12", nombre: "Camilla de femorales", categoria: "musculacion", icono: "femorales",
-    descripcion: "Curl femoral acostado con apoyo ergonómico.",
+    descripcion: "Curl femoral acostado con apoyo ergonómico, rodillo regulable y agarres laterales.",
     specs: ["Pila 80 kg", "Rodillo regulable", "Agarres laterales"], precio: null },
   { codigo: "TG-13", nombre: "Peck deck / pectoral", categoria: "musculacion", icono: "peck",
-    descripcion: "Aperturas de pecho y deltoides posterior en la misma máquina.",
-    specs: ["Pila 90 kg", "Doble función", "Brazos regulables"], precio: null },
+    descripcion: "Máquina de aperturas con brazos pivotantes y asiento regulable para pectorales. También permite trabajar el deltoides posterior.",
+    specs: ["Pila 90 kg", "Doble función", "Asiento regulable"], precio: null },
   { codigo: "TG-14", nombre: "Hack squat", categoria: "musculacion", icono: "hack",
-    descripcion: "Sentadilla guiada con hombreras acolchadas y plataforma amplia.",
-    specs: ["Carga con discos", "Plataforma antideslizante", "Trabas de seguridad"], precio: null },
-  { codigo: "TG-15", nombre: "Multiestación 4 puestos", categoria: "musculacion", icono: "multigym",
-    descripcion: "Varias estaciones de trabajo en un solo equipo compacto.",
-    specs: ["4 puestos", "2 pilas de 100 kg", "Uso simultáneo"], precio: null },
+    descripcion: "Sentadilla hack de carga con discos, con respaldo y hombreras acolchadas y plataforma inclinada para trabajar piernas con la espalda apoyada.",
+    specs: ["Carga con discos", "Hombreras acolchadas", "Trabas de seguridad"], precio: null },
+  { codigo: "TG-15", nombre: "Prensa horizontal con placas", categoria: "musculacion", icono: "multigym",
+    descripcion: "Prensa sentado con pila de placas, respaldo regulable y plataforma amplia. Fácil de usar para todos los niveles, sin cargar discos.",
+    specs: ["Pila 140 kg", "Respaldo regulable", "Selector de peso"], precio: null },
   { codigo: "TG-16", nombre: "Power rack / jaula", categoria: "musculacion", icono: "rack",
-    descripcion: "Jaula de potencia con barras de seguridad y soportes J.",
+    descripcion: "Jaula de potencia con barras de seguridad regulables, soportes J y barra de dominadas. Para entrenar sentadilla y press pesado de forma segura.",
     specs: ["Caño 75x75 mm", "Barra dominadas", "Capacidad 600 kg"], precio: null },
 
   // ---------- BANCOS ----------
   { codigo: "TG-17", nombre: "Banco press plano olímpico", categoria: "bancos", icono: "bancoPress",
-    descripcion: "Banco con soportes para barra olímpica y estructura pesada.",
-    specs: ["Soportes regulables", "Capacidad 350 kg"], precio: null },
+    descripcion: "Banco plano con parantes para barra olímpica, estructura reforzada y tapizado firme. Apto para press de banca con cargas altas.",
+    specs: ["Parantes regulables", "Capacidad 350 kg"], precio: null },
   { codigo: "TG-18", nombre: "Banco regulable", categoria: "bancos", icono: "banco",
-    descripcion: "Respaldo de 7 posiciones, de declinado a vertical.",
-    specs: ["7 posiciones", "Ruedas de traslado", "Capacidad 300 kg"], precio: null },
+    descripcion: "Banco con respaldo y asiento regulables, de declinado a vertical, y rodillo para sujetar las piernas.",
+    specs: ["7 posiciones", "Rodillo para piernas", "Capacidad 300 kg"], precio: null },
   { codigo: "TG-19", nombre: "Banco Scott", categoria: "bancos", icono: "scott",
-    descripcion: "Banco para curl de bíceps con apoyo de brazos inclinado.",
+    descripcion: "Banco para curl de bíceps con apoyo de brazos inclinado y asiento regulable.",
     specs: ["Asiento regulable", "Soporte de barra"], precio: null },
 
   // ---------- PESO LIBRE ----------
   { codigo: "TG-20", nombre: "Juego de mancuernas hexagonales", categoria: "peso-libre", icono: "mancuerna",
-    descripcion: "Mancuernas engomadas de 2,5 a 30 kg, no ruedan.",
+    descripcion: "Mancuernas hexagonales engomadas con mango cromado moleteado. La forma hexagonal evita que rueden.",
     specs: ["2,5 a 30 kg", "Engomadas", "Mango cromado"], precio: null },
   { codigo: "TG-21", nombre: "Rack para mancuernas", categoria: "peso-libre", icono: "rackMancuernas",
-    descripcion: "Soporte de dos niveles para ordenar el juego completo.",
+    descripcion: "Soporte de dos niveles para ordenar el juego completo de mancuernas (mancuernas no incluidas).",
     specs: ["2 niveles", "10 pares"], precio: null },
   { codigo: "TG-22", nombre: "Barra olímpica 20 kg", categoria: "peso-libre", icono: "barra",
-    descripcion: "Barra de 2,20 m con rodamientos y moleteado profesional.",
+    descripcion: "Barra de 2,20 m con rodamientos y moleteado profesional, para levantamientos olímpicos y de fuerza.",
     specs: ["2,20 m", "Rodamientos", "Soporta 680 kg"], precio: null },
-  { codigo: "TG-23", nombre: "Discos olímpicos bumper (kg)", categoria: "peso-libre", icono: "disco",
-    descripcion: "Discos de goma de alta densidad, precio por kilo.",
-    specs: ["5 a 25 kg", "Agujero 50 mm", "Goma maciza"], precio: null },
+  { codigo: "TG-23", nombre: "Discos olímpicos engomados (kg)", categoria: "peso-libre", icono: "disco",
+    descripcion: "Discos con recubrimiento de goma y agarres incorporados, más silenciosos y fáciles de cargar. Precio por kilo.",
+    specs: ["1,25 a 25 kg", "Agujero 50 mm", "Con agarres"], precio: null },
   { codigo: "TG-24", nombre: "Kettlebells", categoria: "peso-libre", icono: "kettlebell",
-    descripcion: "Pesas rusas de fundición con recubrimiento vinílico.",
-    specs: ["4 a 32 kg", "Base plana"], precio: null },
+    descripcion: "Pesas rusas de hierro fundido con asa amplia y base plana, para swings, arranques y trabajo funcional.",
+    specs: ["4 a 32 kg", "Hierro fundido", "Base plana"], precio: null },
 
   // ---------- ACCESORIOS ----------
   { codigo: "TG-25", nombre: "Piso de caucho (m²)", categoria: "accesorios", icono: "piso",
-    descripcion: "Baldosas de caucho de alto tránsito, precio por m².",
+    descripcion: "Baldosas de caucho granulado de alto tránsito que protegen el piso y amortiguan impactos. Precio por m².",
     specs: ["Espesor 20 mm", "Antideslizante", "Amortigua impactos"], precio: null },
   { codigo: "TG-26", nombre: "Kit funcional", categoria: "accesorios", icono: "funcional",
-    descripcion: "Bandas, sogas de batalla, colchonetas y cajón pliométrico.",
-    specs: ["Soga 15 m", "Cajón 3 alturas", "Bandas x5"], precio: null },
+    descripcion: "Soga de batalla, bolsa de entrenamiento y kettlebells para armar circuitos funcionales dentro o fuera del gimnasio.",
+    specs: ["Soga 15 m", "Bolsa con agarres", "Kettlebells x3"], precio: null },
 ];
 
 const CATEGORIAS = [
@@ -107,6 +107,9 @@ const CATEGORIAS = [
   { id: "peso-libre", nombre: "Peso libre" },
   { id: "accesorios", nombre: "Accesorios" },
 ];
+
+/* Fotos reales de cada equipo: ver fotos.js */
+const FOTOS = window.FOTOS || {};
 
 /* Ilustraciones simples de cada equipo (viewBox 120 x 90) */
 const ICONOS = {
@@ -173,7 +176,9 @@ function renderGrid() {
       <div class="card__media">
         <span class="card__code">${p.codigo}</span>
         <span class="card__cat">${nombreCategoria(p.categoria)}</span>
-        <svg viewBox="0 0 120 90" aria-hidden="true">${ICONOS[p.icono] || ""}</svg>
+        ${FOTOS[p.codigo]
+          ? `<img src="${FOTOS[p.codigo].archivo}" alt="${escapar(p.nombre)}" loading="lazy" />`
+          : `<svg viewBox="0 0 120 90" aria-hidden="true">${ICONOS[p.icono] || ""}</svg>`}
       </div>
       <div class="card__body">
         <h3 class="card__title">${escapar(p.nombre)}</h3>
@@ -187,6 +192,14 @@ function renderGrid() {
     </article>`).join("");
 
   $("#empty").hidden = lista.length > 0;
+}
+
+function renderCreditos() {
+  const lista = PRODUCTOS.filter((p) => FOTOS[p.codigo]);
+  $("#creditos").innerHTML = lista.map((p) => {
+    const f = FOTOS[p.codigo];
+    return `<li><strong>${p.codigo}</strong> — <a href="${f.fuente}" target="_blank" rel="noopener">${escapar(f.titulo)}</a>, ${escapar(f.autor)} (${escapar(f.licencia)})</li>`;
+  }).join("");
 }
 
 function renderTabla() {
@@ -256,3 +269,4 @@ $("#statCount").textContent = PRODUCTOS.length;
 renderFiltros();
 renderGrid();
 renderTabla();
+renderCreditos();
