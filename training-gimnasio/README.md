@@ -5,7 +5,7 @@ Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Est�
 Para verla, abrí `index.html` en el navegador.
 
 ## Productos
-El catálogo tiene 14 productos con sus precios:
+El catálogo tiene 19 productos con sus precios:
 
 | Código | Producto | Precio |
 |---|---|---|
@@ -23,6 +23,11 @@ El catálogo tiene 14 productos con sus precios:
 | TG-12 | Elíptico Olmo Fit 305 | $820.000 de contado |
 | TG-13 | Pisos encastrables de goma EVA x4 | $45.000 de contado |
 | TG-14 | Piso de caucho virgen 90 x 90 cm x 10 mm | $38.000 de contado |
+| TG-15 | Bicicleta fija MDK 13882 | $285.000 de contado |
+| TG-16 | Multigym Athletic 460M | $900.500 de contado |
+| TG-17 | Banco de abdominales Randers ARG-203 | $110.000 de contado |
+| TG-18 | Kit barra, mancuernas y discos | $110.000 de contado |
+| TG-19 | Mancuerna hexagonal maciza 5 kg | $30.000 de contado |
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
