@@ -43,6 +43,9 @@ Cada producto tiene una ventana de detalle con galería de fotos, descripción c
 ## Cómo editar productos y precios
 Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Si querés mostrar el precio anterior tachado, agregá `precioAnterior`. Si `precio` es `null`, se muestra "Consultar precio". Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.
 
-## Carrito y WhatsApp
-Cada producto tiene el botón "Agregar al carrito". El carrito (arriba a la derecha) permite cambiar cantidades y muestra el total. El botón "Finalizar compra por WhatsApp" abre el WhatsApp del negocio (`WHATSAPP_LINK` en `script.js`) y copia el pedido para pegarlo en el chat.
-Si completás `WHATSAPP_NUMERO` con el número (solo dígitos, con código de país, por ejemplo `5491112345678`), el pedido se escribe solo en el chat.
+## Carrito, envío y WhatsApp
+Cada producto tiene el botón "Agregar al carrito". En el carrito se cambian cantidades y se ve el total.
+Al tocar "Finalizar compra" se piden los datos para el envío (nombre y apellido, teléfono, DNI, email opcional, provincia, localidad, código postal, dirección, piso/depto, referencias y comentarios) y se avisa que el envío es gratuito.
+Recién con los datos obligatorios completos, "Enviar pedido por WhatsApp" abre WhatsApp con el pedido (productos, cantidades, precios y total) y los datos de envío.
+
+Para que el mensaje llegue escrito solo al chat del negocio, completá `WHATSAPP_NUMERO` en `script.js` con el número, solo dígitos y con código de país (Argentina: 549 + característica sin 0 + número sin 15, por ejemplo `5491123456789`). Si queda vacío, se abre `WHATSAPP_LINK` y el pedido se copia para que el cliente lo pegue en el chat.

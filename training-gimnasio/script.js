@@ -11,10 +11,11 @@
 const MONEDA = { simbolo: "$", locale: "es-AR" };
 
 /* WhatsApp del negocio.
-   WHATSAPP_LINK: el enlace de WhatsApp Business que se abre al finalizar la compra.
-   WHATSAPP_NUMERO: si lo completás (solo números, con código de país, ej. "5491112345678"),
-   el pedido del carrito se escribe solo en el chat. Si queda vacío, el pedido se copia
-   y el cliente lo pega en el chat. */
+   WHATSAPP_NUMERO: número de WhatsApp que recibe los pedidos, solo dígitos y con código de país
+   (Argentina: 549 + característica sin 0 + número sin 15). Ej: "5491123456789".
+   Con el número, el pedido y los datos de envío llegan escritos solos al chat.
+   WHATSAPP_LINK: enlace de WhatsApp Business. Se usa para los botones de contacto y, si no hay
+   número cargado, también para el pedido (en ese caso el pedido se copia y el cliente lo pega). */
 const WHATSAPP_LINK = "https://wa.me/message/5KOZEMFL74WVM1";
 const WHATSAPP_NUMERO = "";
 
@@ -836,6 +837,7 @@ function renderCarrito() {
   if (!carrito.length) {
     $("#cartItems").innerHTML = `<p class="cart__empty">Tu carrito está vacío.<br />Agregá equipos desde el catálogo.</p>`;
     $("#cartFoot").hidden = true;
+    mostrarPaso(1);
     return;
   }
   $("#cartFoot").hidden = false;
@@ -858,26 +860,45 @@ function renderCarrito() {
       </div>`;
   }).join("");
   $("#cartTotal").textContent = formatoPrecio(total);
-  $("#cartCheckout").href = linkWhatsapp(mensajePedido());
+  $("#shipTotal").textContent = formatoPrecio(total) + (sinPrecio ? " + a consultar" : "");
   $("#cartNote").textContent = sinPrecio
     ? `${sinPrecio === 1 ? "Un producto tiene" : sinPrecio + " productos tienen"} precio a consultar y no se suma al total.`
     : "Precios de contado o según la condición de cada producto. Confirmamos stock y envío por WhatsApp.";
 }
 
-function mensajePedido() {
+function mensajePedido(datos) {
   const { total, sinPrecio } = totalesCarrito();
   const lineas = carrito.map((i) => {
     const p = buscarProducto(i.codigo);
     const precio = tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "precio a consultar";
     return `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""}`;
   });
-  return [
-    "¡Hola Training Gimnasio! Quiero realizar esta compra:",
+  const msg = [
+    "¡Hola Training Gimnasio! Quiero realizar esta compra desde la página web:",
     "",
+    "*PEDIDO*",
     ...lineas,
-    "",
-    `Total: ${formatoPrecio(total)}${sinPrecio ? " + productos a consultar" : ""}`,
-  ].join("\n");
+    `*Total: ${formatoPrecio(total)}${sinPrecio ? " + productos a consultar" : ""}*`,
+    "Envío: gratuito",
+  ];
+  if (datos) {
+    const dir = [datos.direccion, datos.depto].filter(Boolean).join(", ");
+    msg.push(
+      "",
+      "*DATOS PARA EL ENVÍO*",
+      `Nombre y apellido: ${datos.nombre}`,
+      `Teléfono: ${datos.telefono}`,
+      `DNI: ${datos.dni}`,
+      ...(datos.email ? [`Email: ${datos.email}`] : []),
+      `Dirección: ${dir}`,
+      ...(datos.referencias ? [`Entre calles / referencias: ${datos.referencias}`] : []),
+      `Localidad: ${datos.localidad}`,
+      `Provincia: ${datos.provincia}`,
+      `Código postal: ${datos.cp}`,
+      ...(datos.comentarios ? ["", `Comentarios: ${datos.comentarios}`] : []),
+    );
+  }
+  return msg.join("\n");
 }
 
 function linkWhatsapp(texto) {
@@ -904,15 +925,90 @@ async function copiar(texto) {
   }
 }
 
-function finalizarCompra() {
-  // El botón es un enlace a WhatsApp: el navegador lo abre solo. Acá copiamos el pedido.
-  if (!carrito.length || WHATSAPP_NUMERO.replace(/\D/g, "")) return;
-  copiar(mensajePedido()).then((ok) => aviso(ok
-    ? "Copiamos tu pedido: pegalo en el chat de WhatsApp y envialo."
-    : "Se abrió WhatsApp: contanos qué productos elegiste."));
+/* ---------- Paso 2: datos de envío ---------- */
+const CLAVE_DATOS = "training-gimnasio-datos-envio";
+const CAMPOS = ["nombre", "telefono", "dni", "email", "provincia", "localidad", "cp", "direccion", "depto", "referencias", "comentarios"];
+const OBLIGATORIOS = ["nombre", "telefono", "dni", "provincia", "localidad", "cp", "direccion"];
+const conNumero = () => WHATSAPP_NUMERO.replace(/\D/g, "") !== "";
+
+function mostrarPaso(n) {
+  $("#toast").classList.remove("show");
+  $("#cartStep1").hidden = n !== 1;
+  $("#cartStep2").hidden = n !== 2;
+  $("#cart .cart__head h2").textContent = n === 1 ? "Tu carrito" : "Finalizar compra";
+  $("#cart").scrollTop = 0;
+  $("#cartStep2").scrollTop = 0;
 }
 
+function leerDatos() {
+  const f = $("#cartStep2");
+  const d = {};
+  CAMPOS.forEach((c) => { d[c] = f.elements[c].value.trim().replace(/\s+/g, " "); });
+  return d;
+}
+
+function validarDatos(d) {
+  const f = $("#cartStep2");
+  const errores = [];
+  CAMPOS.forEach((c) => f.elements[c].classList.remove("invalid"));
+  OBLIGATORIOS.forEach((c) => { if (!d[c]) errores.push(c); });
+  if (d.telefono && d.telefono.replace(/\D/g, "").length < 8) errores.push("telefono");
+  if (d.dni && !/^\d{7,8}$/.test(d.dni.replace(/\D/g, ""))) errores.push("dni");
+  if (d.cp && !/^[A-Za-z]?\d{4}[A-Za-z]{0,3}$/.test(d.cp.replace(/\s/g, ""))) errores.push("cp");
+  if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) errores.push("email");
+  [...new Set(errores)].forEach((c) => f.elements[c].classList.add("invalid"));
+  return [...new Set(errores)];
+}
+
+function guardarDatos(d) {
+  try { localStorage.setItem(CLAVE_DATOS, JSON.stringify(d)); } catch { /* sin almacenamiento */ }
+}
+
+function cargarDatos() {
+  try {
+    const d = JSON.parse(localStorage.getItem(CLAVE_DATOS) || "{}");
+    const f = $("#cartStep2");
+    CAMPOS.forEach((c) => { if (typeof d[c] === "string" && !f.elements[c].value) f.elements[c].value = d[c]; });
+  } catch { /* nada guardado */ }
+}
+
+$("#cartNext").addEventListener("click", () => {
+  if (!carrito.length) return;
+  cargarDatos();
+  mostrarPaso(2);
+  $("#cartStep2").elements.nombre.focus();
+});
+$("#cartBack").addEventListener("click", () => mostrarPaso(1));
+$("#cartStep2").addEventListener("submit", (e) => { e.preventDefault(); $("#cartCheckout").click(); });
+$("#cartStep2").addEventListener("input", (e) => { if (e.target.classList) e.target.classList.remove("invalid"); });
+
+// El botón es un enlace: si faltan datos se cancela; si está todo, se arma el mensaje y se abre WhatsApp.
+$("#cartCheckout").addEventListener("click", (e) => {
+  const link = e.currentTarget;
+  if (!carrito.length) { e.preventDefault(); return mostrarPaso(1); }
+  const d = leerDatos();
+  const errores = validarDatos(d);
+  if (errores.length) {
+    e.preventDefault();
+    $("#shipError").textContent = "Revisá los campos marcados: completá todos los datos obligatorios (*) para coordinar el envío.";
+    $("#cartStep2").elements[errores[0]].focus();
+    return;
+  }
+  $("#shipError").textContent = "";
+  guardarDatos(d);
+  const texto = mensajePedido(d);
+  link.href = linkWhatsapp(texto);
+  if (!conNumero()) {
+    copiar(texto).then((ok) => aviso(ok
+      ? "Copiamos tu pedido con tus datos: pegalo en el chat de WhatsApp y envialo."
+      : "Se abrió WhatsApp: contanos qué productos elegiste y tus datos de envío."));
+  } else {
+    aviso("¡Listo! Enviá el mensaje en WhatsApp para confirmar tu compra.");
+  }
+});
+
 function abrirCarrito() {
+  mostrarPaso(1);
   $("#cart").classList.add("open");
   $("#cart").setAttribute("aria-hidden", "false");
   $("#cartOverlay").hidden = false;
@@ -956,7 +1052,6 @@ $("#cartOpen").addEventListener("click", abrirCarrito);
 $("#contactCart").addEventListener("click", abrirCarrito);
 $("#cartClose").addEventListener("click", cerrarCarrito);
 $("#cartOverlay").addEventListener("click", cerrarCarrito);
-$("#cartCheckout").addEventListener("click", finalizarCompra);
 $("#cartClear").addEventListener("click", () => { carrito = []; guardarCarrito(); renderCarrito(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#cart").classList.contains("open")) cerrarCarrito(); });
 $("#contactWhatsapp").href = WHATSAPP_LINK;
@@ -973,3 +1068,6 @@ renderFiltros();
 renderGrid();
 renderTabla();
 renderCarrito();
+$("#shipHelp").textContent = conNumero()
+  ? "Se abre WhatsApp con tu pedido y tus datos ya escritos. Solo tenés que tocar enviar."
+  : "Se abre WhatsApp y copiamos tu pedido con tus datos: pegalo en el chat y envialo.";
