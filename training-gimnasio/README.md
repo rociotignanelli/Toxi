@@ -5,7 +5,7 @@ Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Est�
 Para verla, abrí `index.html` en el navegador.
 
 ## Productos
-El catálogo tiene 19 productos con sus precios:
+El catálogo tiene 28 productos con sus precios:
 
 | Código | Producto | Precio |
 |---|---|---|
@@ -28,8 +28,17 @@ El catálogo tiene 19 productos con sus precios:
 | TG-17 | Banco de abdominales Randers ARG-203 | $110.000 de contado |
 | TG-18 | Kit barra, mancuernas y discos | $110.000 de contado |
 | TG-19 | Mancuerna hexagonal maciza 5 kg | $30.000 de contado |
+| TG-20 | Cinta de correr Atletis X900 (30% OFF) | $235.000 |
+| TG-21 | Cinta profesional Movement LX160 G4 | $2.800.000 en 18 cuotas sin interés |
+| TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $330.000) | $214.500 |
+| TG-23 | Multigimnasio Body Skull | $1.000.500 en 12 cuotas sin interés |
+| TG-24 | Rack multifuncional Body Skull | $820.000 en 12 cuotas sin interés |
+| TG-25 | Prensa 45° Sonnos M100 | $2.800.000 en 18 cuotas sin interés |
+| TG-26 | Barra de dominadas (torre de calistenia) | $200.000 |
+| TG-27 | Mini tramp MIR Fitness | Consultar precio |
+| TG-28 | Tatami encastrable de goma EVA | Consultar precio |
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
 ## Cómo editar productos y precios
-Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.
+Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Si querés mostrar el precio anterior tachado, agregá `precioAnterior`. Si `precio` es `null`, se muestra "Consultar precio". Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.

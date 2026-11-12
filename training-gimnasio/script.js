@@ -428,10 +428,221 @@ const PRODUCTOS = [
     ],
     fotos: ["img/mancuerna-hex-1.jpg", "img/mancuerna-hex-2.jpg", "img/mancuerna-hex-promo.jpg"],
   },
+  {
+    codigo: "TG-20",
+    marca: "Atletis",
+    nombre: "Cinta de correr X900",
+    categoria: "cintas",
+    precio: 235000,
+    condicion: null,
+    etiqueta: "30% OFF",
+    fondoOscuro: true,
+    resumen: "Cinta plegable con motor de 2,5 HP, inclinación automática de 15 niveles, Bluetooth y 24 programas.",
+    descripcion: "La Atletis X900 es una cinta de correr plegable para entrenar en casa. Tiene motor de 2,5 HP, velocidad de hasta 16 km/h e inclinación automática en 15 niveles. La pantalla LED muestra tiempo, velocidad, distancia, calorías y pulso, e incluye 24 rutinas predefinidas. Se conecta por Bluetooth y es compatible con Kinomap, Zwift y FitShow; además tiene puerto USB, entrada MP3 y parlantes. Se pliega y tiene ruedas para guardarla, con llave de seguridad y apagado automático a los 45 minutos.",
+    specs: [
+      "Velocidad: hasta 16 km/h",
+      "Motor: 2,5 HP",
+      "Inclinación automática: 15 niveles",
+      "Cinta de carrera: 45 x 126 cm",
+      "Pantalla LED: tiempo, velocidad, distancia, calorías y pulso",
+      "Programas: 24 rutinas predefinidas",
+      "Conectividad: Bluetooth, puerto USB, entrada MP3 y parlantes",
+      "Compatible con Kinomap, Zwift y FitShow",
+      "Peso máximo del usuario: 120 kg",
+      "Plegable con ruedas de transporte",
+      "Seguridad: llave de seguridad y apagado automático tras 45 min",
+    ],
+    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo.jpg"],
+  },
+  {
+    codigo: "TG-21",
+    marca: "Movement",
+    nombre: "Cinta profesional LX160 G4",
+    categoria: "cintas",
+    precio: 2800000,
+    condicion: "En 18 cuotas sin interés",
+    etiqueta: "1 año de garantía",
+    fondoOscuro: true,
+    resumen: "Cinta de uso profesional y residencial con motor 3,0 HP AC, velocidad de 1,2 a 18 km/h y 6 amortiguadores.",
+    descripcion: "La Movement LX160 G4 es una cinta profesional pensada para entrenamientos intensos en casa o en el gimnasio. Su motor de 3,0 HP AC (peak power) da potencia y durabilidad, con velocidad regulable de 1,2 a 18 km/h. El sistema de 6 amortiguadores elásticos cuida las articulaciones y la estructura de acero carbono con pintura electroestática soporta usuarios de hasta 150 kg. La consola LCD de 5 ventanas muestra frecuencia cardíaca, calorías, distancia, tiempo, velocidad, peso y edad, e incluye 8 programas de entrenamiento. Tiene 1 año de garantía.",
+    specs: [
+      "Motor: 3,0 HP AC peak power",
+      "Velocidad: 1,2 a 18 km/h",
+      "Sistema de amortiguación: 6 amortiguadores elásticos",
+      "Capacidad de uso: 150 kg",
+      "Consola LCD de 5 ventanas",
+      "Módulo multifunción: distancia, tiempo, velocidad, frecuencia cardíaca, calorías, peso y edad",
+      "8 programas: entrenamiento 10 min, intervalo 1x1, caminata 30 min, tiempo, distancia, calorías, medio maratón 21 km y maratón 42 km",
+      "Dimensiones (largo x ancho x alto): 190 x 77 x 144 cm",
+      "Área de corrida: 136 x 45 cm",
+      "Estructura de acero carbono con pintura electroestática",
+      "Sistema de emergencia: sí · Inclinación: no",
+      "Lubricación manual",
+      "Uso profesional y residencial · 1 año de garantía",
+    ],
+    fotos: ["img/movement-lx160-1.jpg", "img/movement-lx160-promo.jpg"],
+  },
+  {
+    codigo: "TG-22",
+    marca: "Olmo",
+    nombre: "Multigym Fit 44",
+    categoria: "fuerza",
+    precio: 214500,
+    precioAnterior: 330000,
+    condicion: null,
+    etiqueta: "35% OFF",
+    resumen: "Multigym para tren superior e inferior con pesas antiruido, peso graduable de a 5 kg y 6 meses de garantía.",
+    descripcion: "El Olmo Fit 44 es un multigym completo para entrenar tren superior e inferior en un solo equipo: polea alta para dorsales, mariposa para pecho, banco Scott para bíceps, sillón de cuádriceps y femorales y polea baja con cadena. Está construido en caño de acero con pintura epoxi de alta resistencia, color negro, y sus pesas recubiertas en plástico funcionan con un sistema antiruido. El esfuerzo se gradúa de a 5 kg con un sistema de clavijas y produce una fuerza de tracción de 90 kg. Incluye manual de armado paso a paso; consultá por armado a domicilio o en el local.",
+    specs: [
+      "Marca Olmo, modelo Fit 44",
+      "Multigym para tren superior e inferior",
+      "Soporta 125 kg",
+      "Fuerza de tracción: 90 kg",
+      "Peso graduable y ajustable de a 5 kg con sistema de clavijas",
+      "Sistema de pesas antiruido",
+      "Pesas recubiertas con plástico de alta resistencia",
+      "Construido en caño de acero con pintura epoxi de alta resistencia",
+      "Color negro",
+      "Guía de armado paso a paso; armado a domicilio o en el local (consultar)",
+      "Garantía: 6 meses",
+    ],
+    fotos: ["img/olmo-fit44-1.jpg", "img/olmo-fit44-promo.jpg"],
+  },
+  {
+    codigo: "TG-23",
+    marca: "Body Skull",
+    nombre: "Multigimnasio con prensa",
+    categoria: "fuerza",
+    precio: 1000500,
+    condicion: "En 12 cuotas sin interés",
+    etiqueta: "50 ejercicios",
+    resumen: "Gimnasio completo en casa con 72 kg de pesas, prensa y banco Scott integrados. Más de 50 ejercicios.",
+    descripcion: "El multigimnasio Body Skull es un gimnasio completo en casa: permite hacer 50 ejercicios para espalda, hombros, tríceps, bíceps, pecho, glúteos y piernas en un solo equipo. Tiene una carga de pesas de 72 kg para progresar en cada entrenamiento, sistema de poleas y cables reforzados para un movimiento fluido, y prensa y banco Scott integrados para trabajar piernas, bíceps y pecho. La estructura de hierro gris mantiene la estabilidad durante los ejercicios y el tapizado es marrón. Soporta usuarios de hasta 150 kg.",
+    specs: [
+      "Peso máximo del usuario: 150 kg",
+      "Carga de pesas: 72 kg",
+      "Estructura de hierro, color gris",
+      "Tapizado marrón",
+      "Sistema de poleas y cables reforzados",
+      "Prensa y banco Scott integrados",
+      "50 ejercicios disponibles",
+      "Músculos: espalda, hombros, tríceps, bíceps, pecho, glúteos y piernas",
+      "Uso recomendado: residencial",
+    ],
+    fotos: ["img/bodyskull-multigym-1.jpg", "img/bodyskull-multigym-promo.jpg"],
+  },
+  {
+    codigo: "TG-24",
+    marca: "Body Skull",
+    nombre: "Rack multifuncional con poleas, banco y barra",
+    categoria: "fuerza",
+    precio: 820000,
+    condicion: "En 12 cuotas sin interés",
+    etiqueta: "Combo completo",
+    fondoOscuro: true,
+    resumen: "Jaula con sistema de poleas, banca multiángulo y barra olímpica de 2,2 m incluida. Uso residencial y profesional.",
+    descripcion: "El rack multifuncional Body Skull es un combo completo para entrenar todo el cuerpo en casa o en el gimnasio. La jaula de hierro de alta calidad tiene sistema de poleas alta y baja con cables reforzados, barra de dominadas y estación de fondos. Incluye una banca multiángulo ajustable para trabajar pecho, hombros, brazos, espalda y abdomen, y una barra olímpica de 2,2 m. Permite sentadillas, press de banca, polea alta y baja, dominadas, fondos, curl de bíceps, remo y mucho más.",
+    specs: [
+      "Estructura de hierro de alta resistencia, color negro",
+      "Sistema de poleas con cables reforzados de alta resistencia",
+      "Banca multiángulo ajustable",
+      "Barra olímpica de 2,2 m incluida",
+      "Funciones: dominadas, sentadillas, press de banca, polea alta y baja, fondos, curl de bíceps, remo y más",
+      "Dimensiones: largo 1,45 m · alto 2,12 m",
+      "Peso aproximado: 85 kg",
+      "Uso residencial y profesional",
+    ],
+    fotos: ["img/bodyskull-rack-1.jpg", "img/bodyskull-rack-promo.jpg"],
+  },
+  {
+    codigo: "TG-25",
+    marca: "Sonnos",
+    nombre: "Prensa 45° a disco M100",
+    categoria: "fuerza",
+    precio: 2800000,
+    condicion: "En 18 cuotas sin interés",
+    etiqueta: "Uso profesional",
+    fondoOscuro: true,
+    resumen: "Prensa 45° de carga con discos para gimnasios. Rodillos de nylon con rodamientos blindados y estructura reforzada.",
+    descripcion: "La Prensa 45° Sonnos M100 es un equipo profesional para el entrenamiento intensivo de piernas: trabaja cuádriceps, glúteos e isquiotibiales. Su diseño inclinado a 45° optimiza la biomecánica del movimiento para lograr mayor activación muscular y seguridad en cada repetición. Está fabricada con caño de acero de alta calidad, con regatones de caucho que evitan deslizamientos, y se desliza sobre rodillos de nylon con rodamientos blindados para un movimiento fluido, silencioso y con menor fricción. La carga es a disco, para progresar con flexibilidad. Ideal para gimnasios y entrenamientos de alto nivel.",
+    specs: [
+      "Marca Sonnos, modelo M100",
+      "Diseño inclinado a 45°",
+      "Carga a disco",
+      "Trabaja cuádriceps, glúteos e isquiotibiales",
+      "Estructura de caño de acero reforzada para uso profesional",
+      "Rodillos de nylon con rodamientos blindados",
+      "Movimiento fluido y silencioso, con menor fricción",
+      "Regatones de caucho antideslizantes",
+      "Uso profesional: ideal para gimnasios",
+    ],
+    fotos: ["img/sonnos-m100-1.jpg", "img/sonnos-m100-promo.jpg"],
+  },
+  {
+    codigo: "TG-26",
+    marca: "",
+    nombre: "Barra de dominadas (torre de calistenia)",
+    categoria: "fuerza",
+    precio: 200000,
+    condicion: null,
+    etiqueta: "Capacidad 200 kg",
+    resumen: "Torre para dominadas, fondos y abdominales suspendidos. Altura regulable en 9 niveles y capacidad de 200 kg.",
+    descripcion: "Torre de dominadas para entrenar en casa con una estructura robusta, segura y ajustable. Sirve para dominadas, fondos, abdominales suspendidos, flexiones y más: ideal para fuerza, calistenia y fitness funcional. Está hecha en acero estructural rectangular de 50 x 50 mm con pintura epoxi electroestática, tiene agarraderas de neoprene antideslizantes y antiampollas, apoyabrazos acolchados en cuero ecológico y regatones antideslizantes. La altura se regula en 9 posiciones, de 148 a 211 cm. Incluye kit de instalación, tornillería, herramientas y manual.",
+    specs: [
+      "Capacidad máxima de carga: 200 kg",
+      "Material: acero estructural rectangular 50 x 50 mm, espesor 1 mm",
+      "Pintura epoxi electroestática resistente a golpes y corrosión",
+      "Agarraderas de neoprene antideslizantes y antiampollas",
+      "Apoyabrazos acolchados en cuero ecológico",
+      "Ajuste de altura: 9 posiciones (mínimo 148 cm, máximo 211 cm)",
+      "Medidas de la base: 66 cm de ancho x 91 cm de largo",
+      "Peso total: 17 kg",
+      "Regatones antideslizantes",
+      "Incluye kit de instalación, tornillería, herramientas y manual",
+    ],
+    fotos: ["img/dominadas-1.jpg", "img/dominadas-promo.jpg"],
+  },
+  {
+    codigo: "TG-27",
+    marca: "MIR Fitness",
+    nombre: "Mini tramp jumping",
+    categoria: "jumping",
+    precio: null,
+    condicion: null,
+    etiqueta: null,
+    resumen: "Mini tramp para clases de jumping con cobertor protector en todo el borde. Consultá precio y disponibilidad.",
+    descripcion: "Mini tramp MIR Fitness para clases de jumping y entrenamiento cardiovascular de bajo impacto. Tiene lona de salto gris con el logo de la marca y un cobertor negro que protege todo el borde y los resortes. Consultanos por precio, medidas y disponibilidad.",
+    specs: [
+      "Marca MIR Fitness",
+      "Cobertor protector en todo el borde",
+      "Ideal para clases de jumping",
+    ],
+    fotos: ["img/mini-tramp-mir-1.jpg"],
+  },
+  {
+    codigo: "TG-28",
+    marca: "",
+    nombre: "Tatami encastrable de goma EVA",
+    categoria: "pisos",
+    precio: null,
+    condicion: null,
+    etiqueta: null,
+    resumen: "Placas encastrables bicolor azul y rojo para artes marciales, funcional y salas de gimnasio. Consultá precio.",
+    descripcion: "Tatami de goma EVA en placas encastrables bicolor (una cara azul y la otra roja), con superficie texturada antideslizante. Las placas se unen como un rompecabezas para cubrir salas de artes marciales, entrenamiento funcional o zonas de piso del gimnasio, y amortiguan caídas e impactos. Consultanos por medidas, espesor, precio y cantidad.",
+    specs: [
+      "Material: goma EVA",
+      "Placas encastrables tipo rompecabezas",
+      "Bicolor: azul y rojo (reversible)",
+      "Superficie texturada antideslizante",
+      "Ideal para artes marciales, funcional y salas de gimnasio",
+    ],
+    fotos: ["img/tatami-eva-1.jpg"],
+  },
 ];
 
 const CATEGORIAS = [
   { id: "todos", nombre: "Todos" },
+  { id: "cintas", nombre: "Cintas de correr" },
   { id: "spinning", nombre: "Bicicletas de spinning" },
   { id: "fijas", nombre: "Bicicletas fijas" },
   { id: "elipticos", nombre: "Elípticos" },
@@ -465,7 +676,7 @@ function renderFiltros() {
 
 function precioHTML(p) {
   if (!tienePrecio(p)) return `<span class="price--pending">Consultar precio</span>`;
-  return `<span class="price-box"><span class="price">${formatoPrecio(p.precio)}</span>${p.condicion ? `<small>${escapar(p.condicion)}</small>` : ""}</span>`;
+  return `<span class="price-box">${p.precioAnterior ? `<s class="price-old">${formatoPrecio(p.precioAnterior)}</s>` : ""}<span class="price">${formatoPrecio(p.precio)}</span>${p.condicion ? `<small>${escapar(p.condicion)}</small>` : ""}</span>`;
 }
 
 function renderGrid() {
@@ -477,7 +688,7 @@ function renderGrid() {
 
   $("#grid").innerHTML = lista.map((p, i) => `
     <article class="card" style="animation-delay:${Math.min(i, 12) * 60}ms">
-      <button class="card__media" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
+      <button class="card__media${p.fondoOscuro ? " card__media--dark" : ""}" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
         <span class="card__code">${p.codigo}</span>
         ${p.etiqueta ? `<span class="card__tag">${escapar(p.etiqueta)}</span>` : ""}
         <img src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" loading="lazy" />
@@ -515,7 +726,7 @@ function abrirDetalle(codigo) {
   if (!p) return;
   $("#modalBody").innerHTML = `
     <div class="detail__gallery">
-      <div class="detail__main"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" /></div>
+      <div class="detail__main${p.fondoOscuro ? " detail__main--dark" : ""}"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" /></div>
       <div class="detail__thumbs">
         ${p.fotos.map((f, i) => `<button class="detail__thumb${i === 0 ? " active" : ""}" data-foto="${f}"><img src="${f}" alt="Foto ${i + 1}" /></button>`).join("")}
       </div>
