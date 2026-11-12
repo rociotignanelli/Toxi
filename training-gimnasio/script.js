@@ -10,6 +10,14 @@
 
 const MONEDA = { simbolo: "$", locale: "es-AR" };
 
+/* WhatsApp del negocio.
+   WHATSAPP_LINK: el enlace de WhatsApp Business que se abre al finalizar la compra.
+   WHATSAPP_NUMERO: si lo completás (solo números, con código de país, ej. "5491112345678"),
+   el pedido del carrito se escribe solo en el chat. Si queda vacío, el pedido se copia
+   y el cliente lo pega en el chat. */
+const WHATSAPP_LINK = "https://wa.me/message/5KOZEMFL74WVM1";
+const WHATSAPP_NUMERO = "";
+
 const PRODUCTOS = [
   {
     codigo: "TG-01",
@@ -170,7 +178,7 @@ const PRODUCTOS = [
       "Medidas: 117 x 122 x 215 cm",
       "Uso residencial",
     ],
-    fotos: ["img/multigym-randers-1.jpg", "img/multigym-randers-3.jpg", "img/multigym-randers-2.jpg", "img/multigym-randers-promo.jpg"],
+    fotos: ["img/multigym-randers-1.jpg", "img/multigym-randers-3.jpg", "img/multigym-randers-2.jpg", "img/multigym-randers-promo.jpg", "img/multigym-randers-promo-2.jpg", "img/multigym-randers-promo-3.jpg"],
   },
   {
     codigo: "TG-08",
@@ -190,7 +198,7 @@ const PRODUCTOS = [
       "Peso del producto: 6,5 kg",
       "Pies antideslizantes",
     ],
-    fotos: ["img/banco-randers-202-1.jpg", "img/banco-randers-202-promo.jpg"],
+    fotos: ["img/banco-randers-202-1.jpg", "img/banco-randers-202-promo.jpg", "img/banco-randers-202-promo-2.jpg"],
   },
   {
     codigo: "TG-09",
@@ -452,7 +460,7 @@ const PRODUCTOS = [
       "Plegable con ruedas de transporte",
       "Seguridad: llave de seguridad y apagado automático tras 45 min",
     ],
-    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo.jpg"],
+    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo.jpg", "img/atletis-x900-promo-2.jpg"],
   },
   {
     codigo: "TG-21",
@@ -701,8 +709,8 @@ function renderGrid() {
           ${precioHTML(p)}
         </div>
         <div class="card__actions">
-          <button class="btn btn--red btn--sm" data-detalle="${p.codigo}">Ver detalle</button>
-          <button class="card__btn" data-codigo="${p.codigo}">Consultar</button>
+          <button class="btn btn--red btn--sm" data-agregar="${p.codigo}">Agregar al carrito</button>
+          <button class="card__btn" data-detalle="${p.codigo}">Ver detalle</button>
         </div>
       </div>
     </article>`).join("");
@@ -739,7 +747,7 @@ function abrirDetalle(codigo) {
       <p class="detail__desc">${escapar(p.descripcion)}</p>
       <h3 class="detail__sub">Características</h3>
       <ul class="detail__specs">${p.specs.map((s) => `<li>${escapar(s)}</li>`).join("")}</ul>
-      <button class="btn btn--red" data-codigo="${p.codigo}">Consultar por este producto</button>
+      <button class="btn btn--red" data-agregar="${p.codigo}">Agregar al carrito</button>
     </div>`;
   $("#modal").hidden = false;
   document.body.style.overflow = "hidden";
@@ -748,7 +756,7 @@ function abrirDetalle(codigo) {
 
 function cerrarDetalle() {
   $("#modal").hidden = true;
-  document.body.style.overflow = "";
+  if (!$("#cart").classList.contains("open")) document.body.style.overflow = "";
 }
 
 $("#modal").addEventListener("click", (e) => {
@@ -775,39 +783,187 @@ $("#search").addEventListener("input", (e) => {
   renderGrid();
 });
 
-// "Consultar" agrega el producto al formulario de contacto; "Ver detalle" abre la ventana
+/* ---------------- Carrito ---------------- */
+const CLAVE_CARRITO = "training-gimnasio-carrito";
+let carrito = leerCarrito();
+
+function leerCarrito() {
+  try {
+    const datos = JSON.parse(localStorage.getItem(CLAVE_CARRITO) || "[]");
+    return Array.isArray(datos) ? datos.filter((i) => buscarProducto(i.codigo) && i.cantidad > 0) : [];
+  } catch {
+    return [];
+  }
+}
+
+function guardarCarrito() {
+  try { localStorage.setItem(CLAVE_CARRITO, JSON.stringify(carrito)); } catch { /* sin almacenamiento: el carrito vive solo en esta visita */ }
+}
+
+function agregarAlCarrito(codigo) {
+  const item = carrito.find((i) => i.codigo === codigo);
+  if (item) item.cantidad += 1;
+  else carrito.push({ codigo, cantidad: 1 });
+  guardarCarrito();
+  renderCarrito();
+  aviso(`${nombreCompleto(buscarProducto(codigo))} se agregó al carrito`);
+}
+
+function cambiarCantidad(codigo, delta) {
+  const item = carrito.find((i) => i.codigo === codigo);
+  if (!item) return;
+  item.cantidad += delta;
+  if (item.cantidad <= 0) carrito = carrito.filter((i) => i.codigo !== codigo);
+  guardarCarrito();
+  renderCarrito();
+}
+
+function totalesCarrito() {
+  let total = 0, sinPrecio = 0, unidades = 0;
+  carrito.forEach((i) => {
+    const p = buscarProducto(i.codigo);
+    unidades += i.cantidad;
+    if (tienePrecio(p)) total += p.precio * i.cantidad;
+    else sinPrecio += 1;
+  });
+  return { total, sinPrecio, unidades };
+}
+
+function renderCarrito() {
+  const { total, sinPrecio, unidades } = totalesCarrito();
+  $("#cartCount").textContent = unidades;
+  $("#cartCount").classList.toggle("is-empty", unidades === 0);
+  if (!carrito.length) {
+    $("#cartItems").innerHTML = `<p class="cart__empty">Tu carrito está vacío.<br />Agregá equipos desde el catálogo.</p>`;
+    $("#cartFoot").hidden = true;
+    return;
+  }
+  $("#cartFoot").hidden = false;
+  $("#cartItems").innerHTML = carrito.map((i) => {
+    const p = buscarProducto(i.codigo);
+    return `
+      <div class="cart-item">
+        <img class="${p.fondoOscuro ? "is-dark" : ""}" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" />
+        <div class="cart-item__info">
+          <p class="cart-item__name">${escapar(nombreCompleto(p))}</p>
+          <p class="cart-item__price">${tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "Precio a consultar"}</p>
+          ${p.condicion ? `<p class="cart-item__cond">${escapar(p.condicion)}</p>` : ""}
+          <div class="qty">
+            <button data-menos="${p.codigo}" aria-label="Quitar uno">−</button>
+            <span>${i.cantidad}</span>
+            <button data-mas="${p.codigo}" aria-label="Agregar uno">+</button>
+          </div>
+        </div>
+        <button class="cart-item__remove" data-quitar="${p.codigo}" aria-label="Quitar del carrito">&times;</button>
+      </div>`;
+  }).join("");
+  $("#cartTotal").textContent = formatoPrecio(total);
+  $("#cartNote").textContent = sinPrecio
+    ? `${sinPrecio === 1 ? "Un producto tiene" : sinPrecio + " productos tienen"} precio a consultar y no se suma al total.`
+    : "Precios de contado o según la condición de cada producto. Confirmamos stock y envío por WhatsApp.";
+}
+
+function mensajePedido() {
+  const { total, sinPrecio } = totalesCarrito();
+  const lineas = carrito.map((i) => {
+    const p = buscarProducto(i.codigo);
+    const precio = tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "precio a consultar";
+    return `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""}`;
+  });
+  return [
+    "¡Hola Training Gimnasio! Quiero realizar esta compra:",
+    "",
+    ...lineas,
+    "",
+    `Total: ${formatoPrecio(total)}${sinPrecio ? " + productos a consultar" : ""}`,
+  ].join("\n");
+}
+
+function linkWhatsapp(texto) {
+  const numero = WHATSAPP_NUMERO.replace(/\D/g, "");
+  if (numero && texto) return `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+  return WHATSAPP_LINK;
+}
+
+async function copiar(texto) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    return true;
+  } catch {
+    const area = document.createElement("textarea");
+    area.value = texto;
+    area.style.position = "fixed";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.select();
+    let ok = false;
+    try { ok = document.execCommand("copy"); } catch { ok = false; }
+    area.remove();
+    return ok;
+  }
+}
+
+function finalizarCompra() {
+  if (!carrito.length) return;
+  const texto = mensajePedido();
+  const conNumero = WHATSAPP_NUMERO.replace(/\D/g, "") !== "";
+  window.open(linkWhatsapp(texto), "_blank", "noopener");
+  if (!conNumero) {
+    copiar(texto).then((ok) => aviso(ok
+      ? "Copiamos tu pedido: pegalo en el chat de WhatsApp y envialo."
+      : "Abrimos WhatsApp: contanos qué productos elegiste."));
+  }
+}
+
+function abrirCarrito() {
+  $("#cart").classList.add("open");
+  $("#cart").setAttribute("aria-hidden", "false");
+  $("#cartOverlay").hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function cerrarCarrito() {
+  $("#cart").classList.remove("open");
+  $("#cart").setAttribute("aria-hidden", "true");
+  $("#cartOverlay").hidden = true;
+  if ($("#modal").hidden) document.body.style.overflow = "";
+}
+
+let avisoTimer;
+function aviso(texto) {
+  const t = $("#toast");
+  t.textContent = texto;
+  t.classList.add("show");
+  clearTimeout(avisoTimer);
+  avisoTimer = setTimeout(() => t.classList.remove("show"), 3500);
+}
+
 document.addEventListener("click", (e) => {
   const det = e.target.closest("[data-detalle]");
   if (det) return abrirDetalle(det.dataset.detalle);
-  const btn = e.target.closest("[data-codigo]");
-  if (!btn) return;
-  const p = buscarProducto(btn.dataset.codigo);
-  const linea = `${p.codigo} ${nombreCompleto(p)}`;
-  const msg = $("#mensaje");
-  if (!msg.value.includes(p.codigo)) msg.value = msg.value.trim() ? `${msg.value.trim()}\n${linea}` : linea;
-  if (!$("#modal").hidden) cerrarDetalle();
-  $("#contacto").scrollIntoView({ behavior: "smooth" });
-});
-
-$("#contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const form = e.target;
-  const msg = $("#formMsg");
-  let ok = true;
-  [form.nombre, form.contacto].forEach((c) => {
-    const vacio = !c.value.trim();
-    c.classList.toggle("invalid", vacio);
-    if (vacio) ok = false;
-  });
-  if (!ok) {
-    msg.textContent = "Completá tu nombre y un teléfono o email.";
-    msg.classList.add("error");
+  const add = e.target.closest("[data-agregar]");
+  if (add) {
+    agregarAlCarrito(add.dataset.agregar);
+    if (!$("#modal").hidden) cerrarDetalle();
     return;
   }
-  msg.textContent = `¡Gracias ${form.nombre.value.trim()}! Te contactamos a la brevedad.`;
-  msg.classList.remove("error");
-  form.reset();
+  const mas = e.target.closest("[data-mas]");
+  if (mas) return cambiarCantidad(mas.dataset.mas, 1);
+  const menos = e.target.closest("[data-menos]");
+  if (menos) return cambiarCantidad(menos.dataset.menos, -1);
+  const quitar = e.target.closest("[data-quitar]");
+  if (quitar) return cambiarCantidad(quitar.dataset.quitar, -Infinity);
 });
+
+$("#cartOpen").addEventListener("click", abrirCarrito);
+$("#contactCart").addEventListener("click", abrirCarrito);
+$("#cartClose").addEventListener("click", cerrarCarrito);
+$("#cartOverlay").addEventListener("click", cerrarCarrito);
+$("#cartCheckout").addEventListener("click", finalizarCompra);
+$("#cartClear").addEventListener("click", () => { carrito = []; guardarCarrito(); renderCarrito(); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#cart").classList.contains("open")) cerrarCarrito(); });
+$("#contactWhatsapp").href = WHATSAPP_LINK;
+$("#waFloat").href = WHATSAPP_LINK;
 
 $("#menuToggle").addEventListener("click", () => $("#nav").classList.toggle("open"));
 $("#nav").addEventListener("click", (e) => { if (e.target.tagName === "A") $("#nav").classList.remove("open"); });
@@ -819,3 +975,4 @@ $("#statCount").textContent = PRODUCTOS.length;
 renderFiltros();
 renderGrid();
 renderTabla();
+renderCarrito();

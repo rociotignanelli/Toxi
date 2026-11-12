@@ -42,3 +42,7 @@ Cada producto tiene una ventana de detalle con galería de fotos, descripción c
 
 ## Cómo editar productos y precios
 Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Si querés mostrar el precio anterior tachado, agregá `precioAnterior`. Si `precio` es `null`, se muestra "Consultar precio". Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.
+
+## Carrito y WhatsApp
+Cada producto tiene el botón "Agregar al carrito". El carrito (arriba a la derecha) permite cambiar cantidades y muestra el total. El botón "Finalizar compra por WhatsApp" abre el WhatsApp del negocio (`WHATSAPP_LINK` en `script.js`) y copia el pedido para pegarlo en el chat.
+Si completás `WHATSAPP_NUMERO` con el número (solo dígitos, con código de país, por ejemplo `5491112345678`), el pedido se escribe solo en el chat.
