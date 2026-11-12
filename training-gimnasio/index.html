@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Training Gimnasio — Maquinaria profesional para gimnasios</title>
+  <meta name="description" content="Training Gimnasio: venta de maquinaria profesional para gimnasios. Cardio, musculación, peso libre y accesorios." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo">
+        <span class="logo__mark">T</span>
+        <span class="logo__text">TRAINING<small>GIMNASIO</small></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#ventajas">Por qué elegirnos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#contacto" class="btn btn--red btn--sm header__cta">Pedir presupuesto</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Portada -->
+  <section class="hero" id="inicio">
+    <div class="hero__stripes" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <p class="eyebrow">Equipamiento profesional</p>
+        <h1>Maquinaria para<br /><span>gimnasios</span> que rinde</h1>
+        <p class="hero__text">Cardio, musculación y peso libre de uso intensivo. Equipamos gimnasios, clubes y espacios de entrenamiento con estructura reforzada, garantía y asesoramiento.</p>
+        <div class="hero__actions">
+          <a href="#catalogo" class="btn btn--red">Ver maquinaria</a>
+          <a href="#contacto" class="btn btn--ghost">Armar mi gimnasio</a>
+        </div>
+        <ul class="hero__stats">
+          <li><strong id="statCount">0</strong><span>Equipos</span></li>
+          <li><strong>12</strong><span>Meses de garantía</span></li>
+          <li><strong>24h</strong><span>Respuesta</span></li>
+        </ul>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <svg viewBox="0 0 200 200" class="hero__svg">
+          <circle cx="100" cy="100" r="92" class="ring" />
+          <circle cx="100" cy="100" r="72" class="ring ring--thin" />
+          <g class="hero__dumbbell">
+            <rect x="34" y="70" width="16" height="60" rx="3" />
+            <rect x="52" y="78" width="12" height="44" rx="3" />
+            <rect x="64" y="95" width="72" height="10" rx="2" />
+            <rect x="136" y="78" width="12" height="44" rx="3" />
+            <rect x="150" y="70" width="16" height="60" rx="3" />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Catálogo</p>
+        <h2>Nuestra maquinaria</h2>
+        <p class="section__sub">Cada equipo tiene un código. Consultanos por el código para recibir precio, stock y tiempos de entrega.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="filters" id="filters" role="tablist" aria-label="Filtrar por categoría"></div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input type="search" id="search" placeholder="Buscar equipo..." />
+        </label>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>No encontramos equipos con esa búsqueda.</p>
+    </div>
+  </section>
+
+  <!-- Lista de precios -->
+  <section class="section section--dark" id="precios">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Lista completa</p>
+        <h2>Lista de precios</h2>
+      </div>
+      <div class="table-wrap">
+        <table class="price-table">
+          <thead><tr><th>Código</th><th>Equipo</th><th>Categoría</th><th class="right">Precio</th></tr></thead>
+          <tbody id="priceTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ventajas -->
+  <section class="section" id="ventajas">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>Calidad de gimnasio profesional</h2>
+      </div>
+      <div class="features">
+        <article class="feature">
+          <div class="feature__icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+          <h3>Garantía real</h3>
+          <p>12 meses de garantía en estructura y componentes, con servicio técnico propio.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="13" height="10"/><path d="M15 10h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <h3>Envío e instalación</h3>
+          <p>Entregamos y armamos los equipos en tu gimnasio, listos para usar.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/></svg></div>
+          <h3>Proyectos llave en mano</h3>
+          <p>Te ayudamos a diseñar el layout y elegir el equipamiento según tu espacio.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+          <h3>Formas de pago</h3>
+          <p>Transferencia, tarjetas y planes de financiación para equipar sin frenar.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section section--red" id="contacto">
+    <div class="container contact">
+      <div>
+        <p class="eyebrow eyebrow--light">Contacto</p>
+        <h2>Pedí tu presupuesto</h2>
+        <p>Contanos qué equipos te interesan (podés usar los códigos del catálogo) y te respondemos con precio y disponibilidad.</p>
+        <ul class="contact__list">
+          <li><strong>WhatsApp:</strong> +54 9 11 0000-0000</li>
+          <li><strong>Email:</strong> ventas@traininggimnasio.com</li>
+          <li><strong>Horario:</strong> Lunes a sábado de 9 a 19 h</li>
+        </ul>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <label>Nombre<input type="text" name="nombre" required /></label>
+        <label>Teléfono o email<input type="text" name="contacto" required /></label>
+        <label>Equipos de interés<textarea name="mensaje" id="mensaje" rows="4" placeholder="Ej: TG-01, TG-07 x2"></textarea></label>
+        <button type="submit" class="btn btn--black">Enviar consulta</button>
+        <p class="form__msg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#inicio" class="logo">
+        <span class="logo__mark">T</span>
+        <span class="logo__text">TRAINING<small>GIMNASIO</small></span>
+      </a>
+      <p>© <span id="year"></span> Training Gimnasio. Maquinaria profesional para gimnasios.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
