@@ -5,7 +5,7 @@ Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Est�
 Para verla, abrí `index.html` en el navegador.
 
 ## Productos
-El catálogo tiene 5 productos con sus precios:
+El catálogo tiene 10 productos con sus precios:
 
 | Código | Producto | Precio |
 |---|---|---|
@@ -14,6 +14,11 @@ El catálogo tiene 5 productos con sus precios:
 | TG-03 | Simulador de remo Randers (solo 10 unidades) | $895.750 |
 | TG-04 | Airbike Assault Classic Pro | $3.750.000 |
 | TG-05 | Rack multifunción Randers ARG 154 | $275.000 |
+| TG-06 | Bicicleta fija Olmo Spirit 80 | $458.300 |
+| TG-07 | Multigym Randers Home Gym | $550.000 |
+| TG-08 | Banco plano Randers ARG 202 | $75.000 |
+| TG-09 | Mini tramp jumping West | $120.000 |
+| TG-10 | Bicicleta horizontal Fitage Vital Stroll | $480.000 |
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
