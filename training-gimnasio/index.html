@@ -120,6 +120,10 @@
         <p class="eyebrow eyebrow--light">Contacto</p>
         <h2>Escribinos por WhatsApp</h2>
         <p>Consultanos por precio, stock, cuotas y envío. Si ya elegiste tus equipos, agregalos al carrito y mandanos el pedido directo por WhatsApp.</p>
+        <ul class="contact__pay">
+          <li><strong>Formas de pago:</strong> transferencia, tarjeta de débito y tarjeta de crédito.</li>
+          <li><strong>Envío:</strong> gratuito.</li>
+        </ul>
       </div>
       <div class="contact__actions">
         <a class="btn btn--whatsapp" id="contactWhatsapp" target="_blank" rel="noopener">
@@ -154,6 +158,7 @@
       <div class="cart__foot" id="cartFoot">
         <div class="cart__total"><span>Total</span><strong id="cartTotal">$ 0</strong></div>
         <p class="ship-free"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="13" height="10"/><path d="M15 10h4l3 3v4h-7"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>El envío es <strong>gratuito</strong></span></p>
+        <p class="pay-info">Pagás con <strong>transferencia</strong>, <strong>tarjeta de débito</strong> o <strong>tarjeta de crédito</strong>.</p>
         <p class="cart__note" id="cartNote"></p>
         <button class="btn btn--red cart__checkout" id="cartNext">Finalizar compra</button>
         <button class="cart__clear" id="cartClear">Vaciar carrito</button>
@@ -178,6 +183,12 @@
         <label>Entre calles / referencias<input name="referencias" placeholder="Opcional" /></label>
         <label class="full">Comentarios<textarea name="comentarios" rows="2" placeholder="Opcional: horario de entrega, color, etc."></textarea></label>
       </div>
+      <fieldset class="pay" id="payMethods">
+        <legend>Forma de pago *</legend>
+        <label class="pay__opt"><input type="radio" name="pago" value="Transferencia bancaria" /><span><strong>Transferencia</strong><small>Te enviamos los datos de la cuenta por WhatsApp.</small></span></label>
+        <label class="pay__opt"><input type="radio" name="pago" value="Tarjeta de débito" /><span><strong>Tarjeta de débito</strong><small>Coordinamos el cobro por WhatsApp.</small></span></label>
+        <label class="pay__opt"><input type="radio" name="pago" value="Tarjeta de crédito" /><span><strong>Tarjeta de crédito</strong><small>Consultá las cuotas disponibles para tu compra.</small></span></label>
+      </fieldset>
       <p class="ship__error" id="shipError" role="alert"></p>
       <div class="ship__summary"><span>Total de tu compra</span><strong id="shipTotal">$ 0</strong></div>
       <a class="btn btn--whatsapp cart__checkout" id="cartCheckout" target="_blank" rel="noopener" href="#">

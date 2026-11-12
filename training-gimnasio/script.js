@@ -881,6 +881,7 @@ function mensajePedido(datos) {
     `*Total: ${formatoPrecio(total)}${sinPrecio ? " + productos a consultar" : ""}*`,
     "Envío: gratuito",
   ];
+  if (datos && datos.pago) msg.push(`*Forma de pago: ${datos.pago}*`);
   if (datos) {
     const dir = [datos.direccion, datos.depto].filter(Boolean).join(", ");
     msg.push(
@@ -944,6 +945,8 @@ function leerDatos() {
   const f = $("#cartStep2");
   const d = {};
   CAMPOS.forEach((c) => { d[c] = f.elements[c].value.trim().replace(/\s+/g, " "); });
+  const pago = f.querySelector('input[name="pago"]:checked');
+  d.pago = pago ? pago.value : "";
   return d;
 }
 
@@ -957,6 +960,8 @@ function validarDatos(d) {
   if (d.cp && !/^[A-Za-z]?\d{4}[A-Za-z]{0,3}$/.test(d.cp.replace(/\s/g, ""))) errores.push("cp");
   if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) errores.push("email");
   [...new Set(errores)].forEach((c) => f.elements[c].classList.add("invalid"));
+  $("#payMethods").classList.toggle("invalid", !d.pago);
+  if (!d.pago) errores.push("pago");
   return [...new Set(errores)];
 }
 
@@ -980,7 +985,13 @@ $("#cartNext").addEventListener("click", () => {
 });
 $("#cartBack").addEventListener("click", () => mostrarPaso(1));
 $("#cartStep2").addEventListener("submit", (e) => { e.preventDefault(); $("#cartCheckout").click(); });
-$("#cartStep2").addEventListener("input", (e) => { if (e.target.classList) e.target.classList.remove("invalid"); });
+$("#cartStep2").addEventListener("input", (e) => {
+  if (e.target.name === "pago") {
+    $("#payMethods").classList.remove("invalid");
+    if (!$("#cartStep2").querySelector(".invalid")) $("#shipError").textContent = "";
+  }
+  else if (e.target.classList) e.target.classList.remove("invalid");
+});
 
 // El botón es un enlace: si faltan datos se cancela; si está todo, se arma el mensaje y se abre WhatsApp.
 $("#cartCheckout").addEventListener("click", (e) => {
@@ -990,8 +1001,11 @@ $("#cartCheckout").addEventListener("click", (e) => {
   const errores = validarDatos(d);
   if (errores.length) {
     e.preventDefault();
-    $("#shipError").textContent = "Revisá los campos marcados: completá todos los datos obligatorios (*) para coordinar el envío.";
-    $("#cartStep2").elements[errores[0]].focus();
+    $("#shipError").textContent = errores.length === 1 && errores[0] === "pago"
+      ? "Elegí cómo vas a pagar: transferencia, tarjeta de débito o tarjeta de crédito."
+      : "Revisá los campos marcados: completá todos los datos obligatorios (*) y elegí la forma de pago.";
+    const primero = errores[0] === "pago" ? $("#payMethods input") : $("#cartStep2").elements[errores[0]];
+    primero.focus();
     return;
   }
   $("#shipError").textContent = "";

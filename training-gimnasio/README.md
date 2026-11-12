@@ -45,7 +45,7 @@ Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un
 
 ## Carrito, envío y WhatsApp
 Cada producto tiene el botón "Agregar al carrito". En el carrito se cambian cantidades y se ve el total.
-Al tocar "Finalizar compra" se piden los datos para el envío (nombre y apellido, teléfono, DNI, email opcional, provincia, localidad, código postal, dirección, piso/depto, referencias y comentarios) y se avisa que el envío es gratuito.
-Recién con los datos obligatorios completos, "Enviar pedido por WhatsApp" abre WhatsApp con el pedido (productos, cantidades, precios y total) y los datos de envío.
+Al tocar "Finalizar compra" se piden los datos para el envío (nombre y apellido, teléfono, DNI, email opcional, provincia, localidad, código postal, dirección, piso/depto, referencias y comentarios) y la forma de pago (transferencia, tarjeta de débito o tarjeta de crédito), y se avisa que el envío es gratuito.
+Recién con los datos obligatorios completos, "Enviar pedido por WhatsApp" abre WhatsApp con el pedido (productos, cantidades, precios y total), la forma de pago y los datos de envío.
 
 Para que el mensaje llegue escrito solo al chat del negocio, completá `WHATSAPP_NUMERO` en `script.js` con el número, solo dígitos y con código de país (Argentina: 549 + característica sin 0 + número sin 15, por ejemplo `5491123456789`). Si queda vacío, se abre `WHATSAPP_LINK` y el pedido se copia para que el cliente lo pegue en el chat.
