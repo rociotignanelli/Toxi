@@ -231,6 +231,16 @@ PRODUCTS.push(
   }),
 );
 
+/* ---------- Productos del proveedor (proveedor.js) ---------- */
+if (typeof PROVEEDOR !== "undefined") PRODUCTS.push(...PROVEEDOR);
+
+const CATEGORIES = [
+  ["infantil", "Motos y cuatris infantiles"],
+  ["electrico", "Bicis, motos y monopatines eléctricos"],
+  ["repuesto", "Repuestos y accesorios"],
+];
+const catOf = (p) => p.cat || "infantil";
+
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
@@ -314,11 +324,24 @@ function toast(msg) {
 
 /* ---------- Catálogo ---------- */
 const productsEl = $("#products");
-let currentFilter = "todos";
+let currentFilter = "infantil";
+let currentSub = "todos";
 let currentSort = "destacados";
+let currentSearch = "";
+
+const normalize = (t) => t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
 function sortedList() {
-  let list = currentFilter === "todos" ? [...PRODUCTS] : PRODUCTS.filter((p) => p.type === currentFilter);
+  let list;
+  if (currentSearch) {
+    const words = normalize(currentSearch).split(/\s+/).filter(Boolean);
+    list = PRODUCTS.filter((p) => {
+      const hay = normalize([p.name, p.label, p.sub || ""].join(" "));
+      return words.every((w) => hay.includes(w));
+    });
+  } else {
+    list = PRODUCTS.filter((p) => catOf(p) === currentFilter && (currentSub === "todos" || p.sub === currentSub));
+  }
   const sorters = {
     "precio-asc": (a, b) => a.price - b.price,
     "precio-desc": (a, b) => b.price - a.price,
@@ -329,8 +352,28 @@ function sortedList() {
   return list;
 }
 
+function renderToolbar() {
+  $("#filters").innerHTML = CATEGORIES.map(
+    ([id, label]) => `<button class="filter ${!currentSearch && id === currentFilter ? "is-active" : ""}" data-filter="${id}">${label}
+      <span class="filter__count">${PRODUCTS.filter((p) => catOf(p) === id).length}</span></button>`
+  ).join("");
+  const subs = [...new Set(PRODUCTS.filter((p) => catOf(p) === currentFilter && p.sub).map((p) => p.sub))];
+  const subEl = $("#subfilters");
+  subEl.hidden = !subs.length || !!currentSearch;
+  subEl.innerHTML = ["todos", ...subs]
+    .map((sub) => `<button class="chip-filter ${sub === currentSub ? "is-active" : ""}" data-sub="${sub}">${sub === "todos" ? "Todos" : sub}</button>`)
+    .join("");
+}
+
 function renderProducts() {
-  productsEl.innerHTML = sortedList()
+  renderToolbar();
+  const list = sortedList();
+  $("#resultsInfo").textContent = currentSearch
+    ? `${list.length} resultado${list.length === 1 ? "" : "s"} para “${currentSearch}”`
+    : `${list.length} producto${list.length === 1 ? "" : "s"}`;
+  productsEl.innerHTML = list.length ? "" : `<p class="products__empty">No encontramos productos con esa búsqueda.</p>`;
+  if (!list.length) return;
+  productsEl.innerHTML = list
     .map(
       (p, i) => `
       <article class="card reveal is-visible" style="--accent:${p.color};--photo-bg:${p.photoBg || "#fff"};animation-delay:${i * 60}ms">
@@ -341,9 +384,9 @@ function renderProducts() {
         <div class="card__body">
           <p class="card__type">${p.label}</p>
           <h3>${p.name}</h3>
-          <ul class="specs">
+          ${p.quickSpecs === null ? "" : `<ul class="specs">
             ${quickSpecs(p).map(([v, u]) => `<li><strong>${v}</strong> ${u}</li>`).join("")}
-          </ul>
+          </ul>`}
           ${priceHTML(p)}
           <div class="card__actions">
             <button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button>
@@ -357,9 +400,31 @@ function renderProducts() {
 
 function setFilter(filter) {
   currentFilter = filter;
-  $$(".filter").forEach((b) => b.classList.toggle("is-active", b.dataset.filter === filter));
+  currentSub = "todos";
+  currentSearch = "";
+  $("#search").value = "";
   renderProducts();
 }
+
+$("#filters").addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-filter]");
+  if (btn) setFilter(btn.dataset.filter);
+});
+$("#subfilters").addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-sub]");
+  if (!btn) return;
+  currentSub = btn.dataset.sub;
+  renderProducts();
+});
+$("#sort").addEventListener("change", (e) => {
+  currentSort = e.target.value;
+  renderProducts();
+});
+$("#search").addEventListener("input", (e) => {
+  currentSearch = e.target.value.trim();
+  renderProducts();
+});
+$$("[data-jump]").forEach((a) => a.addEventListener("click", () => setFilter(a.dataset.jump)));
 
 /* ---------- Modal ---------- */
 const modal = $("#modal");
@@ -401,18 +466,18 @@ function openListing(p) {
           <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
         </div>
         <div class="listing__text">
-          <p class="listing__tagline">${p.tagline}</p>
+          ${p.tagline ? `<p class="listing__tagline">${p.tagline}</p>` : ""}
           ${p.description.map((t) => `<p>${t}</p>`).join("")}
-          <h4>${p.featuresTitle || "¿Qué hace especial a la Turbo Sport Duo?"}</h4>
+          ${p.features ? `<h4>${p.featuresTitle || "¿Qué hace especial a la Turbo Sport Duo?"}</h4>
           <ul class="listing__features">
             ${p.features.map(([t, d]) => `<li><strong>${t}:</strong> ${d}</li>`).join("")}
-          </ul>
+          </ul>` : ""}
           <h4>Características técnicas</h4>
           <dl class="detail__specs">
             ${p.techSpecs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}
           </dl>
-          <h4>${p.closingTitle}</h4>
-          <p>${p.closing}</p>
+          ${p.closingTitle ? `<h4>${p.closingTitle}</h4>` : ""}
+          ${p.closing ? `<p>${p.closing}</p>` : ""}
         </div>
       </div>
     </article>`);
@@ -601,7 +666,10 @@ const bookingDate = $("#bookingDate");
 
 bookingModel.innerHTML =
   `<option value="">Elegí un modelo</option>` +
-  PRODUCTS.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
+  CATEGORIES.filter(([id]) => id !== "repuesto")
+    .map(([id, label]) => `<optgroup label="${label}">${PRODUCTS.filter((p) => catOf(p) === id)
+      .map((p) => `<option value="${p.id}">${p.name}</option>`).join("")}</optgroup>`)
+    .join("");
 
 const toISODate = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 const tomorrow = new Date();

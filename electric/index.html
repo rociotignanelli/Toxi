@@ -21,7 +21,8 @@
       </button>
       <a href="#inicio" class="logo">TOXI<span>electric</span></a>
       <nav class="nav" id="nav">
-        <a href="#catalogo">Motos</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#catalogo" data-jump="repuesto">Repuestos</a>
         <a href="#prueba">Visitanos</a>
         <a href="#faq">Preguntas</a>
         <a href="#contacto">Contacto</a>
@@ -87,10 +88,30 @@
     <section class="section" id="catalogo">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Motos y cuatris infantiles</p>
-          <h2>Elegí su próxima aventura</h2>
-          <p>La Turbo Sport Duo eléctrica en rosa, azul o negra, con 30% de descuento, la Mini Moto Cross Foston eléctrica, y la Mini Moto Cross 50 cc y el Mini Cuatri 50 cc en rojo o negro, a nafta. Tocá una moto para ver todas las fotos y la descripción completa.</p>
+          <p class="eyebrow">Catálogo</p>
+          <h2>Elegí tu próxima aventura</h2>
+          <p>Motos y cuatris infantiles, bicis, motos y monopatines eléctricos, y repuestos y accesorios para tu monopatín. Tocá un producto para ver todas las fotos y la descripción completa.</p>
         </div>
+
+        <div class="toolbar reveal">
+          <div class="filters" id="filters" role="tablist"></div>
+          <div class="toolbar__right">
+            <label class="search">
+              <span class="sr-only">Buscar productos</span>
+              <input type="search" id="search" placeholder="Buscar: cubierta 10x2.5, freno, Kugoo…" autocomplete="off" />
+            </label>
+            <label class="sort">
+              <span>Ordenar</span>
+              <select id="sort">
+                <option value="destacados">Destacados</option>
+                <option value="precio-asc">Menor precio</option>
+                <option value="precio-desc">Mayor precio</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="subfilters" id="subfilters" hidden></div>
+        <p class="results-info" id="resultsInfo"></p>
 
         <div class="products" id="products"></div>
       </div>
@@ -204,13 +225,9 @@
       </div>
       <div>
         <h4>Productos</h4>
-        <a href="#catalogo">Turbo Sport Duo Rosa</a>
-        <a href="#catalogo">Turbo Sport Duo Azul</a>
-        <a href="#catalogo">Turbo Sport Duo Negra</a>
-        <a href="#catalogo">Mini Moto Cross Foston</a>
-        <a href="#catalogo">Mini Moto Cross 50 cc</a>
-        <a href="#catalogo">Mini Cuatri 50 cc Rojo</a>
-        <a href="#catalogo">Mini Cuatri 50 cc Negro</a>
+        <a href="#catalogo" data-jump="infantil">Motos y cuatris infantiles</a>
+        <a href="#catalogo" data-jump="electrico">Bicis, motos y monopatines eléctricos</a>
+        <a href="#catalogo" data-jump="repuesto">Repuestos y accesorios</a>
       </div>
       <div>
         <h4>Ayuda</h4>
@@ -253,6 +270,7 @@
 
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="proveedor.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

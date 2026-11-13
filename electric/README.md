@@ -16,6 +16,9 @@ Para verla, abrí `electric/index.html` en el navegador.
 - Preguntas frecuentes y suscripción al boletín
 - Diseño adaptado a celular
 
+## Productos del proveedor
+Los 55 productos de Wild Rides (4 vehículos eléctricos y 51 repuestos y accesorios) están en `proveedor.js`, con el precio del proveedor menos un 30%. Sus fotos están en `img/proveedor/`. El catálogo los separa en pestañas (infantiles, eléctricos, repuestos), con filtros por tipo de repuesto y un buscador.
+
 ## Fotos
 Las fotos están en `img/turbo-sport-duo/`: una foto principal por color (`rosa.jpg`, `azul.jpg`, `negra.jpg`), cinco vistas de detalle recortadas de cada foto (frente, rueda, asiento, pedal y motor) y la placa de la promo (`promo.jpg`), que se muestra en las tres publicaciones.
 Las de la Mini Moto Cross están en `img/mini-moto-cross/` las del Mini Cuatri en `img/mini-cuatri/` y las de la Foston en `img/foston/`.
