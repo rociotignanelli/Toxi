@@ -2,32 +2,7 @@
    TOXI Electric — Interacciones
    ========================================================= */
 
-const PRODUCTS = [
-  {
-    id: "urban-s1", name: "Urban S1", type: "monopatin", label: "Monopatín",
-    price: 690000, color: "#3ee6c1", badge: "Más vendido",
-    desc: "El monopatín ideal para empezar: liviano, plegable en 3 segundos y con autonomía de sobra para ir y volver del trabajo.",
-    speed: 25, range: 30, power: 350, battery: "36 V · 10 Ah", weight: 14, charge: 5, wheel: '8,5"',
-  },
-  {
-    id: "urban-s2", name: "Urban S2 Pro", type: "monopatin", label: "Monopatín",
-    price: 949000, color: "#c6ff3d", badge: "Nuevo",
-    desc: "Más potencia para subir pendientes, suspensión delantera, doble freno y pantalla con app para ver tu recorrido.",
-    speed: 25, range: 45, power: 500, battery: "36 V · 15 Ah", weight: 17, charge: 6, wheel: '10"',
-  },
-  {
-    id: "flex-lite", name: "Flex Lite", type: "monopatin", label: "Monopatín",
-    price: 499000, color: "#ff7ab6",
-    desc: "Ultra compacto de 11 kg. Perfecto para combinar con tren o subte y guardarlo debajo del escritorio.",
-    speed: 20, range: 20, power: 250, battery: "36 V · 7,5 Ah", weight: 11, charge: 4, wheel: '8"',
-  },
-  {
-    id: "trail-x", name: "Trail X", type: "monopatin", label: "Monopatín",
-    price: 1690000, color: "#ff9d3d", badge: "Todo terreno",
-    desc: "Doble motor, suspensión en ambas ruedas y cubiertas off-road. Para los que quieren ir más allá del asfalto.",
-    speed: 45, range: 70, power: 2000, battery: "48 V · 21 Ah", weight: 32, charge: 9, wheel: '10" off-road',
-  },
-];
+const PRODUCTS = [];
 
 /* ---------- Moto Eléctrica Infantil Turbo Sport Duo 12V (Biemme) ---------- */
 const TURBO_IMG = "img/turbo-sport-duo/";
@@ -206,10 +181,6 @@ function renderProducts() {
             <button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button>
             <button class="btn btn--ghost btn--sm" data-view="${p.id}">Ver más</button>
           </div>
-          <label class="compare-check">
-            <input type="checkbox" data-compare="${p.id}" ${compare.includes(p.id) ? "checked" : ""} />
-            <span>Comparar</span>
-          </label>
         </div>
       </article>`
     )
@@ -221,18 +192,6 @@ function setFilter(filter) {
   $$(".filter").forEach((b) => b.classList.toggle("is-active", b.dataset.filter === filter));
   renderProducts();
 }
-
-$("#filters").addEventListener("click", (e) => {
-  const btn = e.target.closest(".filter");
-  if (btn) setFilter(btn.dataset.filter);
-});
-
-$("#sort").addEventListener("change", (e) => {
-  currentSort = e.target.value;
-  renderProducts();
-});
-
-$$("[data-jump]").forEach((a) => a.addEventListener("click", () => setFilter(a.dataset.jump)));
 
 /* ---------- Modal ---------- */
 const modal = $("#modal");
@@ -336,94 +295,6 @@ modal.addEventListener("click", (e) => {
     $("#bookingModel").value = book.dataset.book;
     closeModal();
   }
-});
-
-/* ---------- Comparador ---------- */
-let compare = [];
-const compareBar = $("#compareBar");
-
-function renderCompareBar() {
-  compareBar.classList.toggle("is-visible", compare.length > 0);
-  $("#compareItems").innerHTML =
-    compare
-      .map((id) => {
-        const p = findProduct(id);
-        return `<span class="chip" style="--accent:${p.color}">${p.name}<button data-uncompare="${id}" aria-label="Quitar ${p.name}">✕</button></span>`;
-      })
-      .join("") + `<span class="compare-bar__hint">${compare.length}/3 seleccionados</span>`;
-  $("#compareOpen").disabled = compare.length < 2;
-  $$("[data-compare]").forEach((c) => (c.checked = compare.includes(c.dataset.compare)));
-}
-
-function toggleCompare(id, on) {
-  if (on && !compare.includes(id)) {
-    if (compare.length >= 3) {
-      toast("Podés comparar hasta 3 modelos");
-      renderCompareBar();
-      return;
-    }
-    compare.push(id);
-  } else if (!on) {
-    compare = compare.filter((x) => x !== id);
-  }
-  renderCompareBar();
-}
-
-function openCompare() {
-  const items = compare.map(findProduct);
-  const spec = (p, key) => (p.techSpecs || []).find(([k]) => k === key)?.[1];
-  // [etiqueta, dato, unidad, dirección (1 = mayor es mejor, -1 = menor es mejor), formato]
-  const rows = [
-    ["Tipo", (p) => p.label],
-    ["Precio", (p) => p.price, "", -1, money],
-    ["Velocidad máx.", (p) => p.speed, " km/h", 1],
-    ["Autonomía", (p) => p.range, " km", 1],
-    ["Potencia", (p) => p.power, " W", 1],
-    ["Batería", (p) => p.battery || spec(p, "Batería")],
-    ["Carga", (p) => p.charge, " h", -1],
-    ["Peso", (p) => p.weight, " kg"],
-    ["Rodado", (p) => p.wheel],
-    ["Color", (p) => spec(p, "Color")],
-    ["Peso máx. soportado", (p) => spec(p, "Peso máximo soportado")],
-  ].filter(([, get]) => items.some((p) => get(p) != null));
-  const body = rows
-    .map(([label, get, unit = "", dir, fmt]) => {
-      const vals = items.map(get).filter((v) => typeof v === "number");
-      const best = dir && new Set(vals).size > 1 ? (dir > 0 ? Math.max(...vals) : Math.min(...vals)) : null;
-      return `<tr><th scope="row">${label}</th>${items
-        .map((p) => {
-          const v = get(p);
-          const text = v == null ? "—" : fmt ? fmt(v) : `${v}${unit}`;
-          return `<td class="${best !== null && v === best ? "is-best" : ""}">${text}</td>`;
-        })
-        .join("")}</tr>`;
-    })
-    .join("");
-  openModal(`
-    <h3 id="modalTitle" class="compare__title">Comparar modelos</h3>
-    <div class="compare__wrap">
-      <table class="compare">
-        <thead><tr><th></th>${items
-          .map((p) => `<th style="--accent:${p.color}">${vehicleVisual(p, "photo--thumb")}<span>${p.name}</span></th>`)
-          .join("")}</tr></thead>
-        <tbody>${body}
-          <tr><th></th>${items
-            .map((p) => `<td><button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button></td>`)
-            .join("")}</tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="compare__legend">Resaltado: el mejor valor de cada fila.</p>`);
-}
-
-$("#compareOpen").addEventListener("click", openCompare);
-$("#compareClear").addEventListener("click", () => {
-  compare = [];
-  renderCompareBar();
-});
-$("#compareItems").addEventListener("click", (e) => {
-  const btn = e.target.closest("[data-uncompare]");
-  if (btn) toggleCompare(btn.dataset.uncompare, false);
 });
 
 /* ---------- Carrito ---------- */
@@ -549,58 +420,20 @@ document.addEventListener("click", (e) => {
   if (view) openProduct(view.dataset.view);
 });
 
-productsEl.addEventListener("change", (e) => {
-  if (e.target.matches("[data-compare]")) toggleCompare(e.target.dataset.compare, e.target.checked);
-});
-
 document.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
   if (modal.classList.contains("is-open")) closeModal();
   else if (cart.classList.contains("is-open")) closeCart();
 });
 
-/* ---------- Calculadora de ahorro ---------- */
-const DAYS_PER_MONTH = 22;
-const MOTO_KM_PER_L = 35;
-const ELEC_KWH_PER_100KM = 3.5;
-
-function updateCalc() {
-  const km = Number($("#km").value);
-  const fuel = Math.max(0, Number($("#fuel").value) || 0);
-  const kwh = Math.max(0, Number($("#kwh").value) || 0);
-  const monthlyKm = km * DAYS_PER_MONTH;
-  const costFuel = (monthlyKm / MOTO_KM_PER_L) * fuel;
-  const costElec = (monthlyKm / 100) * ELEC_KWH_PER_100KM * kwh;
-  const save = costFuel - costElec;
-
-  $("#kmOut").textContent = `${km} km`;
-  $("#costFuel").textContent = money(costFuel);
-  $("#costElec").textContent = money(costElec);
-  $("#costSave").textContent = money(Math.max(0, save));
-  $("#calcNote").textContent =
-    save > 0
-      ? `Son ${money(save * 12)} al año, recorriendo ${monthlyKm.toLocaleString("es-AR")} km por mes (${DAYS_PER_MONTH} días hábiles).`
-      : "Con estos valores no hay ahorro en combustible. Revisá los precios ingresados.";
-}
-
-$("#calcForm").addEventListener("input", updateCalc);
-$("#calcForm").addEventListener("submit", (e) => e.preventDefault());
-
-/* ---------- Prueba de manejo ---------- */
+/* ---------- Turno para visitar el showroom ---------- */
 const bookingForm = $("#bookingForm");
 const bookingModel = $("#bookingModel");
 const bookingDate = $("#bookingDate");
 
 bookingModel.innerHTML =
-  `<option value="">Elegí un modelo</option>` +
-  ["monopatin", "moto"]
-    .map(
-      (t) =>
-        `<optgroup label="${t === "moto" ? "Motos" : "Monopatines"}">${PRODUCTS.filter((p) => p.type === t)
-          .map((p) => `<option value="${p.id}">${p.name}</option>`)
-          .join("")}</optgroup>`
-    )
-    .join("");
+  `<option value="">Elegí un color</option>` +
+  PRODUCTS.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
 
 const toISODate = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 const tomorrow = new Date();
@@ -618,7 +451,7 @@ bookingForm.addEventListener("submit", (e) => {
   if (data.name.trim().length < 3) { errors.push("tu nombre"); mark("name"); }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email.trim())) { errors.push("un correo válido"); mark("email"); }
   if (data.phone.replace(/\D/g, "").length < 8) { errors.push("un teléfono válido"); mark("phone"); }
-  if (!data.model) { errors.push("un modelo"); mark("model"); }
+  if (!data.model) { errors.push("un color"); mark("model"); }
   if (!data.date || data.date < bookingDate.min) { errors.push("una fecha a partir de mañana"); mark("date"); }
 
   if (errors.length) {
@@ -630,7 +463,7 @@ bookingForm.addEventListener("submit", (e) => {
   const p = findProduct(data.model);
   const date = new Date(data.date + "T12:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" }).replace(",", "");
   msg.className = "form-msg is-ok";
-  msg.textContent = `¡Listo, ${data.name.trim().split(" ")[0]}! Te esperamos el ${date} para probar la ${p.name}. Te confirmamos el horario por correo.`;
+  msg.textContent = `¡Listo, ${data.name.trim().split(" ")[0]}! Te esperamos el ${date} para mostrarte la ${p.name}. Te confirmamos el horario por correo.`;
   bookingForm.reset();
 });
 
@@ -681,10 +514,14 @@ const observer = new IntersectionObserver(
 );
 
 /* ---------- Inicio ---------- */
-$("#heroVisual").insertAdjacentHTML("beforeend", motoSVG("#c6ff3d") + scooterSVG("#3ee6c1"));
+$("#heroVisual").insertAdjacentHTML(
+  "beforeend",
+  PRODUCTS.map(
+    (p, i) => `<button class="hero__photo hero__photo--${i + 1}" data-view="${p.id}" aria-label="Ver ${p.name}" style="--photo-bg:${p.photoBg}">
+      <img src="${p.images[0].src}" alt="${p.fullName}" /></button>`
+  ).join("") + `<span class="hero__badge">30% OFF</span>`
+);
 $("#year").textContent = new Date().getFullYear();
 renderProducts();
-renderCompareBar();
 renderCart();
-updateCalc();
 $$(".reveal").forEach((el) => observer.observe(el));
