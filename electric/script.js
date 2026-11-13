@@ -27,31 +27,66 @@ const PRODUCTS = [
     desc: "Doble motor, suspensión en ambas ruedas y cubiertas off-road. Para los que quieren ir más allá del asfalto.",
     speed: 45, range: 70, power: 2000, battery: "48 V · 21 Ah", weight: 32, charge: 9, wheel: '10" off-road',
   },
-  {
-    id: "volt-c1", name: "Volt C1", type: "moto", label: "Moto eléctrica",
-    price: 2390000, color: "#4da3ff",
-    desc: "Scooter urbano equivalente a un ciclomotor de 50 cc. Baúl bajo el asiento, frenos CBS y arranque sin llave.",
-    speed: 45, range: 60, power: 1500, battery: "60 V · 26 Ah (extraíble)", weight: 72, charge: 6, wheel: '12"',
-  },
-  {
-    id: "volt-c3", name: "Volt C3", type: "moto", label: "Moto eléctrica",
-    price: 3290000, color: "#c6ff3d", badge: "Recomendada",
-    desc: "Nuestra moto más elegida: 3000 W, batería extraíble, freno a disco en ambas ruedas y conectividad con el celular.",
-    speed: 70, range: 90, power: 3000, battery: "72 V · 32 Ah (extraíble)", weight: 85, charge: 5, wheel: '12"',
-  },
-  {
-    id: "cargo", name: "Cargo 55", type: "moto", label: "Moto eléctrica",
-    price: 3590000, color: "#ffd23d",
-    desc: "Pensada para delivery y trabajo: chasis reforzado, parrilla para caja de 90 L y dos baterías para doble autonomía.",
-    speed: 55, range: 110, power: 3000, battery: "2 × 60 V · 30 Ah", weight: 98, charge: 6, wheel: '14"',
-  },
-  {
-    id: "ryder-r", name: "Ryder R", type: "moto", label: "Moto eléctrica",
-    price: 5490000, color: "#ff4d6d", badge: "Alta gama",
-    desc: "Naked deportiva de 5000 W con modo Sport, ABS, control de tracción y 120 km de autonomía real.",
-    speed: 100, range: 120, power: 5000, battery: "72 V · 50 Ah", weight: 118, charge: 4, wheel: '17"',
-  },
 ];
+
+/* ---------- Moto Eléctrica Infantil Turbo Sport Duo 12V (Biemme) ---------- */
+const TURBO_IMG = "img/turbo-sport-duo/";
+const TURBO_VIEWS = [
+  ["", "Vista completa"],
+  ["-frente", "Frente y ópticas LED"],
+  ["-rueda", "Rueda delantera con luz"],
+  ["-asiento", "Asiento y manubrio"],
+  ["-pedal", "Pedal y rueditas de apoyo"],
+  ["-motor", "Detalle de motor"],
+];
+
+const turboSportDuo = (slug, colorName, colorAdj, hex, photoBg = "#fff") => ({
+  id: `turbo-sport-duo-${slug}`,
+  name: `Turbo Sport Duo ${colorAdj}`,
+  fullName: `Moto Eléctrica Infantil Turbo Sport Duo 12V – Biemme ${colorAdj}`,
+  type: "moto", label: "Moto eléctrica infantil", kids: true,
+  price: 350000, originalPrice: 500000, badge: "30% OFF",
+  color: hex,
+  photoBg,
+  images: [
+    ...TURBO_VIEWS.map(([suffix, alt]) => ({ src: `${TURBO_IMG}${slug}${suffix}.jpg`, alt })),
+    { src: `${TURBO_IMG}promo.jpg`, alt: "Promoción 30% de descuento" },
+  ],
+  quickSpecs: [["12 V", "batería"], ["30 kg", "peso máx."], ["Pedal", "acelerador"]],
+  tagline: "¡La emoción de manejar una moto deportiva, ahora para los más chicos!",
+  description: [
+    "La Moto Eléctrica Turbo Sport Duo de Biemme combina potencia, diseño y diversión en un vehículo pensado para que los pequeños disfruten de sus primeras aventuras sobre ruedas.",
+    `Inspirada en las motos deportivas de competición, se destaca por su imponente color ${colorName}, sus líneas aerodinámicas y sus detalles realistas que le aportan un estilo moderno y llamativo.`,
+    "Equipada con una batería recargable de 12V, ofrece un andar dinámico y entretenido, ideal para disfrutar de paseos y momentos de diversión al aire libre.",
+    "Su sistema de aceleración mediante pedal permite un manejo sencillo e intuitivo: solo hay que presionar el pedal para avanzar y soltarlo para detenerse.",
+  ],
+  features: [
+    ["Motor de 12V", "proporciona la potencia necesaria para disfrutar de una experiencia de conducción divertida y dinámica."],
+    ["Aceleración a pedal", "sistema práctico y fácil de utilizar, diseñado para que los chicos puedan controlar la moto cómodamente."],
+    ["Diseño deportivo y realista", "estética inspirada en motos de alta cilindrada, con detalles de motor, escape y una carrocería de estilo aerodinámico."],
+    ["Estructura estable", "diseñada para favorecer el equilibrio y brindar mayor seguridad durante el uso."],
+    ["Materiales resistentes", "fabricada con plásticos de alta durabilidad, preparados para acompañar las aventuras y los juegos al aire libre."],
+  ],
+  techSpecs: [
+    ["Marca", "Biemme"],
+    ["Modelo", "Turbo Sport Duo"],
+    ["Artículo", "2404"],
+    ["Color", colorName[0].toUpperCase() + colorName.slice(1)],
+    ["Batería", "Recargable de 12V"],
+    ["Cargador", "Incluido"],
+    ["Sistema de conducción", "Aceleración a pedal"],
+    ["Diseño", "Deportivo / Estilo pista"],
+    ["Peso máximo soportado", "30 kg"],
+  ],
+  closingTitle: "¡Diversión, estilo y aventura en una sola moto!",
+  closing: "La Turbo Sport Duo es una excelente opción para regalar y sorprender a los pequeños amantes de las motos. Su diseño deportivo y su fácil manejo la convierten en una gran compañera para disfrutar de nuevas aventuras sobre ruedas.",
+});
+
+PRODUCTS.push(
+  turboSportDuo("rosa", "rosa", "Rosa", "#ff3fa4"),
+  turboSportDuo("azul", "azul", "Azul", "#3d6bff"),
+  turboSportDuo("negra", "negro", "Negra", "#8a96a8", "#f6f6f6"),
+);
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
@@ -97,6 +132,32 @@ const motoSVG = (color) => `
   </svg>`;
 
 const vehicleSVG = (p) => (p.type === "moto" ? motoSVG(p.color) : scooterSVG(p.color));
+/* Foto real si el producto la tiene; si no, la ilustración */
+const vehicleVisual = (p, cls = "") =>
+  p.images ? `<img class="photo ${cls}" style="--photo-bg:${p.photoBg || "#fff"}" src="${p.images[0].src}" alt="${p.fullName || p.name}" loading="lazy" />` : vehicleSVG(p);
+
+const priceHTML = (p, long = false) => `
+  <div class="card__price">
+    ${p.originalPrice ? `<s class="price-old">${money(p.originalPrice)}</s>` : ""}
+    <strong>${money(p.price)}</strong>
+    ${p.originalPrice ? `<em class="price-save">Ahorrás ${money(p.originalPrice - p.price)}</em>` : ""}
+    <span>${INSTALLMENTS} cuotas ${long ? "sin interés " : ""}de ${money(p.price / INSTALLMENTS)}</span>
+  </div>`;
+
+const quickSpecs = (p) =>
+  p.quickSpecs || [[p.speed, "km/h"], [p.range, "km"], [p.power, "W"]];
+
+const promoHTML = (p) =>
+  p.originalPrice
+    ? `<div class="promo">
+        <span class="promo__tag">${Math.round((1 - p.price / p.originalPrice) * 100)}% DESCUENTO</span>
+        <div class="promo__row">
+          <div><small>Precio original</small><s>${money(p.originalPrice)}</s></div>
+          <div><small>Ahorrás</small><b>${money(p.originalPrice - p.price)}</b></div>
+          <div class="promo__final"><small>Precio final</small><strong>${money(p.price)}</strong></div>
+        </div>
+      </div>`
+    : "";
 
 /* ---------- Toast ---------- */
 const toastEl = $("#toast");
@@ -118,8 +179,8 @@ function sortedList() {
   const sorters = {
     "precio-asc": (a, b) => a.price - b.price,
     "precio-desc": (a, b) => b.price - a.price,
-    autonomia: (a, b) => b.range - a.range,
-    velocidad: (a, b) => b.speed - a.speed,
+    autonomia: (a, b) => (b.range ?? -1) - (a.range ?? -1),
+    velocidad: (a, b) => (b.speed ?? -1) - (a.speed ?? -1),
   };
   if (sorters[currentSort]) list.sort(sorters[currentSort]);
   return list;
@@ -129,23 +190,18 @@ function renderProducts() {
   productsEl.innerHTML = sortedList()
     .map(
       (p, i) => `
-      <article class="card reveal is-visible" style="--accent:${p.color};animation-delay:${i * 60}ms">
+      <article class="card reveal is-visible" style="--accent:${p.color};--photo-bg:${p.photoBg || "#fff"};animation-delay:${i * 60}ms">
         ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
-        <button class="card__visual" data-view="${p.id}" aria-label="Ver detalles de ${p.name}">
-          ${vehicleSVG(p)}
+        <button class="card__visual ${p.images ? "card__visual--photo" : ""}" data-view="${p.id}" aria-label="Ver detalles de ${p.name}">
+          ${vehicleVisual(p)}
         </button>
         <div class="card__body">
           <p class="card__type">${p.label}</p>
           <h3>${p.name}</h3>
           <ul class="specs">
-            <li><strong>${p.speed}</strong> km/h</li>
-            <li><strong>${p.range}</strong> km</li>
-            <li><strong>${p.power}</strong> W</li>
+            ${quickSpecs(p).map(([v, u]) => `<li><strong>${v}</strong> ${u}</li>`).join("")}
           </ul>
-          <div class="card__price">
-            <strong>${money(p.price)}</strong>
-            <span>${INSTALLMENTS} cuotas de ${money(p.price / INSTALLMENTS)}</span>
-          </div>
+          ${priceHTML(p)}
           <div class="card__actions">
             <button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button>
             <button class="btn btn--ghost btn--sm" data-view="${p.id}">Ver más</button>
@@ -195,9 +251,50 @@ function closeModal() {
   if (!cart.classList.contains("is-open")) document.body.classList.remove("no-scroll");
 }
 
+function openListing(p) {
+  openModal(`
+    <article class="listing" style="--accent:${p.color};--photo-bg:${p.photoBg}">
+      <div class="gallery">
+        <div class="gallery__main"><img id="galleryMain" src="${p.images[0].src}" alt="${p.images[0].alt}" /></div>
+        <div class="gallery__thumbs">
+          ${p.images
+            .map(
+              (img, i) => `<button class="gallery__thumb ${i === 0 ? "is-active" : ""}" data-img="${img.src}" data-alt="${img.alt}" aria-label="${img.alt}">
+                <img src="${img.src}" alt="" loading="lazy" /></button>`
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="listing__info">
+        <p class="card__type">${p.label}</p>
+        <h3 id="modalTitle">${p.fullName}</h3>
+        ${promoHTML(p)}
+        <p class="listing__cuotas">${INSTALLMENTS} cuotas sin interés de ${money(p.price / INSTALLMENTS)} · Envío gratis</p>
+        <div class="card__actions">
+          <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
+        </div>
+        <div class="listing__text">
+          <p class="listing__tagline">${p.tagline}</p>
+          ${p.description.map((t) => `<p>${t}</p>`).join("")}
+          <h4>¿Qué hace especial a la Turbo Sport Duo?</h4>
+          <ul class="listing__features">
+            ${p.features.map(([t, d]) => `<li><strong>${t}:</strong> ${d}</li>`).join("")}
+          </ul>
+          <h4>Características técnicas</h4>
+          <dl class="detail__specs">
+            ${p.techSpecs.map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}
+          </dl>
+          <h4>${p.closingTitle}</h4>
+          <p>${p.closing}</p>
+        </div>
+      </div>
+    </article>`);
+}
+
 function openProduct(id) {
   const p = findProduct(id);
   if (!p) return;
+  if (p.images) return openListing(p);
   openModal(`
     <div class="detail" style="--accent:${p.color}">
       <div class="detail__visual">${vehicleSVG(p)}</div>
@@ -215,10 +312,7 @@ function openProduct(id) {
           <div><dt>Rodado</dt><dd>${p.wheel}</dd></div>
           <div><dt>Garantía</dt><dd>2 años</dd></div>
         </dl>
-        <div class="card__price">
-          <strong>${money(p.price)}</strong>
-          <span>${INSTALLMENTS} cuotas sin interés de ${money(p.price / INSTALLMENTS)}</span>
-        </div>
+        ${priceHTML(p, true)}
         <div class="card__actions">
           <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
           <a class="btn btn--ghost" href="#prueba" data-book="${p.id}">Probarlo gratis</a>
@@ -230,6 +324,13 @@ function openProduct(id) {
 $("#modalClose").addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => {
   if (e.target === modal) closeModal();
+  const thumb = e.target.closest("[data-img]");
+  if (thumb) {
+    const main = $("#galleryMain");
+    main.src = thumb.dataset.img;
+    main.alt = thumb.dataset.alt;
+    $$(".gallery__thumb", modal).forEach((t) => t.classList.toggle("is-active", t === thumb));
+  }
   const book = e.target.closest("[data-book]");
   if (book) {
     $("#bookingModel").value = book.dataset.book;
@@ -270,22 +371,31 @@ function toggleCompare(id, on) {
 
 function openCompare() {
   const items = compare.map(findProduct);
+  const spec = (p, key) => (p.techSpecs || []).find(([k]) => k === key)?.[1];
+  // [etiqueta, dato, unidad, dirección (1 = mayor es mejor, -1 = menor es mejor), formato]
   const rows = [
     ["Tipo", (p) => p.label],
-    ["Precio", (p) => money(p.price), (p) => -p.price],
-    ["Velocidad máx.", (p) => `${p.speed} km/h`, (p) => p.speed],
-    ["Autonomía", (p) => `${p.range} km`, (p) => p.range],
-    ["Potencia", (p) => `${p.power} W`, (p) => p.power],
-    ["Batería", (p) => p.battery],
-    ["Carga", (p) => `${p.charge} h`, (p) => -p.charge],
-    ["Peso", (p) => `${p.weight} kg`],
+    ["Precio", (p) => p.price, "", -1, money],
+    ["Velocidad máx.", (p) => p.speed, " km/h", 1],
+    ["Autonomía", (p) => p.range, " km", 1],
+    ["Potencia", (p) => p.power, " W", 1],
+    ["Batería", (p) => p.battery || spec(p, "Batería")],
+    ["Carga", (p) => p.charge, " h", -1],
+    ["Peso", (p) => p.weight, " kg"],
     ["Rodado", (p) => p.wheel],
-  ];
+    ["Color", (p) => spec(p, "Color")],
+    ["Peso máx. soportado", (p) => spec(p, "Peso máximo soportado")],
+  ].filter(([, get]) => items.some((p) => get(p) != null));
   const body = rows
-    .map(([label, fmt, score]) => {
-      const best = score ? Math.max(...items.map(score)) : null;
+    .map(([label, get, unit = "", dir, fmt]) => {
+      const vals = items.map(get).filter((v) => typeof v === "number");
+      const best = dir && new Set(vals).size > 1 ? (dir > 0 ? Math.max(...vals) : Math.min(...vals)) : null;
       return `<tr><th scope="row">${label}</th>${items
-        .map((p) => `<td class="${score && score(p) === best ? "is-best" : ""}">${fmt(p)}</td>`)
+        .map((p) => {
+          const v = get(p);
+          const text = v == null ? "—" : fmt ? fmt(v) : `${v}${unit}`;
+          return `<td class="${best !== null && v === best ? "is-best" : ""}">${text}</td>`;
+        })
         .join("")}</tr>`;
     })
     .join("");
@@ -294,7 +404,7 @@ function openCompare() {
     <div class="compare__wrap">
       <table class="compare">
         <thead><tr><th></th>${items
-          .map((p) => `<th style="--accent:${p.color}">${vehicleSVG(p)}<span>${p.name}</span></th>`)
+          .map((p) => `<th style="--accent:${p.color}">${vehicleVisual(p, "photo--thumb")}<span>${p.name}</span></th>`)
           .join("")}</tr></thead>
         <tbody>${body}
           <tr><th></th>${items
@@ -356,7 +466,7 @@ function renderCart() {
           const p = findProduct(i.id);
           return `
           <div class="cart-item" style="--accent:${p.color}">
-            <div class="cart-item__visual">${vehicleSVG(p)}</div>
+            <div class="cart-item__visual">${vehicleVisual(p, "photo--thumb")}</div>
             <div class="cart-item__info">
               <strong>${p.name}</strong>
               <span>${p.label}</span>
