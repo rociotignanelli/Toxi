@@ -259,7 +259,6 @@ const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
 const findProduct = (id) => PRODUCTS.find((p) => p.id === id);
-const INSTALLMENTS = 12;
 
 /* ---------- Ilustraciones SVG ---------- */
 const wheel = (cx, cy, r) => `
@@ -308,7 +307,6 @@ const priceHTML = (p, long = false) => `
     ${p.originalPrice ? `<s class="price-old">${money(p.originalPrice)}</s>` : ""}
     <strong>${money(p.price)}</strong>
     ${p.originalPrice ? `<em class="price-save">Ahorrás ${money(p.originalPrice - p.price)}</em>` : ""}
-    <span>${INSTALLMENTS} cuotas ${long ? "sin interés " : ""}de ${money(p.price / INSTALLMENTS)}</span>
   </div>`;
 
 const quickSpecs = (p) =>
@@ -493,7 +491,7 @@ function openListing(p) {
         <p class="card__type">${p.label}</p>
         <h3 id="modalTitle">${p.fullName}</h3>
         ${p.originalPrice ? promoHTML(p) : `<div class="listing__price"><small>Precio final</small><strong>${money(p.price)}</strong></div>`}
-        <p class="listing__cuotas">${INSTALLMENTS} cuotas sin interés de ${money(p.price / INSTALLMENTS)} · Envío gratis</p>
+        <p class="listing__cuotas">Envío gratis a todo el país</p>
         <div class="card__actions">
           <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
         </div>
@@ -585,9 +583,6 @@ function renderCart() {
   $("#cartCount").textContent = count;
   $("#cartCount").classList.toggle("is-visible", count > 0);
   $("#cartTotal").textContent = money(total);
-  $("#cartInstallments").textContent = total
-    ? `Envío gratis · ${INSTALLMENTS} cuotas sin interés de ${money(total / INSTALLMENTS)}`
-    : "Envío gratis · Hasta 12 cuotas sin interés.";
   $("#checkoutBtn").disabled = count === 0;
 
   $("#cartItems").innerHTML = cartItems.length

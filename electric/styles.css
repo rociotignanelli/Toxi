@@ -10,7 +10,7 @@
   --muted: #95a1b0;
   --lime: #ff5f1f; /* naranja neón (color principal) */
   --lime-dark: #e04a0c;
-  --teal: #ffa36c; /* naranja claro para cuotas */
+  --teal: #ffa36c; /* naranja claro para textos secundarios */
   --danger: #ff5c7a;
   --display: "Space Grotesk", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -684,4 +684,13 @@ h1 em, h2 em, .logo span, .listing__tagline { text-shadow: 0 0 12px rgba(255, 95
 .toolbar--catalog { justify-content: flex-start; }
 @media (max-width: 760px) {
   .cat-buttons { grid-template-columns: 1fr; }
+}
+
+/* Beneficios: 3 recuadros */
+.perks__grid { grid-template-columns: repeat(3, 1fr); }
+.perk:nth-child(3) { border-right: none; }
+@media (max-width: 960px) {
+  .perks__grid { grid-template-columns: 1fr; }
+  .perk { border-right: none; border-bottom: 1px solid var(--line); }
+  .perk:last-child { border-bottom: none; }
 }
