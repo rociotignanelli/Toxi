@@ -614,3 +614,6 @@ body:has(.compare-bar.is-visible) .toast { bottom: 6.5rem; }
 .listing__price { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 1rem 1.2rem; }
 .listing__price small { display: block; font-size: 0.75rem; color: var(--muted); }
 .listing__price strong { font-family: var(--display); font-size: 2rem; color: var(--accent, var(--lime)); }
+
+/* Fotos al aire libre: llenan todo el recuadro */
+.photo--cover { object-fit: cover !important; padding: 0 !important; }

@@ -110,6 +110,52 @@ PRODUCTS.push({
   closing: "La Mini Moto Cross 2 Tiempos es una excelente opción para regalar a los pequeños fanáticos de las motos. Recomendamos usarla siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
 });
 
+/* ---------- Mini Cuatri 50 cc 2 tiempos ---------- */
+const CUATRI_IMG = "img/mini-cuatri/";
+PRODUCTS.push({
+  id: "mini-cuatri-50",
+  name: "Mini Cuatri 50 cc",
+  fullName: "Mini Cuatri 50 cc 2 Tiempos",
+  type: "moto", label: "Mini cuatriciclo a nafta",
+  price: 670000, badge: "4 ruedas",
+  color: "#ff3b30",
+  photoBg: "#0e1210",
+  photoCover: true,
+  images: [
+    { src: `${CUATRI_IMG}principal.jpg`, alt: "Mini Cuatri 50 cc, vista frontal" },
+    { src: `${CUATRI_IMG}lateral.jpg`, alt: "Mini Cuatri 50 cc, vista lateral" },
+    { src: `${CUATRI_IMG}frente.jpg`, alt: "Mini Cuatri 50 cc, vista tres cuartos" },
+    { src: `${CUATRI_IMG}trasera.jpg`, alt: "Mini Cuatri 50 cc, vista trasera" },
+    { src: `${CUATRI_IMG}promo.jpg`, alt: "Mini Cuatri 50 cc 2 Tiempos" },
+  ],
+  quickSpecs: [["50 cc", "nafta"], ["2T", "motor"], ["4", "ruedas"]],
+  tagline: "¡Aventura sobre cuatro ruedas para los más chicos!",
+  description: [
+    "El Mini Cuatri 50 cc 2 Tiempos es el cuatriciclo ideal para que los chicos vivan la emoción del off-road con la estabilidad que dan sus cuatro ruedas.",
+    "Equipado con un motor a nafta de 50 cc y 2 tiempos, ofrece un andar ágil y divertido para disfrutar en campos, quintas, circuitos y espacios abiertos.",
+    "Su arranque manual a polea es simple y confiable, y sus cubiertas de taco están preparadas para tierra, pasto y terrenos irregulares.",
+    "Con un diseño infantil de 4 ruedas, gráficos llamativos, amortiguadores, paragolpes delantero y apoyapiés amplios, combina estilo deportivo con una estructura robusta.",
+  ],
+  featuresTitle: "¿Qué hace especial al Mini Cuatri?",
+  features: [
+    ["Motor a nafta de 50 cc", "potencia y respuesta para una conducción divertida y dinámica."],
+    ["Motor de 2 tiempos", "mecánica sencilla, liviana y fácil de mantener."],
+    ["Arranque manual a polea", "sistema de arranque práctico y confiable."],
+    ["Cubiertas de taco", "agarre para tierra, pasto y terrenos irregulares."],
+    ["Diseño infantil de 4 ruedas", "más estabilidad y equilibrio que una moto, ideal para ganar confianza."],
+  ],
+  techSpecs: [
+    ["Motor", "50 cc a nafta"],
+    ["Sistema", "2 tiempos"],
+    ["Arranque", "Manual a polea"],
+    ["Rodado", "4 pulgadas"],
+    ["Ruedas", "4 (cuatriciclo)"],
+    ["Uso", "Recreativo / infantil"],
+  ],
+  closingTitle: "¡Diversión todo terreno para los más chicos!",
+  closing: "El Mini Cuatri 50 cc es una excelente opción para regalar a los pequeños fanáticos de los fierros. Recomendamos usarlo siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
+});
+
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
@@ -156,7 +202,7 @@ const motoSVG = (color) => `
 const vehicleSVG = (p) => (p.type === "moto" ? motoSVG(p.color) : scooterSVG(p.color));
 /* Foto real si el producto la tiene; si no, la ilustración */
 const vehicleVisual = (p, cls = "") =>
-  p.images ? `<img class="photo ${cls}" style="--photo-bg:${p.photoBg || "#fff"}" src="${p.images[0].src}" alt="${p.fullName || p.name}" loading="lazy" />` : vehicleSVG(p);
+  p.images ? `<img class="photo ${p.photoCover ? "photo--cover" : ""} ${cls}" style="--photo-bg:${p.photoBg || "#fff"}" src="${p.images[0].src}" alt="${p.fullName || p.name}" loading="lazy" />` : vehicleSVG(p);
 
 const priceHTML = (p, long = false) => `
   <div class="card__price">
