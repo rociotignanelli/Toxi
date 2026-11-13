@@ -63,6 +63,53 @@ PRODUCTS.push(
   turboSportDuo("negra", "negro", "Negra", "#8a96a8", "#f6f6f6"),
 );
 
+/* ---------- Mini Moto Cross 50 cc 2 tiempos ---------- */
+const CROSS_IMG = "img/mini-moto-cross/";
+PRODUCTS.push({
+  id: "mini-moto-cross-50",
+  name: "Mini Moto Cross 50 cc",
+  fullName: "Mini Moto Cross 50 cc 2 Tiempos",
+  type: "moto", label: "Mini moto cross a nafta",
+  price: 430000, badge: "50 cc",
+  color: "#ff2d2d",
+  photoBg: "#fdfdfd",
+  images: [
+    { src: `${CROSS_IMG}principal.jpg`, alt: "Mini Moto Cross 50 cc, vista lateral" },
+    { src: `${CROSS_IMG}exterior.jpg`, alt: "Mini Moto Cross 50 cc al aire libre" },
+    { src: `${CROSS_IMG}trasera.jpg`, alt: "Mini Moto Cross 50 cc, vista trasera" },
+    { src: `${CROSS_IMG}frente.jpg`, alt: "Mini Moto Cross 50 cc, vista frontal" },
+    { src: `${CROSS_IMG}promo.jpg`, alt: "Mini Moto Cross 2 Tiempos, precio final $430.000" },
+  ],
+  quickSpecs: [["50 cc", "nafta"], ["2T", "motor"], ['10"', "rodado"]],
+  tagline: "¡Velocidad, adrenalina y diversión off-road para los más chicos!",
+  description: [
+    "La Mini Moto Cross 2 Tiempos es la moto ideal para que los chicos den sus primeros pasos en el mundo del motocross, con un diseño inspirado en las motos de competición.",
+    "Equipada con un motor a nafta de 50 cc y 2 tiempos, ofrece un andar ágil y divertido para disfrutar en circuitos, campos y espacios abiertos.",
+    "Cuenta con frenos de disco, rodado de 10 pulgadas con cubiertas de taco para todo terreno y arranque a polea (manual), simple y confiable.",
+    "Su diseño tipo cross, con gráficos llamativos y estructura robusta, la convierte en una moto con estilo y carácter, lista para acompañar cada aventura.",
+  ],
+  featuresTitle: "¿Qué hace especial a la Mini Moto Cross?",
+  features: [
+    ["Motor a nafta de 50 cc", "potencia y respuesta para disfrutar de una conducción divertida y dinámica."],
+    ["Sistema de 2 tiempos", "motor sencillo, liviano y fácil de mantener."],
+    ["Arranque a polea", "sistema de arranque manual, práctico y confiable."],
+    ["Frenos de disco", "frenado firme y seguro para tener más control."],
+    ["Rodado de 10 pulgadas", "cubiertas de taco preparadas para tierra, pasto y terrenos irregulares."],
+    ["Diseño tipo cross", "estética de motocross con detalles deportivos y estructura resistente."],
+  ],
+  techSpecs: [
+    ["Motor", "50 cc a nafta"],
+    ["Sistema", "2 tiempos"],
+    ["Arranque", "A polea (manual)"],
+    ["Frenos", "De disco"],
+    ["Rodado", "10 pulgadas"],
+    ["Uso", "Recreativo / infantil"],
+    ["Diseño", "Tipo cross (motocross)"],
+  ],
+  closingTitle: "¡La primera moto cross de los más chicos!",
+  closing: "La Mini Moto Cross 2 Tiempos es una excelente opción para regalar a los pequeños fanáticos de las motos. Recomendamos usarla siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
+});
+
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
@@ -227,7 +274,7 @@ function openListing(p) {
       <div class="listing__info">
         <p class="card__type">${p.label}</p>
         <h3 id="modalTitle">${p.fullName}</h3>
-        ${promoHTML(p)}
+        ${p.originalPrice ? promoHTML(p) : `<div class="listing__price"><small>Precio final</small><strong>${money(p.price)}</strong></div>`}
         <p class="listing__cuotas">${INSTALLMENTS} cuotas sin interés de ${money(p.price / INSTALLMENTS)} · Envío gratis</p>
         <div class="card__actions">
           <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
@@ -235,7 +282,7 @@ function openListing(p) {
         <div class="listing__text">
           <p class="listing__tagline">${p.tagline}</p>
           ${p.description.map((t) => `<p>${t}</p>`).join("")}
-          <h4>¿Qué hace especial a la Turbo Sport Duo?</h4>
+          <h4>${p.featuresTitle || "¿Qué hace especial a la Turbo Sport Duo?"}</h4>
           <ul class="listing__features">
             ${p.features.map(([t, d]) => `<li><strong>${t}:</strong> ${d}</li>`).join("")}
           </ul>
@@ -432,7 +479,7 @@ const bookingModel = $("#bookingModel");
 const bookingDate = $("#bookingDate");
 
 bookingModel.innerHTML =
-  `<option value="">Elegí un color</option>` +
+  `<option value="">Elegí un modelo</option>` +
   PRODUCTS.map((p) => `<option value="${p.id}">${p.name}</option>`).join("");
 
 const toISODate = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
@@ -451,7 +498,7 @@ bookingForm.addEventListener("submit", (e) => {
   if (data.name.trim().length < 3) { errors.push("tu nombre"); mark("name"); }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email.trim())) { errors.push("un correo válido"); mark("email"); }
   if (data.phone.replace(/\D/g, "").length < 8) { errors.push("un teléfono válido"); mark("phone"); }
-  if (!data.model) { errors.push("un color"); mark("model"); }
+  if (!data.model) { errors.push("un modelo"); mark("model"); }
   if (!data.date || data.date < bookingDate.min) { errors.push("una fecha a partir de mañana"); mark("date"); }
 
   if (errors.length) {
@@ -516,7 +563,7 @@ const observer = new IntersectionObserver(
 /* ---------- Inicio ---------- */
 $("#heroVisual").insertAdjacentHTML(
   "beforeend",
-  PRODUCTS.map(
+  PRODUCTS.filter((p) => p.id.startsWith("turbo-sport-duo")).map(
     (p, i) => `<button class="hero__photo hero__photo--${i + 1}" data-view="${p.id}" aria-label="Ver ${p.name}" style="--photo-bg:${p.photoBg}">
       <img src="${p.images[0].src}" alt="${p.fullName}" /></button>`
   ).join("") + `<span class="hero__badge">30% OFF</span>`
