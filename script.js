@@ -1,414 +1,580 @@
 /* =========================================================
-   TOXI Parfums — Interacciones
+   TOXI Electric — Interacciones
    ========================================================= */
 
 const PRODUCTS = [
   {
-    id: "noir-absolu", name: "Noir Absolu", family: "amaderado", label: "Amaderado",
-    price: 145, badge: "Más vendido", c1: "#e9c9a1", c2: "#a8743d",
-    desc: "Una oda a la noche. Maderas ahumadas y cuero suave envueltos en un halo de vainilla de Madagascar.",
-    top: "Pimienta negra, bergamota", heart: "Cuero, iris", base: "Vetiver, vainilla, sándalo",
+    id: "urban-s1", name: "Urban S1", type: "monopatin", label: "Monopatín",
+    price: 690000, color: "#3ee6c1", badge: "Más vendido",
+    desc: "El monopatín ideal para empezar: liviano, plegable en 3 segundos y con autonomía de sobra para ir y volver del trabajo.",
+    speed: 25, range: 30, power: 350, battery: "36 V · 10 Ah", weight: 14, charge: 5, wheel: '8,5"',
   },
   {
-    id: "rose-eternelle", name: "Rose Éternelle", family: "floral", label: "Floral",
-    price: 132, badge: "Nuevo", c1: "#f6dbe0", c2: "#b56576",
-    desc: "La rosa en su máxima expresión: fresca al amanecer, aterciopelada al caer la tarde.",
-    top: "Lichi, pomelo rosa", heart: "Rosa de Damasco, peonía", base: "Almizcle blanco, cedro",
+    id: "urban-s2", name: "Urban S2 Pro", type: "monopatin", label: "Monopatín",
+    price: 949000, color: "#c6ff3d", badge: "Nuevo",
+    desc: "Más potencia para subir pendientes, suspensión delantera, doble freno y pantalla con app para ver tu recorrido.",
+    speed: 25, range: 45, power: 500, battery: "36 V · 15 Ah", weight: 17, charge: 6, wheel: '10"',
   },
   {
-    id: "ambre-sacre", name: "Ambre Sacré", family: "oriental", label: "Oriental",
-    price: 158, c1: "#f0c27b", c2: "#8e4b23",
-    desc: "Cálido y envolvente como un atardecer en el desierto. Ámbar, especias y resinas preciosas.",
-    top: "Cardamomo, azafrán", heart: "Ámbar, canela", base: "Benjuí, tonka, pachulí",
+    id: "flex-lite", name: "Flex Lite", type: "monopatin", label: "Monopatín",
+    price: 499000, color: "#ff7ab6",
+    desc: "Ultra compacto de 11 kg. Perfecto para combinar con tren o subte y guardarlo debajo del escritorio.",
+    speed: 20, range: 20, power: 250, battery: "36 V · 7,5 Ah", weight: 11, charge: 4, wheel: '8"',
   },
   {
-    id: "brise-marine", name: "Brise Marine", family: "fresco", label: "Fresco",
-    price: 118, c1: "#d8ebf0", c2: "#5f8fa3",
-    desc: "La libertad de la costa mediterránea. Sal marina, cítricos y un fondo mineral luminoso.",
-    top: "Limón de Amalfi, menta", heart: "Notas marinas, salvia", base: "Ambroxan, madera flotante",
+    id: "trail-x", name: "Trail X", type: "monopatin", label: "Monopatín",
+    price: 1690000, color: "#ff9d3d", badge: "Todo terreno",
+    desc: "Doble motor, suspensión en ambas ruedas y cubiertas off-road. Para los que quieren ir más allá del asfalto.",
+    speed: 45, range: 70, power: 2000, battery: "48 V · 21 Ah", weight: 32, charge: 9, wheel: '10" off-road',
   },
   {
-    id: "jardin-secret", name: "Jardin Secret", family: "floral", label: "Floral",
-    price: 128, c1: "#f8f1df", c2: "#c9a95c",
-    desc: "Un paseo nocturno entre jazmines y nardos en flor. Sensual, cremoso, inolvidable.",
-    top: "Neroli, mandarina", heart: "Jazmín sambac, nardo", base: "Almizcle, haba tonka",
+    id: "volt-c1", name: "Volt C1", type: "moto", label: "Moto eléctrica",
+    price: 2390000, color: "#4da3ff",
+    desc: "Scooter urbano equivalente a un ciclomotor de 50 cc. Baúl bajo el asiento, frenos CBS y arranque sin llave.",
+    speed: 45, range: 60, power: 1500, battery: "60 V · 26 Ah (extraíble)", weight: 72, charge: 6, wheel: '12"',
   },
   {
-    id: "cedre-velours", name: "Cèdre Velours", family: "amaderado", label: "Amaderado",
-    price: 138, c1: "#dfe6d5", c2: "#5e6e4b",
-    desc: "Elegancia silenciosa. Cedro del Atlas y musgo de roble sobre un fondo aterciopelado.",
-    top: "Enebro, elemi", heart: "Cedro del Atlas, ciprés", base: "Musgo de roble, ámbar gris",
+    id: "volt-c3", name: "Volt C3", type: "moto", label: "Moto eléctrica",
+    price: 3290000, color: "#c6ff3d", badge: "Recomendada",
+    desc: "Nuestra moto más elegida: 3000 W, batería extraíble, freno a disco en ambas ruedas y conectividad con el celular.",
+    speed: 70, range: 90, power: 3000, battery: "72 V · 32 Ah (extraíble)", weight: 85, charge: 5, wheel: '12"',
   },
   {
-    id: "the-blanc", name: "Thé Blanc", family: "fresco", label: "Fresco",
-    price: 112, c1: "#f4f4ee", c2: "#a7b39c",
-    desc: "Serenidad embotellada. Té blanco, bambú y flor de higuera para cada día.",
-    top: "Té blanco, yuzu", heart: "Bambú, flor de higuera", base: "Almizcle limpio",
+    id: "cargo", name: "Cargo 55", type: "moto", label: "Moto eléctrica",
+    price: 3590000, color: "#ffd23d",
+    desc: "Pensada para delivery y trabajo: chasis reforzado, parrilla para caja de 90 L y dos baterías para doble autonomía.",
+    speed: 55, range: 110, power: 3000, battery: "2 × 60 V · 30 Ah", weight: 98, charge: 6, wheel: '14"',
   },
   {
-    id: "oud-imperial", name: "Oud Imperial", family: "oriental", label: "Oriental",
-    price: 240, badge: "Edición limitada", gold: true, c1: "#5a3b2e", c2: "#1e1310",
-    desc: "Solo 500 frascos numerados. Oud de Laos, rosa de Taif y ámbar gris en una composición majestuosa.",
-    top: "Azafrán, incienso", heart: "Rosa de Taif, oud", base: "Ámbar gris, cuero, mirra",
+    id: "ryder-r", name: "Ryder R", type: "moto", label: "Moto eléctrica",
+    price: 5490000, color: "#ff4d6d", badge: "Alta gama",
+    desc: "Naked deportiva de 5000 W con modo Sport, ABS, control de tracción y 120 km de autonomía real.",
+    speed: 100, range: 120, power: 5000, battery: "72 V · 50 Ah", weight: 118, charge: 4, wheel: '17"',
   },
-];
-
-const SIZES = [
-  { ml: 50, factor: 1 },
-  { ml: 100, factor: 1.6 },
 ];
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-const money = (n) => "$" + n.toLocaleString("es-AR", { maximumFractionDigits: 0 });
+const money = (n) => "$" + Math.round(n).toLocaleString("es-AR");
 const findProduct = (id) => PRODUCTS.find((p) => p.id === id);
-const priceFor = (p, ml) => Math.round(p.price * SIZES.find((s) => s.ml === ml).factor);
+const INSTALLMENTS = 12;
 
-const bottleHTML = (p, name = true) => `
-  <div class="bottle" style="--c1:${p.c1};--c2:${p.c2};">
-    <div class="bottle__cap"></div><div class="bottle__neck"></div>
-    <div class="bottle__body"><span>TOXI</span>${name ? `<small>${p.name}</small>` : ""}</div>
-  </div>`;
+/* ---------- Ilustraciones SVG ---------- */
+const wheel = (cx, cy, r) => `
+  <circle cx="${cx}" cy="${cy}" r="${r}" fill="#0b0f14" stroke="#2a323d" stroke-width="4"/>
+  <circle cx="${cx}" cy="${cy}" r="${r * 0.55}" fill="none" stroke="#3a4452" stroke-width="2"/>
+  <circle cx="${cx}" cy="${cy}" r="${r * 0.22}" fill="var(--accent)"/>`;
 
-/* ---------- Productos ---------- */
+const scooterSVG = (color) => `
+  <svg class="vehicle" viewBox="0 0 220 140" style="--accent:${color}" aria-hidden="true">
+    <ellipse cx="112" cy="134" rx="90" ry="4" fill="rgba(0,0,0,.35)"/>
+    <path d="M22 108 A24 24 0 0 1 66 96" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round"/>
+    <rect x="44" y="98" width="122" height="11" rx="5.5" fill="${color}"/>
+    <rect x="62" y="100" width="70" height="4" rx="2" fill="rgba(0,0,0,.25)"/>
+    <path d="M160 104 L178 112" stroke="#2a323d" stroke-width="7" stroke-linecap="round"/>
+    <path d="M166 106 L148 20" stroke="${color}" stroke-width="8" stroke-linecap="round"/>
+    <path d="M132 20 L162 20" stroke="#d6dde6" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="157" cy="58" r="4" fill="#fff8c4"/>
+    ${wheel(44, 112, 20)}
+    ${wheel(180, 112, 20)}
+  </svg>`;
+
+const motoSVG = (color) => `
+  <svg class="vehicle" viewBox="0 0 220 140" style="--accent:${color}" aria-hidden="true">
+    <ellipse cx="112" cy="134" rx="96" ry="4" fill="rgba(0,0,0,.35)"/>
+    <path d="M44 106 L98 92" stroke="#2a323d" stroke-width="7" stroke-linecap="round"/>
+    <path d="M178 106 L160 50" stroke="#9aa6b4" stroke-width="6" stroke-linecap="round"/>
+    <path d="M52 92 Q58 66 88 62 L150 58 Q166 60 168 80 L160 98 L92 100 Z" fill="${color}"/>
+    <rect x="96" y="72" width="50" height="22" rx="4" fill="#141a22"/>
+    <path d="M104 83 h10 l-4 6 h8" stroke="${color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M66 62 Q96 46 136 52 L134 60 L70 66 Z" fill="#141a22"/>
+    <path d="M152 40 L170 34" stroke="#d6dde6" stroke-width="6" stroke-linecap="round"/>
+    <path d="M160 40 L164 56" stroke="#9aa6b4" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="172" cy="56" r="6" fill="#fff8c4"/>
+    <path d="M150 104 A30 30 0 0 1 204 96" fill="none" stroke="${color}" stroke-width="5" stroke-linecap="round"/>
+    ${wheel(44, 106, 26)}
+    ${wheel(178, 106, 26)}
+  </svg>`;
+
+const vehicleSVG = (p) => (p.type === "moto" ? motoSVG(p.color) : scooterSVG(p.color));
+
+/* ---------- Toast ---------- */
+const toastEl = $("#toast");
+let toastTimer;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("is-visible");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove("is-visible"), 2600);
+}
+
+/* ---------- Catálogo ---------- */
 const productsEl = $("#products");
+let currentFilter = "todos";
+let currentSort = "destacados";
 
-function renderProducts(filter = "todos") {
-  const list = filter === "todos" ? PRODUCTS : PRODUCTS.filter((p) => p.family === filter);
-  productsEl.innerHTML = list
+function sortedList() {
+  let list = currentFilter === "todos" ? [...PRODUCTS] : PRODUCTS.filter((p) => p.type === currentFilter);
+  const sorters = {
+    "precio-asc": (a, b) => a.price - b.price,
+    "precio-desc": (a, b) => b.price - a.price,
+    autonomia: (a, b) => b.range - a.range,
+    velocidad: (a, b) => b.speed - a.speed,
+  };
+  if (sorters[currentSort]) list.sort(sorters[currentSort]);
+  return list;
+}
+
+function renderProducts() {
+  productsEl.innerHTML = sortedList()
     .map(
       (p, i) => `
-    <article class="product" style="animation-delay:${i * 70}ms">
-      <div class="product__media" data-view="${p.id}">
-        ${p.badge ? `<span class="badge ${p.gold ? "badge--gold" : ""}">${p.badge}</span>` : ""}
-        ${bottleHTML(p)}
-        <span class="quick-view">Vista rápida</span>
-      </div>
-      <div class="product__info">
-        <p class="product__family">${p.label}</p>
-        <h3 class="product__name">${p.name}</h3>
-        <p class="product__notes">${p.top} · ${p.heart}</p>
-        <div class="product__row">
-          <span class="product__price">${money(p.price)}<small>50 ml</small></span>
-          <button class="add-btn" data-add="${p.id}">Añadir</button>
+      <article class="card reveal is-visible" style="--accent:${p.color};animation-delay:${i * 60}ms">
+        ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+        <button class="card__visual" data-view="${p.id}" aria-label="Ver detalles de ${p.name}">
+          ${vehicleSVG(p)}
+        </button>
+        <div class="card__body">
+          <p class="card__type">${p.label}</p>
+          <h3>${p.name}</h3>
+          <ul class="specs">
+            <li><strong>${p.speed}</strong> km/h</li>
+            <li><strong>${p.range}</strong> km</li>
+            <li><strong>${p.power}</strong> W</li>
+          </ul>
+          <div class="card__price">
+            <strong>${money(p.price)}</strong>
+            <span>${INSTALLMENTS} cuotas de ${money(p.price / INSTALLMENTS)}</span>
+          </div>
+          <div class="card__actions">
+            <button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button>
+            <button class="btn btn--ghost btn--sm" data-view="${p.id}">Ver más</button>
+          </div>
+          <label class="compare-check">
+            <input type="checkbox" data-compare="${p.id}" ${compare.includes(p.id) ? "checked" : ""} />
+            <span>Comparar</span>
+          </label>
         </div>
-      </div>
-    </article>`
+      </article>`
     )
     .join("");
 }
 
+function setFilter(filter) {
+  currentFilter = filter;
+  $$(".filter").forEach((b) => b.classList.toggle("is-active", b.dataset.filter === filter));
+  renderProducts();
+}
+
 $("#filters").addEventListener("click", (e) => {
   const btn = e.target.closest(".filter");
-  if (!btn) return;
-  $$(".filter").forEach((b) => b.classList.toggle("is-active", b === btn));
-  renderProducts(btn.dataset.filter);
+  if (btn) setFilter(btn.dataset.filter);
 });
 
-/* ---------- Carrito ---------- */
-let cart = [];
-try { cart = JSON.parse(localStorage.getItem("toxi-cart") || "[]"); } catch { cart = []; }
-
-const saveCart = () => { try { localStorage.setItem("toxi-cart", JSON.stringify(cart)); } catch {} };
-
-function addToCart(id, ml = 50) {
-  const p = findProduct(id);
-  if (!p) return;
-  const existing = cart.find((i) => i.id === id && i.ml === ml);
-  existing ? existing.qty++ : cart.push({ id, ml, qty: 1 });
-  saveCart();
-  renderCart();
-  const badge = $("#cartCount");
-  badge.classList.add("bump");
-  setTimeout(() => badge.classList.remove("bump"), 300);
-  toast(`${p.name} ${ml} ml añadido al carrito`);
-}
-
-function renderCart() {
-  const itemsEl = $("#cartItems");
-  const count = cart.reduce((s, i) => s + i.qty, 0);
-  const total = cart.reduce((s, i) => s + priceFor(findProduct(i.id), i.ml) * i.qty, 0);
-  $("#cartCount").textContent = count;
-  $("#cartTotal").textContent = money(total);
-  $("#checkoutBtn").disabled = count === 0;
-
-  if (!cart.length) {
-    itemsEl.innerHTML = `<div class="cart__empty"><p>Tu carrito está vacío.</p><br/><a href="#coleccion" class="btn btn--ghost" data-close-cart>Explorar colección</a></div>`;
-    return;
-  }
-
-  itemsEl.innerHTML = cart
-    .map((item, idx) => {
-      const p = findProduct(item.id);
-      return `
-      <div class="cart-item">
-        <div class="cart-item__thumb">${bottleHTML(p, false)}</div>
-        <div>
-          <h4>${p.name}</h4>
-          <small>${item.ml} ml · ${p.label}</small><br/>
-          <div class="qty">
-            <button data-qty="-1" data-idx="${idx}" aria-label="Restar">−</button>
-            <span>${item.qty}</span>
-            <button data-qty="1" data-idx="${idx}" aria-label="Sumar">+</button>
-          </div>
-        </div>
-        <div class="cart-item__right">
-          <strong>${money(priceFor(p, item.ml) * item.qty)}</strong>
-          <button class="remove" data-remove="${idx}">Eliminar</button>
-        </div>
-      </div>`;
-    })
-    .join("");
-}
-
-$("#cartItems").addEventListener("click", (e) => {
-  const q = e.target.closest("[data-qty]");
-  const r = e.target.closest("[data-remove]");
-  if (q) {
-    const item = cart[q.dataset.idx];
-    item.qty += Number(q.dataset.qty);
-    if (item.qty <= 0) cart.splice(q.dataset.idx, 1);
-  } else if (r) {
-    cart.splice(r.dataset.remove, 1);
-  } else if (e.target.closest("[data-close-cart]")) {
-    closeCart();
-    return;
-  } else return;
-  saveCart();
-  renderCart();
+$("#sort").addEventListener("change", (e) => {
+  currentSort = e.target.value;
+  renderProducts();
 });
 
-const openCart = () => {
-  $("#cart").classList.add("is-open");
-  $("#overlay").classList.add("is-open");
-  document.body.classList.add("no-scroll");
-};
-const closeCart = () => {
-  $("#cart").classList.remove("is-open");
-  $("#overlay").classList.remove("is-open");
-  document.body.classList.remove("no-scroll");
-};
+$$("[data-jump]").forEach((a) => a.addEventListener("click", () => setFilter(a.dataset.jump)));
 
-$("#cartBtn").addEventListener("click", openCart);
-$("#cartClose").addEventListener("click", closeCart);
-$("#overlay").addEventListener("click", closeCart);
-
-$("#checkoutBtn").addEventListener("click", () => {
-  if (!cart.length) return;
-  cart = [];
-  saveCart();
-  renderCart();
-  closeCart();
-  toast("¡Gracias por tu compra! Recibirás un correo de confirmación.");
-});
-
-/* ---------- Modal de producto ---------- */
+/* ---------- Modal ---------- */
 const modal = $("#modal");
+const modalContent = $("#modalContent");
+const overlay = $("#overlay");
 
-function openModal(id) {
-  const p = findProduct(id);
-  if (!p) return;
-  let selected = 50;
-  $("#modalContent").innerHTML = `
-    <div class="modal__media">${bottleHTML(p)}</div>
-    <div class="modal__info">
-      <p class="eyebrow">${p.label}</p>
-      <h3 id="modalTitle">${p.name}</h3>
-      <p>${p.desc}</p>
-      <dl class="pyramid">
-        <div><dt>Salida</dt><dd>${p.top}</dd></div>
-        <div><dt>Corazón</dt><dd>${p.heart}</dd></div>
-        <div><dt>Fondo</dt><dd>${p.base}</dd></div>
-      </dl>
-      <div class="sizes">
-        ${SIZES.map((s) => `<button class="size ${s.ml === 50 ? "is-active" : ""}" data-ml="${s.ml}">${s.ml} ml</button>`).join("")}
-      </div>
-      <p class="modal__price" id="modalPrice">${money(p.price)}</p>
-      <button class="btn btn--primary btn--block" id="modalAdd">Añadir al carrito</button>
-    </div>`;
-
-  $$(".size", modal).forEach((btn) =>
-    btn.addEventListener("click", () => {
-      selected = Number(btn.dataset.ml);
-      $$(".size", modal).forEach((b) => b.classList.toggle("is-active", b === btn));
-      $("#modalPrice").textContent = money(priceFor(p, selected));
-    })
-  );
-  $("#modalAdd").addEventListener("click", () => {
-    addToCart(p.id, selected);
-    closeModal();
-  });
-
+function openModal(html) {
+  modalContent.innerHTML = html;
   modal.classList.add("is-open");
   document.body.classList.add("no-scroll");
+  $("#modalClose").focus();
 }
 
 function closeModal() {
   modal.classList.remove("is-open");
-  document.body.classList.remove("no-scroll");
+  if (!cart.classList.contains("is-open")) document.body.classList.remove("no-scroll");
+}
+
+function openProduct(id) {
+  const p = findProduct(id);
+  if (!p) return;
+  openModal(`
+    <div class="detail" style="--accent:${p.color}">
+      <div class="detail__visual">${vehicleSVG(p)}</div>
+      <div class="detail__info">
+        <p class="card__type">${p.label}</p>
+        <h3 id="modalTitle">${p.name}</h3>
+        <p class="detail__desc">${p.desc}</p>
+        <dl class="detail__specs">
+          <div><dt>Velocidad máx.</dt><dd>${p.speed} km/h</dd></div>
+          <div><dt>Autonomía</dt><dd>${p.range} km</dd></div>
+          <div><dt>Potencia</dt><dd>${p.power} W</dd></div>
+          <div><dt>Batería</dt><dd>${p.battery}</dd></div>
+          <div><dt>Tiempo de carga</dt><dd>${p.charge} h</dd></div>
+          <div><dt>Peso</dt><dd>${p.weight} kg</dd></div>
+          <div><dt>Rodado</dt><dd>${p.wheel}</dd></div>
+          <div><dt>Garantía</dt><dd>2 años</dd></div>
+        </dl>
+        <div class="card__price">
+          <strong>${money(p.price)}</strong>
+          <span>${INSTALLMENTS} cuotas sin interés de ${money(p.price / INSTALLMENTS)}</span>
+        </div>
+        <div class="card__actions">
+          <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
+          <a class="btn btn--ghost" href="#prueba" data-book="${p.id}">Probarlo gratis</a>
+        </div>
+      </div>
+    </div>`);
 }
 
 $("#modalClose").addEventListener("click", closeModal);
-modal.addEventListener("click", (e) => e.target === modal && closeModal());
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") { closeModal(); closeCart(); closeMenu(); }
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) closeModal();
+  const book = e.target.closest("[data-book]");
+  if (book) {
+    $("#bookingModel").value = book.dataset.book;
+    closeModal();
+  }
 });
 
-/* Delegación global: añadir y vista rápida */
+/* ---------- Comparador ---------- */
+let compare = [];
+const compareBar = $("#compareBar");
+
+function renderCompareBar() {
+  compareBar.classList.toggle("is-visible", compare.length > 0);
+  $("#compareItems").innerHTML =
+    compare
+      .map((id) => {
+        const p = findProduct(id);
+        return `<span class="chip" style="--accent:${p.color}">${p.name}<button data-uncompare="${id}" aria-label="Quitar ${p.name}">✕</button></span>`;
+      })
+      .join("") + `<span class="compare-bar__hint">${compare.length}/3 seleccionados</span>`;
+  $("#compareOpen").disabled = compare.length < 2;
+  $$("[data-compare]").forEach((c) => (c.checked = compare.includes(c.dataset.compare)));
+}
+
+function toggleCompare(id, on) {
+  if (on && !compare.includes(id)) {
+    if (compare.length >= 3) {
+      toast("Podés comparar hasta 3 modelos");
+      renderCompareBar();
+      return;
+    }
+    compare.push(id);
+  } else if (!on) {
+    compare = compare.filter((x) => x !== id);
+  }
+  renderCompareBar();
+}
+
+function openCompare() {
+  const items = compare.map(findProduct);
+  const rows = [
+    ["Tipo", (p) => p.label],
+    ["Precio", (p) => money(p.price), (p) => -p.price],
+    ["Velocidad máx.", (p) => `${p.speed} km/h`, (p) => p.speed],
+    ["Autonomía", (p) => `${p.range} km`, (p) => p.range],
+    ["Potencia", (p) => `${p.power} W`, (p) => p.power],
+    ["Batería", (p) => p.battery],
+    ["Carga", (p) => `${p.charge} h`, (p) => -p.charge],
+    ["Peso", (p) => `${p.weight} kg`],
+    ["Rodado", (p) => p.wheel],
+  ];
+  const body = rows
+    .map(([label, fmt, score]) => {
+      const best = score ? Math.max(...items.map(score)) : null;
+      return `<tr><th scope="row">${label}</th>${items
+        .map((p) => `<td class="${score && score(p) === best ? "is-best" : ""}">${fmt(p)}</td>`)
+        .join("")}</tr>`;
+    })
+    .join("");
+  openModal(`
+    <h3 id="modalTitle" class="compare__title">Comparar modelos</h3>
+    <div class="compare__wrap">
+      <table class="compare">
+        <thead><tr><th></th>${items
+          .map((p) => `<th style="--accent:${p.color}">${vehicleSVG(p)}<span>${p.name}</span></th>`)
+          .join("")}</tr></thead>
+        <tbody>${body}
+          <tr><th></th>${items
+            .map((p) => `<td><button class="btn btn--primary btn--sm" data-add="${p.id}">Agregar</button></td>`)
+            .join("")}</tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare__legend">Resaltado: el mejor valor de cada fila.</p>`);
+}
+
+$("#compareOpen").addEventListener("click", openCompare);
+$("#compareClear").addEventListener("click", () => {
+  compare = [];
+  renderCompareBar();
+});
+$("#compareItems").addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-uncompare]");
+  if (btn) toggleCompare(btn.dataset.uncompare, false);
+});
+
+/* ---------- Carrito ---------- */
+const cart = $("#cart");
+const STORAGE_KEY = "toxi-electric-cart";
+
+function loadCart() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(saved) ? saved.filter((i) => findProduct(i.id) && i.qty > 0) : [];
+  } catch {
+    return [];
+  }
+}
+
+let cartItems = loadCart();
+
+function saveCart() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cartItems));
+  } catch {
+    /* almacenamiento no disponible: el carrito funciona igual en esta sesión */
+  }
+}
+
+function renderCart() {
+  const count = cartItems.reduce((s, i) => s + i.qty, 0);
+  const total = cartItems.reduce((s, i) => s + findProduct(i.id).price * i.qty, 0);
+  $("#cartCount").textContent = count;
+  $("#cartCount").classList.toggle("is-visible", count > 0);
+  $("#cartTotal").textContent = money(total);
+  $("#cartInstallments").textContent = total
+    ? `Envío gratis · ${INSTALLMENTS} cuotas sin interés de ${money(total / INSTALLMENTS)}`
+    : "Envío gratis · Hasta 12 cuotas sin interés.";
+  $("#checkoutBtn").disabled = count === 0;
+
+  $("#cartItems").innerHTML = cartItems.length
+    ? cartItems
+        .map((i) => {
+          const p = findProduct(i.id);
+          return `
+          <div class="cart-item" style="--accent:${p.color}">
+            <div class="cart-item__visual">${vehicleSVG(p)}</div>
+            <div class="cart-item__info">
+              <strong>${p.name}</strong>
+              <span>${p.label}</span>
+              <div class="qty">
+                <button data-qty="-1" data-id="${p.id}" aria-label="Quitar uno">−</button>
+                <span>${i.qty}</span>
+                <button data-qty="1" data-id="${p.id}" aria-label="Agregar uno">+</button>
+              </div>
+            </div>
+            <div class="cart-item__side">
+              <strong>${money(p.price * i.qty)}</strong>
+              <button class="link" data-remove="${p.id}">Eliminar</button>
+            </div>
+          </div>`;
+        })
+        .join("")
+    : `<div class="cart__empty"><p>Tu carrito está vacío.</p><a href="#catalogo" class="btn btn--ghost btn--sm" data-close-cart>Ver catálogo</a></div>`;
+}
+
+function addToCart(id) {
+  const p = findProduct(id);
+  if (!p) return;
+  const item = cartItems.find((i) => i.id === id);
+  item ? item.qty++ : cartItems.push({ id, qty: 1 });
+  saveCart();
+  renderCart();
+  toast(`${p.name} agregado al carrito`);
+}
+
+function changeQty(id, delta) {
+  const item = cartItems.find((i) => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cartItems = cartItems.filter((i) => i.id !== id);
+  saveCart();
+  renderCart();
+}
+
+function openCart() {
+  cart.classList.add("is-open");
+  overlay.classList.add("is-open");
+  document.body.classList.add("no-scroll");
+}
+
+function closeCart() {
+  cart.classList.remove("is-open");
+  overlay.classList.remove("is-open");
+  if (!modal.classList.contains("is-open")) document.body.classList.remove("no-scroll");
+}
+
+$("#cartBtn").addEventListener("click", openCart);
+$("#cartClose").addEventListener("click", closeCart);
+overlay.addEventListener("click", closeCart);
+
+$("#cartItems").addEventListener("click", (e) => {
+  const q = e.target.closest("[data-qty]");
+  if (q) changeQty(q.dataset.id, Number(q.dataset.qty));
+  const r = e.target.closest("[data-remove]");
+  if (r) changeQty(r.dataset.remove, -Infinity);
+  if (e.target.closest("[data-close-cart]")) closeCart();
+});
+
+$("#checkoutBtn").addEventListener("click", () => {
+  if (!cartItems.length) return;
+  cartItems = [];
+  saveCart();
+  renderCart();
+  closeCart();
+  toast("¡Gracias por tu compra! Te enviamos los detalles por correo.");
+});
+
+/* ---------- Clicks globales (agregar / ver / comparar) ---------- */
 document.addEventListener("click", (e) => {
   const add = e.target.closest("[data-add]");
+  if (add) {
+    addToCart(add.dataset.add);
+    if (add.hasAttribute("data-close")) closeModal();
+  }
   const view = e.target.closest("[data-view]");
-  if (add) addToCart(add.dataset.add);
-  else if (view) openModal(view.dataset.view);
+  if (view) openProduct(view.dataset.view);
 });
 
-/* ---------- Quiz ---------- */
-const QUIZ = [
-  {
-    q: "¿En qué momento lo llevarías?",
-    options: [
-      { icon: "☀️", text: "De día, en la oficina", tags: ["fresco", "floral"] },
-      { icon: "🌙", text: "Noches y ocasiones especiales", tags: ["oriental", "amaderado"] },
-      { icon: "🌿", text: "Fines de semana al aire libre", tags: ["fresco", "amaderado"] },
-      { icon: "💫", text: "En cualquier momento", tags: ["floral", "amaderado"] },
-    ],
-  },
-  {
-    q: "¿Qué ambiente te inspira más?",
-    options: [
-      { icon: "🌊", text: "Una playa al amanecer", tags: ["fresco"] },
-      { icon: "🌹", text: "Un jardín en primavera", tags: ["floral"] },
-      { icon: "🔥", text: "Una chimenea encendida", tags: ["oriental", "amaderado"] },
-      { icon: "🌲", text: "Un bosque tras la lluvia", tags: ["amaderado"] },
-    ],
-  },
-  {
-    q: "¿Cómo describirías tu estilo?",
-    options: [
-      { icon: "🤍", text: "Minimalista y natural", tags: ["fresco"] },
-      { icon: "🌸", text: "Romántico y delicado", tags: ["floral"] },
-      { icon: "🖤", text: "Audaz y misterioso", tags: ["oriental"] },
-      { icon: "🎩", text: "Clásico y elegante", tags: ["amaderado"] },
-    ],
-  },
-];
+productsEl.addEventListener("change", (e) => {
+  if (e.target.matches("[data-compare]")) toggleCompare(e.target.dataset.compare, e.target.checked);
+});
 
-const PICK = { amaderado: "noir-absolu", floral: "rose-eternelle", oriental: "ambre-sacre", fresco: "brise-marine" };
-let quizStep = 0;
-let scores = {};
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Escape") return;
+  if (modal.classList.contains("is-open")) closeModal();
+  else if (cart.classList.contains("is-open")) closeCart();
+});
 
-function renderQuiz() {
-  const body = $("#quizBody");
-  $("#quizBar").style.width = `${(quizStep / QUIZ.length) * 100}%`;
+/* ---------- Calculadora de ahorro ---------- */
+const DAYS_PER_MONTH = 22;
+const MOTO_KM_PER_L = 35;
+const ELEC_KWH_PER_100KM = 3.5;
 
-  if (quizStep < QUIZ.length) {
-    const s = QUIZ[quizStep];
-    body.innerHTML = `
-      <p class="quiz__step">Pregunta ${quizStep + 1} de ${QUIZ.length}</p>
-      <h3 class="quiz__q">${s.q}</h3>
-      <div class="quiz__options">
-        ${s.options.map((o, i) => `<button class="quiz__opt" data-opt="${i}"><b>${o.icon}</b>${o.text}</button>`).join("")}
-      </div>`;
+function updateCalc() {
+  const km = Number($("#km").value);
+  const fuel = Math.max(0, Number($("#fuel").value) || 0);
+  const kwh = Math.max(0, Number($("#kwh").value) || 0);
+  const monthlyKm = km * DAYS_PER_MONTH;
+  const costFuel = (monthlyKm / MOTO_KM_PER_L) * fuel;
+  const costElec = (monthlyKm / 100) * ELEC_KWH_PER_100KM * kwh;
+  const save = costFuel - costElec;
+
+  $("#kmOut").textContent = `${km} km`;
+  $("#costFuel").textContent = money(costFuel);
+  $("#costElec").textContent = money(costElec);
+  $("#costSave").textContent = money(Math.max(0, save));
+  $("#calcNote").textContent =
+    save > 0
+      ? `Son ${money(save * 12)} al año, recorriendo ${monthlyKm.toLocaleString("es-AR")} km por mes (${DAYS_PER_MONTH} días hábiles).`
+      : "Con estos valores no hay ahorro en combustible. Revisá los precios ingresados.";
+}
+
+$("#calcForm").addEventListener("input", updateCalc);
+$("#calcForm").addEventListener("submit", (e) => e.preventDefault());
+
+/* ---------- Prueba de manejo ---------- */
+const bookingForm = $("#bookingForm");
+const bookingModel = $("#bookingModel");
+const bookingDate = $("#bookingDate");
+
+bookingModel.innerHTML =
+  `<option value="">Elegí un modelo</option>` +
+  ["monopatin", "moto"]
+    .map(
+      (t) =>
+        `<optgroup label="${t === "moto" ? "Motos" : "Monopatines"}">${PRODUCTS.filter((p) => p.type === t)
+          .map((p) => `<option value="${p.id}">${p.name}</option>`)
+          .join("")}</optgroup>`
+    )
+    .join("");
+
+const toISODate = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+bookingDate.min = toISODate(tomorrow);
+
+bookingForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const msg = $("#bookingMsg");
+  const data = Object.fromEntries(new FormData(bookingForm));
+  $$(".field input, .field select", bookingForm).forEach((el) => el.classList.remove("is-invalid"));
+
+  const errors = [];
+  const mark = (name) => bookingForm.elements[name].classList.add("is-invalid");
+  if (data.name.trim().length < 3) { errors.push("tu nombre"); mark("name"); }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email.trim())) { errors.push("un correo válido"); mark("email"); }
+  if (data.phone.replace(/\D/g, "").length < 8) { errors.push("un teléfono válido"); mark("phone"); }
+  if (!data.model) { errors.push("un modelo"); mark("model"); }
+  if (!data.date || data.date < bookingDate.min) { errors.push("una fecha a partir de mañana"); mark("date"); }
+
+  if (errors.length) {
+    msg.className = "form-msg is-error";
+    msg.textContent = `Revisá: ${errors.join(", ")}.`;
     return;
   }
 
-  const family = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
-  const p = findProduct(PICK[family]);
-  body.innerHTML = `
-    <div class="quiz__result">
-      <p class="quiz__step">Tu fragancia ideal</p>
-      <h3 class="quiz__q">${p.name}</h3>
-      ${bottleHTML(p)}
-      <p>${p.desc}</p>
-      <div class="btns">
-        <button class="btn btn--primary" data-add="${p.id}">Añadir — ${money(p.price)}</button>
-        <button class="btn btn--ghost" id="quizRestart">Repetir test</button>
-      </div>
-    </div>`;
-}
-
-$("#quizBody").addEventListener("click", (e) => {
-  const opt = e.target.closest("[data-opt]");
-  if (opt) {
-    QUIZ[quizStep].options[opt.dataset.opt].tags.forEach((t) => (scores[t] = (scores[t] || 0) + 1));
-    quizStep++;
-    renderQuiz();
-  } else if (e.target.id === "quizRestart") {
-    quizStep = 0;
-    scores = {};
-    renderQuiz();
-  }
+  const p = findProduct(data.model);
+  const date = new Date(data.date + "T12:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" }).replace(",", "");
+  msg.className = "form-msg is-ok";
+  msg.textContent = `¡Listo, ${data.name.trim().split(" ")[0]}! Te esperamos el ${date} para probar la ${p.name}. Te confirmamos el horario por correo.`;
+  bookingForm.reset();
 });
 
 /* ---------- Newsletter ---------- */
 $("#newsletterForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  const email = $("#email").value.trim();
+  const input = $("#email");
   const msg = $("#formMsg");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    msg.textContent = "Por favor, introduce un correo electrónico válido.";
-    msg.className = "form-msg err";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim())) {
+    msg.className = "form-msg is-error";
+    msg.textContent = "Ingresá un correo electrónico válido.";
     return;
   }
-  msg.textContent = "¡Bienvenida/o al Círculo TOXI! Revisa tu correo para obtener tu 10% de descuento.";
-  msg.className = "form-msg ok";
-  e.target.reset();
+  msg.className = "form-msg is-ok";
+  msg.textContent = "¡Gracias! Revisá tu correo para obtener tu 5% off.";
+  input.value = "";
 });
 
-/* ---------- Menú móvil ---------- */
+/* ---------- Menú móvil y header ---------- */
 const nav = $("#nav");
 const menuToggle = $("#menuToggle");
-function closeMenu() {
-  nav.classList.remove("is-open");
-  menuToggle.classList.remove("is-open");
-}
 menuToggle.addEventListener("click", () => {
-  nav.classList.toggle("is-open");
-  menuToggle.classList.toggle("is-open");
+  const open = nav.classList.toggle("is-open");
+  menuToggle.classList.toggle("is-open", open);
+  menuToggle.setAttribute("aria-expanded", open);
 });
-$$("a", nav).forEach((a) => a.addEventListener("click", closeMenu));
+nav.addEventListener("click", (e) => {
+  if (e.target.tagName === "A") {
+    nav.classList.remove("is-open");
+    menuToggle.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
+});
 
-/* ---------- Header con scroll ---------- */
 const header = $("#header");
-window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 10), { passive: true });
+window.addEventListener("scroll", () => header.classList.toggle("is-scrolled", window.scrollY > 20), { passive: true });
 
 /* ---------- Animaciones al hacer scroll ---------- */
-const io = new IntersectionObserver(
+const observer = new IntersectionObserver(
   (entries) =>
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("is-visible");
-      $$("[data-count]", entry.target).forEach(animateCount);
-      io.unobserve(entry.target);
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
     }),
-  { threshold: 0.15 }
+  { threshold: 0.12 }
 );
-$$(".reveal").forEach((el) => io.observe(el));
-
-function animateCount(el) {
-  const target = Number(el.dataset.count);
-  const start = performance.now();
-  const dur = 1600;
-  const tick = (now) => {
-    const t = Math.min((now - start) / dur, 1);
-    el.textContent = Math.round(target * (1 - Math.pow(1 - t, 3)));
-    if (t < 1) requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
-}
-
-/* ---------- Toast ---------- */
-let toastTimer;
-function toast(text) {
-  const t = $("#toast");
-  t.textContent = text;
-  t.classList.add("is-visible");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove("is-visible"), 2600);
-}
 
 /* ---------- Inicio ---------- */
+$("#heroVisual").insertAdjacentHTML("beforeend", motoSVG("#c6ff3d") + scooterSVG("#3ee6c1"));
 $("#year").textContent = new Date().getFullYear();
 renderProducts();
+renderCompareBar();
 renderCart();
-renderQuiz();
+updateCalc();
+$$(".reveal").forEach((el) => observer.observe(el));
