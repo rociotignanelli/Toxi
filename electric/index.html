@@ -23,7 +23,6 @@
       <nav class="nav" id="nav">
         <a href="#catalogo">Catálogo</a>
         <a href="#catalogo" data-jump="repuesto">Repuestos</a>
-        <a href="#prueba">Visitanos</a>
         <a href="#faq">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -43,8 +42,8 @@
           <h1>Turbo Sport Duo: <em>su primera moto deportiva</em></h1>
           <p class="hero__lead">¡La emoción de manejar una moto deportiva, ahora para los más chicos! Batería recargable de 12V, aceleración a pedal y diseño estilo pista. Disponible en rosa, azul y negro.</p>
           <div class="hero__actions">
-            <a href="#catalogo" class="btn btn--primary">Ver las motos</a>
-            <a href="#prueba" class="btn btn--ghost">Vení a conocerla</a>
+            <a href="#catalogo" class="btn btn--primary" data-jump="moto">Ver las motos</a>
+            <a href="#catalogo" class="btn btn--ghost" data-jump="todos">Ver todos los productos</a>
           </div>
           <ul class="hero__stats">
             <li><strong>30% OFF</strong><span>precio final $350.000</span></li>
@@ -90,7 +89,7 @@
         <div class="section__head reveal">
           <p class="eyebrow">Catálogo</p>
           <h2>Elegí tu próxima aventura</h2>
-          <p>Motos y cuatris infantiles, bicis, motos y monopatines eléctricos, y repuestos y accesorios para tu monopatín. Tocá un producto para ver todas las fotos y la descripción completa.</p>
+          <p>Motos, cuatriciclos, bicicletas, monopatines, repuestos y accesorios. Elegí una categoría o mirá todos los productos juntos, y tocá uno para ver sus fotos y la descripción completa.</p>
         </div>
 
         <div class="toolbar reveal">
@@ -114,50 +113,6 @@
         <p class="results-info" id="resultsInfo"></p>
 
         <div class="products" id="products"></div>
-      </div>
-    </section>
-
-    <!-- Visita al showroom -->
-    <section class="section" id="prueba">
-      <div class="container booking">
-        <div class="booking__text reveal">
-          <p class="eyebrow">Showroom</p>
-          <h2>Vení a conocerlas</h2>
-          <p>Reservá un turno en nuestro showroom para ver las motos y el cuatri en persona y elegir la favorita con los chicos.</p>
-          <ul class="checklist">
-            <li>Sin costo y sin compromiso</li>
-            <li>En exhibición: Turbo Sport Duo (rosa, azul y negra), Mini Moto Cross Foston, Mini Moto Cross 50 cc y Mini Cuatri (rojo y negro)</li>
-            <li>Turnos de lunes a sábado</li>
-          </ul>
-        </div>
-        <form class="booking__form reveal" id="bookingForm" novalidate>
-          <label class="field">
-            <span>Nombre y apellido</span>
-            <input type="text" name="name" required autocomplete="name" />
-          </label>
-          <div class="field-row">
-            <label class="field">
-              <span>Correo electrónico</span>
-              <input type="email" name="email" required autocomplete="email" />
-            </label>
-            <label class="field">
-              <span>Teléfono</span>
-              <input type="tel" name="phone" required autocomplete="tel" />
-            </label>
-          </div>
-          <div class="field-row">
-            <label class="field">
-              <span>Modelo</span>
-              <select name="model" id="bookingModel" required></select>
-            </label>
-            <label class="field">
-              <span>Fecha</span>
-              <input type="date" name="date" id="bookingDate" required />
-            </label>
-          </div>
-          <button type="submit" class="btn btn--primary btn--block">Reservar turno</button>
-          <p class="form-msg" id="bookingMsg" role="status"></p>
-        </form>
       </div>
     </section>
 
@@ -225,18 +180,20 @@
       </div>
       <div>
         <h4>Productos</h4>
-        <a href="#catalogo" data-jump="infantil">Motos y cuatris infantiles</a>
-        <a href="#catalogo" data-jump="electrico">Bicis, motos y monopatines eléctricos</a>
-        <a href="#catalogo" data-jump="repuesto">Repuestos y accesorios</a>
+        <a href="#catalogo" data-jump="moto">Motos</a>
+        <a href="#catalogo" data-jump="cuatri">Cuatriciclos</a>
+        <a href="#catalogo" data-jump="bici">Bicicletas</a>
+        <a href="#catalogo" data-jump="monopatin">Monopatines</a>
+        <a href="#catalogo" data-jump="repuesto">Repuestos</a>
+        <a href="#catalogo" data-jump="accesorio">Accesorios</a>
       </div>
       <div>
         <h4>Ayuda</h4>
         <a href="#faq">Preguntas frecuentes</a>
-        <a href="#prueba">Visitanos</a>
       </div>
       <div>
-        <h4>Showroom</h4>
-        <p>Av. Siempre Viva 742<br />Lun – Sáb · 10:00 a 19:00<br />hola@toxielectric.com</p>
+        <h4>Contacto</h4>
+        <p>Atención: lunes a sábado, 10:00 a 19:00<br />hola@toxielectric.com</p>
       </div>
     </div>
     <div class="container footer__bottom">

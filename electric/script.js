@@ -234,12 +234,30 @@ PRODUCTS.push(
 /* ---------- Productos del proveedor (proveedor.js) ---------- */
 if (typeof PROVEEDOR !== "undefined") PRODUCTS.push(...PROVEEDOR);
 
+/* Clasificación por tipo de producto. Cada tipo puede tener variedades (sub). */
 const CATEGORIES = [
-  ["infantil", "Motos y cuatris infantiles"],
-  ["electrico", "Bicis, motos y monopatines eléctricos"],
-  ["repuesto", "Repuestos y accesorios"],
+  ["todos", "Todos los productos"],
+  ["moto", "Motos"],
+  ["cuatri", "Cuatriciclos"],
+  ["bici", "Bicicletas"],
+  ["monopatin", "Monopatines"],
+  ["repuesto", "Repuestos"],
+  ["accesorio", "Accesorios"],
 ];
-const catOf = (p) => p.cat || "infantil";
+function classify(p) {
+  if (p.kind) return;
+  if (p.id.startsWith("turbo-sport-duo") || p.id === "foston-mini-cross") [p.kind, p.variety] = ["moto", "Infantiles eléctricas"];
+  else if (p.id === "mini-moto-cross-50") [p.kind, p.variety] = ["moto", "Infantiles a nafta"];
+  else if (p.id.startsWith("mini-cuatri")) [p.kind, p.variety] = ["cuatri", "Infantiles a nafta"];
+  else if (p.id.startsWith("wr-bici-moto")) [p.kind, p.variety] = ["moto", "Eléctricas"];
+  else if (p.id.startsWith("wr-bicicleta")) [p.kind, p.variety] = ["bici", "Eléctricas"];
+  else if (p.id.startsWith("wr-monopatin")) [p.kind, p.variety] = ["monopatin", "Eléctricos"];
+  else if (p.sub === "Accesorios") [p.kind, p.variety] = ["accesorio", null];
+  else [p.kind, p.variety] = ["repuesto", p.sub];
+}
+PRODUCTS.forEach(classify);
+const catOf = (p) => p.kind;
+const inCat = (p, cat) => cat === "todos" || p.kind === cat;
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
@@ -324,7 +342,7 @@ function toast(msg) {
 
 /* ---------- Catálogo ---------- */
 const productsEl = $("#products");
-let currentFilter = "infantil";
+let currentFilter = "todos";
 let currentSub = "todos";
 let currentSort = "destacados";
 let currentSearch = "";
@@ -336,11 +354,11 @@ function sortedList() {
   if (currentSearch) {
     const words = normalize(currentSearch).split(/\s+/).filter(Boolean);
     list = PRODUCTS.filter((p) => {
-      const hay = normalize([p.name, p.label, p.sub || ""].join(" "));
+      const hay = normalize([p.name, p.label, p.sub || "", p.variety || ""].join(" "));
       return words.every((w) => hay.includes(w));
     });
   } else {
-    list = PRODUCTS.filter((p) => catOf(p) === currentFilter && (currentSub === "todos" || p.sub === currentSub));
+    list = PRODUCTS.filter((p) => inCat(p, currentFilter) && (currentSub === "todos" || p.variety === currentSub));
   }
   const sorters = {
     "precio-asc": (a, b) => a.price - b.price,
@@ -355,11 +373,11 @@ function sortedList() {
 function renderToolbar() {
   $("#filters").innerHTML = CATEGORIES.map(
     ([id, label]) => `<button class="filter ${!currentSearch && id === currentFilter ? "is-active" : ""}" data-filter="${id}">${label}
-      <span class="filter__count">${PRODUCTS.filter((p) => catOf(p) === id).length}</span></button>`
+      <span class="filter__count">${PRODUCTS.filter((p) => inCat(p, id)).length}</span></button>`
   ).join("");
-  const subs = [...new Set(PRODUCTS.filter((p) => catOf(p) === currentFilter && p.sub).map((p) => p.sub))];
+  const subs = currentFilter === "todos" ? [] : [...new Set(PRODUCTS.filter((p) => inCat(p, currentFilter) && p.variety).map((p) => p.variety))];
   const subEl = $("#subfilters");
-  subEl.hidden = !subs.length || !!currentSearch;
+  subEl.hidden = subs.length < 2 || !!currentSearch;
   subEl.innerHTML = ["todos", ...subs]
     .map((sub) => `<button class="chip-filter ${sub === currentSub ? "is-active" : ""}" data-sub="${sub}">${sub === "todos" ? "Todos" : sub}</button>`)
     .join("");
@@ -507,7 +525,6 @@ function openProduct(id) {
         ${priceHTML(p, true)}
         <div class="card__actions">
           <button class="btn btn--primary" data-add="${p.id}" data-close>Agregar al carrito</button>
-          <a class="btn btn--ghost" href="#prueba" data-book="${p.id}">Probarlo gratis</a>
         </div>
       </div>
     </div>`);
@@ -522,11 +539,6 @@ modal.addEventListener("click", (e) => {
     main.src = thumb.dataset.img;
     main.alt = thumb.dataset.alt;
     $$(".gallery__thumb", modal).forEach((t) => t.classList.toggle("is-active", t === thumb));
-  }
-  const book = e.target.closest("[data-book]");
-  if (book) {
-    $("#bookingModel").value = book.dataset.book;
-    closeModal();
   }
 });
 
@@ -657,50 +669,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key !== "Escape") return;
   if (modal.classList.contains("is-open")) closeModal();
   else if (cart.classList.contains("is-open")) closeCart();
-});
-
-/* ---------- Turno para visitar el showroom ---------- */
-const bookingForm = $("#bookingForm");
-const bookingModel = $("#bookingModel");
-const bookingDate = $("#bookingDate");
-
-bookingModel.innerHTML =
-  `<option value="">Elegí un modelo</option>` +
-  CATEGORIES.filter(([id]) => id !== "repuesto")
-    .map(([id, label]) => `<optgroup label="${label}">${PRODUCTS.filter((p) => catOf(p) === id)
-      .map((p) => `<option value="${p.id}">${p.name}</option>`).join("")}</optgroup>`)
-    .join("");
-
-const toISODate = (d) => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-const tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1);
-bookingDate.min = toISODate(tomorrow);
-
-bookingForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const msg = $("#bookingMsg");
-  const data = Object.fromEntries(new FormData(bookingForm));
-  $$(".field input, .field select", bookingForm).forEach((el) => el.classList.remove("is-invalid"));
-
-  const errors = [];
-  const mark = (name) => bookingForm.elements[name].classList.add("is-invalid");
-  if (data.name.trim().length < 3) { errors.push("tu nombre"); mark("name"); }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email.trim())) { errors.push("un correo válido"); mark("email"); }
-  if (data.phone.replace(/\D/g, "").length < 8) { errors.push("un teléfono válido"); mark("phone"); }
-  if (!data.model) { errors.push("un modelo"); mark("model"); }
-  if (!data.date || data.date < bookingDate.min) { errors.push("una fecha a partir de mañana"); mark("date"); }
-
-  if (errors.length) {
-    msg.className = "form-msg is-error";
-    msg.textContent = `Revisá: ${errors.join(", ")}.`;
-    return;
-  }
-
-  const p = findProduct(data.model);
-  const date = new Date(data.date + "T12:00:00").toLocaleDateString("es-AR", { weekday: "long", day: "numeric", month: "long" }).replace(",", "");
-  msg.className = "form-msg is-ok";
-  msg.textContent = `¡Listo, ${data.name.trim().split(" ")[0]}! Te esperamos el ${date} para mostrarte la ${p.name}. Te confirmamos el horario por correo.`;
-  bookingForm.reset();
 });
 
 /* ---------- Newsletter ---------- */
