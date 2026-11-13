@@ -207,8 +207,9 @@ PRODUCTS.push(
   miniCuatri({
     id: "mini-cuatri-50",
     colorAdj: "Rojo", colorName: "rojo", hex: "#ff3b30",
-    photoBg: "#0e1210", photoCover: true,
+    photoBg: "#fff",
     images: [
+      ["rojo-blanco.jpg", "vista tres cuartos"],
       ["principal.jpg", "vista frontal"],
       ["lateral.jpg", "vista lateral"],
       ["frente.jpg", "vista tres cuartos"],
