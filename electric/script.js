@@ -63,6 +63,57 @@ PRODUCTS.push(
   turboSportDuo("negra", "negro", "Negra", "#8a96a8", "#f6f6f6"),
 );
 
+/* ---------- Mini Moto Cross Foston (eléctrica) ---------- */
+const FOSTON_IMG = "img/foston/";
+PRODUCTS.push({
+  id: "foston-mini-cross",
+  name: "Mini Moto Cross Foston",
+  fullName: "Mini Moto Cross Foston Eléctrica – Estilo Off-Road",
+  type: "moto", label: "Mini moto cross eléctrica",
+  price: 320000, badge: "Eléctrica",
+  color: "#ff7a1a",
+  photoBg: "#fff",
+  images: [
+    { src: `${FOSTON_IMG}principal.jpg`, alt: "Mini Moto Cross Foston, vista tres cuartos" },
+    { src: `${FOSTON_IMG}lateral.jpg`, alt: "Mini Moto Cross Foston, vista lateral" },
+    { src: `${FOSTON_IMG}frente.jpg`, alt: "Mini Moto Cross Foston, vista frontal" },
+    { src: `${FOSTON_IMG}trasera.jpg`, alt: "Mini Moto Cross Foston, vista trasera" },
+    { src: `${FOSTON_IMG}exterior.jpg`, alt: "Mini Moto Cross Foston al aire libre" },
+    { src: `${FOSTON_IMG}promo.jpg`, alt: "Mini Moto Cross Foston, precio $320.000" },
+  ],
+  quickSpecs: [["Eléctrica", "motor"], ["Tacos", "neumáticos"], ["Susp.", "delantera"]],
+  tagline: "¡Estilo motocross y diversión off-road para los más chicos!",
+  description: [
+    "La Mini Moto Cross Foston es una moto eléctrica con estilo off-road, pensada para que los chicos vivan la emoción del motocross desde sus primeras aventuras.",
+    "Su diseño motocross compacto, con gráficos negros y naranjas, horquilla dorada y llantas deportivas naranjas, le da una presencia deportiva y llamativa.",
+    "Cuenta con neumáticos con tacos para tierra, pasto y terrenos irregulares, suspensión delantera para absorber los golpes del camino y un asiento individual cómodo.",
+    "Se maneja con acelerador en el manubrio, como una moto de verdad, para una conducción intuitiva y divertida.",
+  ],
+  featuresTitle: "¿Qué hace especial a la Mini Moto Cross Foston?",
+  features: [
+    ["Motor eléctrico", "silenciosa y sin nafta: se carga y está lista para salir."],
+    ["Diseño motocross compacto", "estética de competición en un tamaño pensado para los más chicos."],
+    ["Llantas deportivas naranjas", "un detalle que la distingue y combina con sus gráficos."],
+    ["Neumáticos con tacos", "agarre para tierra, pasto y terrenos irregulares."],
+    ["Suspensión delantera", "más confort y control en cada recorrido."],
+    ["Asiento individual", "cómodo y a la medida de los chicos."],
+    ["Acelerador en el manubrio", "manejo intuitivo, como en una moto de verdad."],
+  ],
+  techSpecs: [
+    ["Marca", "Foston"],
+    ["Tipo", "Eléctrica"],
+    ["Estilo", "Off-road / motocross"],
+    ["Diseño", "Motocross compacto"],
+    ["Llantas", "Deportivas naranjas"],
+    ["Neumáticos", "Con tacos"],
+    ["Suspensión", "Delantera"],
+    ["Asiento", "Individual"],
+    ["Acelerador", "En el manubrio"],
+  ],
+  closingTitle: "¡Su primera moto cross, ahora eléctrica!",
+  closing: "La Mini Moto Cross Foston es una excelente opción para regalar a los pequeños fanáticos de las motos. Recomendamos usarla siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
+});
+
 /* ---------- Mini Moto Cross 50 cc 2 tiempos ---------- */
 const CROSS_IMG = "img/mini-moto-cross/";
 PRODUCTS.push({
