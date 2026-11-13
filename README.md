@@ -1,20 +1,14 @@
-# TOXI Electric
+# TOXI Parfums
 
-Tienda web de motos y monopatines eléctricos hecha con HTML, CSS y JavaScript puros, sin dependencias.
+Sitio web de una perfumería de lujo hecho con HTML, CSS y JavaScript puros, sin dependencias.
 
-Para verla, abrí `index.html` en el navegador.
+Para verlo, abre `index.html` en el navegador.
 
 ## Qué incluye
-- Portada con ilustraciones animadas de una moto y un monopatín
-- Catálogo de 8 modelos (4 monopatines y 4 motos) con filtro por tipo y orden por precio, autonomía o velocidad
-- Ficha de cada modelo con su ficha técnica: velocidad, autonomía, potencia, batería, tiempo de carga, peso y rodado
-- Comparador de hasta 3 modelos lado a lado, que resalta el mejor valor de cada fila
-- Calculadora de ahorro: compara el gasto mensual en nafta con el de cargar un vehículo eléctrico
-- Formulario para reservar una prueba de manejo, con validación
-- Carrito lateral con precio en 12 cuotas, que se guarda en el navegador (localStorage)
-- Opiniones de clientes, preguntas frecuentes y suscripción al boletín
+- Portada con un frasco animado y las ventajas de la marca
+- Catálogo de 8 fragancias con filtro por familia olfativa (amaderados, florales, orientales y frescos)
+- Vista rápida de cada perfume con sus notas de salida, corazón y fondo, y elección de tamaño (50 / 100 ml)
+- Carrito lateral que se guarda en el navegador (localStorage)
+- Test de 3 preguntas que recomienda un perfume
+- Secciones de historia de la marca, opiniones de clientes y suscripción al boletín con validación del correo
 - Diseño adaptado a móvil y animaciones al hacer scroll
-
-## Cómo editar los productos
-Los modelos, precios y fichas técnicas están en la lista `PRODUCTS` al principio de `script.js`.
-Los precios, datos del showroom y opiniones son de ejemplo: reemplazalos por los reales.
