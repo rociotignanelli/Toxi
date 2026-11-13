@@ -234,30 +234,26 @@ PRODUCTS.push(
 /* ---------- Productos del proveedor (proveedor.js) ---------- */
 if (typeof PROVEEDOR !== "undefined") PRODUCTS.push(...PROVEEDOR);
 
-/* Clasificación por tipo de producto. Cada tipo puede tener variedades (sub). */
+/* Clasificación de "Más productos": 3 categorías, cada una con sus variedades. */
 const CATEGORIES = [
-  ["todos", "Todos los productos"],
-  ["moto", "Motos"],
-  ["cuatri", "Cuatriciclos"],
-  ["bici", "Bicicletas"],
-  ["monopatin", "Monopatines"],
-  ["repuesto", "Repuestos"],
-  ["accesorio", "Accesorios"],
+  ["moto", "Motos", "🏍️", "Mini eléctricas, mini a nafta, cuatris, motos y bicis eléctricas"],
+  ["monopatin", "Monopatines", "🛴", "Monopatines eléctricos"],
+  ["repuesto", "Repuestos", "🔧", "Cubiertas, cámaras, frenos, aceleradores y más"],
 ];
 function classify(p) {
   if (p.kind) return;
-  if (p.id.startsWith("turbo-sport-duo") || p.id === "foston-mini-cross") [p.kind, p.variety] = ["moto", "Infantiles eléctricas"];
-  else if (p.id === "mini-moto-cross-50") [p.kind, p.variety] = ["moto", "Infantiles a nafta"];
-  else if (p.id.startsWith("mini-cuatri")) [p.kind, p.variety] = ["cuatri", "Infantiles a nafta"];
-  else if (p.id.startsWith("wr-bici-moto")) [p.kind, p.variety] = ["moto", "Eléctricas"];
-  else if (p.id.startsWith("wr-bicicleta")) [p.kind, p.variety] = ["bici", "Eléctricas"];
+  if (p.id.startsWith("turbo-sport-duo") || p.id === "foston-mini-cross") [p.kind, p.variety] = ["moto", "Mini eléctricas"];
+  else if (p.id === "mini-moto-cross-50") [p.kind, p.variety] = ["moto", "Mini a nafta"];
+  else if (p.id.startsWith("mini-cuatri")) [p.kind, p.variety] = ["moto", "Cuatriciclos"];
+  else if (p.id.startsWith("wr-bici-moto")) [p.kind, p.variety] = ["moto", "Motos eléctricas"];
+  else if (p.id.startsWith("wr-bicicleta")) [p.kind, p.variety] = ["moto", "Bicicletas eléctricas"];
   else if (p.id.startsWith("wr-monopatin")) [p.kind, p.variety] = ["monopatin", "Eléctricos"];
-  else if (p.sub === "Accesorios") [p.kind, p.variety] = ["accesorio", null];
   else [p.kind, p.variety] = ["repuesto", p.sub];
 }
 PRODUCTS.forEach(classify);
 const catOf = (p) => p.kind;
-const inCat = (p, cat) => cat === "todos" || p.kind === cat;
+const inCat = (p, cat) => p.kind === cat;
+const OFFERS = PRODUCTS.filter((p) => p.originalPrice);
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
@@ -342,7 +338,7 @@ function toast(msg) {
 
 /* ---------- Catálogo ---------- */
 const productsEl = $("#products");
-let currentFilter = "todos";
+let currentFilter = null; // ninguna categoría abierta al entrar
 let currentSub = "todos";
 let currentSort = "destacados";
 let currentSearch = "";
@@ -358,6 +354,7 @@ function sortedList() {
       return words.every((w) => hay.includes(w));
     });
   } else {
+    if (!currentFilter) return [];
     list = PRODUCTS.filter((p) => inCat(p, currentFilter) && (currentSub === "todos" || p.variety === currentSub));
   }
   const sorters = {
@@ -372,28 +369,22 @@ function sortedList() {
 
 function renderToolbar() {
   $("#filters").innerHTML = CATEGORIES.map(
-    ([id, label]) => `<button class="filter ${!currentSearch && id === currentFilter ? "is-active" : ""}" data-filter="${id}">${label}
-      <span class="filter__count">${PRODUCTS.filter((p) => inCat(p, id)).length}</span></button>`
+    ([id, label, icon, hint]) => `<button class="cat-button ${!currentSearch && id === currentFilter ? "is-active" : ""}" data-filter="${id}" aria-pressed="${id === currentFilter}">
+      <span class="cat-button__icon" aria-hidden="true">${icon}</span>
+      <span class="cat-button__label">${label}</span>
+      <span class="cat-button__hint">${hint}</span>
+      <span class="cat-button__count">${((n) => `${n} producto${n === 1 ? "" : "s"}`)(PRODUCTS.filter((p) => inCat(p, id)).length)}</span></button>`
   ).join("");
-  const subs = currentFilter === "todos" ? [] : [...new Set(PRODUCTS.filter((p) => inCat(p, currentFilter) && p.variety).map((p) => p.variety))];
+  const subs = !currentFilter ? [] : [...new Set(PRODUCTS.filter((p) => inCat(p, currentFilter) && p.variety).map((p) => p.variety))];
   const subEl = $("#subfilters");
   subEl.hidden = subs.length < 2 || !!currentSearch;
+  $("#sortWrap").hidden = !currentFilter && !currentSearch;
   subEl.innerHTML = ["todos", ...subs]
     .map((sub) => `<button class="chip-filter ${sub === currentSub ? "is-active" : ""}" data-sub="${sub}">${sub === "todos" ? "Todos" : sub}</button>`)
     .join("");
 }
 
-function renderProducts() {
-  renderToolbar();
-  const list = sortedList();
-  $("#resultsInfo").textContent = currentSearch
-    ? `${list.length} resultado${list.length === 1 ? "" : "s"} para “${currentSearch}”`
-    : `${list.length} producto${list.length === 1 ? "" : "s"}`;
-  productsEl.innerHTML = list.length ? "" : `<p class="products__empty">No encontramos productos con esa búsqueda.</p>`;
-  if (!list.length) return;
-  productsEl.innerHTML = list
-    .map(
-      (p, i) => `
+const cardHTML = (p, i) => `
       <article class="card reveal is-visible" style="--accent:${p.color};--photo-bg:${p.photoBg || "#fff"};animation-delay:${i * 60}ms">
         ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
         <button class="card__visual ${p.images ? "card__visual--photo" : ""}" data-view="${p.id}" aria-label="Ver detalles de ${p.name}">
@@ -411,13 +402,31 @@ function renderProducts() {
             <button class="btn btn--ghost btn--sm" data-view="${p.id}">Ver más</button>
           </div>
         </div>
-      </article>`
-    )
-    .join("");
+      </article>`;
+
+function renderOffers() {
+  $("#offers").innerHTML = OFFERS.map(cardHTML).join("");
+}
+
+function renderProducts() {
+  renderToolbar();
+  const list = sortedList();
+  if (!currentFilter && !currentSearch) {
+    $("#resultsInfo").textContent = "";
+    productsEl.innerHTML = "";
+    return;
+  }
+  const cat = CATEGORIES.find(([id]) => id === currentFilter);
+  $("#resultsInfo").textContent = currentSearch
+    ? `${list.length} resultado${list.length === 1 ? "" : "s"} para “${currentSearch}”`
+    : `${cat[1]}: ${list.length} producto${list.length === 1 ? "" : "s"}`;
+  productsEl.innerHTML = list.length
+    ? list.map(cardHTML).join("")
+    : `<p class="products__empty">No encontramos productos con esa búsqueda.</p>`;
 }
 
 function setFilter(filter) {
-  currentFilter = filter;
+  currentFilter = currentFilter === filter && !currentSearch ? null : filter; // tocar de nuevo la cierra
   currentSub = "todos";
   currentSearch = "";
   $("#search").value = "";
@@ -442,7 +451,12 @@ $("#search").addEventListener("input", (e) => {
   currentSearch = e.target.value.trim();
   renderProducts();
 });
-$$("[data-jump]").forEach((a) => a.addEventListener("click", () => setFilter(a.dataset.jump)));
+$$("[data-jump]").forEach((a) =>
+  a.addEventListener("click", () => {
+    currentFilter = null;
+    setFilter(a.dataset.jump);
+  })
+);
 
 /* ---------- Modal ---------- */
 const modal = $("#modal");
@@ -671,21 +685,6 @@ document.addEventListener("keydown", (e) => {
   else if (cart.classList.contains("is-open")) closeCart();
 });
 
-/* ---------- Newsletter ---------- */
-$("#newsletterForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const input = $("#email");
-  const msg = $("#formMsg");
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim())) {
-    msg.className = "form-msg is-error";
-    msg.textContent = "Ingresá un correo electrónico válido.";
-    return;
-  }
-  msg.className = "form-msg is-ok";
-  msg.textContent = "¡Gracias! Revisá tu correo para obtener tu 5% off.";
-  input.value = "";
-});
-
 /* ---------- Menú móvil y header ---------- */
 const nav = $("#nav");
 const menuToggle = $("#menuToggle");
@@ -726,6 +725,7 @@ $("#heroVisual").insertAdjacentHTML(
   ).join("") + `<span class="hero__badge">30% OFF</span>`
 );
 $("#year").textContent = new Date().getFullYear();
+renderOffers();
 renderProducts();
 renderCart();
 $$(".reveal").forEach((el) => observer.observe(el));

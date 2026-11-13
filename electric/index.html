@@ -21,8 +21,8 @@
       </button>
       <a href="#inicio" class="logo">TOXI<span>electric</span></a>
       <nav class="nav" id="nav">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#catalogo" data-jump="repuesto">Repuestos</a>
+        <a href="#ofertas">Ofertas</a>
+        <a href="#catalogo">Más productos</a>
         <a href="#faq">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
@@ -42,8 +42,8 @@
           <h1>Turbo Sport Duo: <em>su primera moto deportiva</em></h1>
           <p class="hero__lead">¡La emoción de manejar una moto deportiva, ahora para los más chicos! Batería recargable de 12V, aceleración a pedal y diseño estilo pista. Disponible en rosa, azul y negro.</p>
           <div class="hero__actions">
-            <a href="#catalogo" class="btn btn--primary" data-jump="moto">Ver las motos</a>
-            <a href="#catalogo" class="btn btn--ghost" data-jump="todos">Ver todos los productos</a>
+            <a href="#ofertas" class="btn btn--primary">Ver ofertas</a>
+            <a href="#catalogo" class="btn btn--ghost">Más productos</a>
           </div>
           <ul class="hero__stats">
             <li><strong>30% OFF</strong><span>precio final $350.000</span></li>
@@ -83,31 +83,42 @@
       </div>
     </section>
 
-    <!-- Catálogo -->
-    <section class="section" id="catalogo">
+    <!-- Ofertas -->
+    <section class="section offers" id="ofertas">
       <div class="container">
         <div class="section__head reveal">
-          <p class="eyebrow">Catálogo</p>
-          <h2>Elegí tu próxima aventura</h2>
-          <p>Motos, cuatriciclos, bicicletas, monopatines, repuestos y accesorios. Elegí una categoría o mirá todos los productos juntos, y tocá uno para ver sus fotos y la descripción completa.</p>
+          <p class="eyebrow">Ofertas</p>
+          <h2>Productos con <em>descuento</em></h2>
+          <p>Aprovechá los precios rebajados mientras dure el stock.</p>
+        </div>
+        <div class="products products--offers" id="offers"></div>
+      </div>
+    </section>
+
+    <!-- Más productos -->
+    <section class="section section--soft" id="catalogo">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="eyebrow">Más productos</p>
+          <h2>Elegí una categoría</h2>
+          <p>Tocá una categoría para ver todos sus productos, o buscá lo que necesitás.</p>
         </div>
 
-        <div class="toolbar reveal">
-          <div class="filters" id="filters" role="tablist"></div>
-          <div class="toolbar__right">
-            <label class="search">
-              <span class="sr-only">Buscar productos</span>
-              <input type="search" id="search" placeholder="Buscar: cubierta 10x2.5, freno, Kugoo…" autocomplete="off" />
-            </label>
-            <label class="sort">
-              <span>Ordenar</span>
-              <select id="sort">
-                <option value="destacados">Destacados</option>
-                <option value="precio-asc">Menor precio</option>
-                <option value="precio-desc">Mayor precio</option>
-              </select>
-            </label>
-          </div>
+        <div class="cat-buttons reveal" id="filters"></div>
+
+        <div class="toolbar toolbar--catalog reveal">
+          <label class="search">
+            <span class="sr-only">Buscar productos</span>
+            <input type="search" id="search" placeholder="Buscar: cubierta 10x2.5, freno, Kugoo…" autocomplete="off" />
+          </label>
+          <label class="sort" id="sortWrap" hidden>
+            <span>Ordenar</span>
+            <select id="sort">
+              <option value="destacados">Destacados</option>
+              <option value="precio-asc">Menor precio</option>
+              <option value="precio-desc">Mayor precio</option>
+            </select>
+          </label>
         </div>
         <div class="subfilters" id="subfilters" hidden></div>
         <p class="results-info" id="resultsInfo"></p>
@@ -156,23 +167,9 @@
       </div>
     </section>
 
-    <!-- Newsletter / contacto -->
-    <section class="newsletter" id="contacto">
-      <div class="container newsletter__inner reveal">
-        <div>
-          <h2>Sumate a la comunidad TOXI</h2>
-          <p>Enterate primero de lanzamientos y promociones.</p>
-        </div>
-        <form class="newsletter__form" id="newsletterForm" novalidate>
-          <input type="email" id="email" placeholder="Tu correo electrónico" aria-label="Correo electrónico" required />
-          <button type="submit" class="btn btn--primary">Suscribirme</button>
-          <p class="form-msg" id="formMsg" role="status"></p>
-        </form>
-      </div>
-    </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="contacto">
     <div class="container footer__grid">
       <div>
         <a href="#inicio" class="logo">TOXI<span>electric</span></a>
@@ -180,12 +177,10 @@
       </div>
       <div>
         <h4>Productos</h4>
+        <a href="#ofertas">Ofertas</a>
         <a href="#catalogo" data-jump="moto">Motos</a>
-        <a href="#catalogo" data-jump="cuatri">Cuatriciclos</a>
-        <a href="#catalogo" data-jump="bici">Bicicletas</a>
         <a href="#catalogo" data-jump="monopatin">Monopatines</a>
         <a href="#catalogo" data-jump="repuesto">Repuestos</a>
-        <a href="#catalogo" data-jump="accesorio">Accesorios</a>
       </div>
       <div>
         <h4>Ayuda</h4>
