@@ -110,31 +110,26 @@ PRODUCTS.push({
   closing: "La Mini Moto Cross 2 Tiempos es una excelente opción para regalar a los pequeños fanáticos de las motos. Recomendamos usarla siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
 });
 
-/* ---------- Mini Cuatri 50 cc 2 tiempos ---------- */
+/* ---------- Mini Cuatri 50 cc 2 tiempos (rojo y negro) ---------- */
 const CUATRI_IMG = "img/mini-cuatri/";
-PRODUCTS.push({
-  id: "mini-cuatri-50",
-  name: "Mini Cuatri 50 cc",
-  fullName: "Mini Cuatri 50 cc 2 Tiempos",
+const miniCuatri = ({ id, colorAdj, colorName, hex, photoBg, photoCover = false, images }) => ({
+  id,
+  name: `Mini Cuatri 50 cc ${colorAdj}`,
+  fullName: `Mini Cuatri Infantil 50 cc 2 Tiempos – ${colorAdj}`,
   type: "moto", label: "Mini cuatriciclo a nafta",
   price: 670000, badge: "4 ruedas",
-  color: "#ff3b30",
-  photoBg: "#0e1210",
-  photoCover: true,
-  images: [
-    { src: `${CUATRI_IMG}principal.jpg`, alt: "Mini Cuatri 50 cc, vista frontal" },
-    { src: `${CUATRI_IMG}lateral.jpg`, alt: "Mini Cuatri 50 cc, vista lateral" },
-    { src: `${CUATRI_IMG}frente.jpg`, alt: "Mini Cuatri 50 cc, vista tres cuartos" },
-    { src: `${CUATRI_IMG}trasera.jpg`, alt: "Mini Cuatri 50 cc, vista trasera" },
-    { src: `${CUATRI_IMG}promo.jpg`, alt: "Mini Cuatri 50 cc 2 Tiempos" },
-  ],
+  color: hex,
+  photoBg,
+  photoCover,
+  images: images.map(([file, alt]) => ({ src: `${CUATRI_IMG}${file}`, alt: `Mini Cuatri 50 cc ${colorAdj}, ${alt}` })),
   quickSpecs: [["50 cc", "nafta"], ["2T", "motor"], ["4", "ruedas"]],
   tagline: "¡Aventura sobre cuatro ruedas para los más chicos!",
   description: [
-    "El Mini Cuatri 50 cc 2 Tiempos es el cuatriciclo ideal para que los chicos vivan la emoción del off-road con la estabilidad que dan sus cuatro ruedas.",
+    "El Mini Cuatri Infantil 50 cc 2 Tiempos es el cuatriciclo ideal para que los chicos vivan la emoción del off-road con la estabilidad que dan sus cuatro ruedas.",
+    `Se destaca por su llamativo color ${colorName} con gráficos de telaraña, que le dan un estilo deportivo y lleno de personalidad.`,
     "Equipado con un motor a nafta de 50 cc y 2 tiempos, ofrece un andar ágil y divertido para disfrutar en campos, quintas, circuitos y espacios abiertos.",
     "Su arranque manual a polea es simple y confiable, y sus cubiertas de taco están preparadas para tierra, pasto y terrenos irregulares.",
-    "Con un diseño infantil de 4 ruedas, gráficos llamativos, amortiguadores, paragolpes delantero y apoyapiés amplios, combina estilo deportivo con una estructura robusta.",
+    "Con amortiguadores, paragolpes delantero y apoyapiés amplios, combina estilo deportivo con una estructura robusta.",
   ],
   featuresTitle: "¿Qué hace especial al Mini Cuatri?",
   features: [
@@ -150,11 +145,39 @@ PRODUCTS.push({
     ["Arranque", "Manual a polea"],
     ["Rodado", "4 pulgadas"],
     ["Ruedas", "4 (cuatriciclo)"],
+    ["Color", colorName[0].toUpperCase() + colorName.slice(1)],
     ["Uso", "Recreativo / infantil"],
   ],
   closingTitle: "¡Diversión todo terreno para los más chicos!",
   closing: "El Mini Cuatri 50 cc es una excelente opción para regalar a los pequeños fanáticos de los fierros. Recomendamos usarlo siempre con casco y elementos de protección, en espacios seguros y con la supervisión de un adulto.",
 });
+
+PRODUCTS.push(
+  miniCuatri({
+    id: "mini-cuatri-50",
+    colorAdj: "Rojo", colorName: "rojo", hex: "#ff3b30",
+    photoBg: "#0e1210", photoCover: true,
+    images: [
+      ["principal.jpg", "vista frontal"],
+      ["lateral.jpg", "vista lateral"],
+      ["frente.jpg", "vista tres cuartos"],
+      ["trasera.jpg", "vista trasera"],
+      ["promo.jpg", "placa del producto"],
+    ],
+  }),
+  miniCuatri({
+    id: "mini-cuatri-50-negro",
+    colorAdj: "Negro", colorName: "negro", hex: "#aab4c2",
+    photoBg: "#fff",
+    images: [
+      ["negro-principal.jpg", "vista frontal"],
+      ["negro-lateral.jpg", "vista lateral"],
+      ["negro-trasera.jpg", "vista trasera"],
+      ["negro-exterior.jpg", "al aire libre"],
+      ["negro-promo.jpg", "placa del producto con precio"],
+    ],
+  }),
+);
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];

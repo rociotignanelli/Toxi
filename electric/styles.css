@@ -617,3 +617,8 @@ body:has(.compare-bar.is-visible) .toast { bottom: 6.5rem; }
 
 /* Fotos al aire libre: llenan todo el recuadro */
 .photo--cover { object-fit: cover !important; padding: 0 !important; }
+
+/* Catálogo: 3 productos por fila en pantallas grandes */
+@media (min-width: 961px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
+}
