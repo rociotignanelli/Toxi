@@ -41,7 +41,7 @@ const PRODUCTOS = [
       "Pedales con correas de sujeción",
       "Patas con regatones antideslizantes",
     ],
-    fotos: ["img/randers-845sp-1.jpg", "img/randers-845sp-2.jpg", "img/randers-845sp-promo.jpg"],
+    fotos: ["img/randers-845sp-promo.jpg", "img/randers-845sp-1.jpg", "img/randers-845sp-2.jpg"],
   },
   {
     codigo: "TG-02",
