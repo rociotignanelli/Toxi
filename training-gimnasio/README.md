@@ -9,7 +9,7 @@ El catálogo tiene 29 productos con sus precios:
 
 | Código | Producto | Precio |
 |---|---|---|
-| TG-01 | Bicicleta de spinning Randers ARG-845SP (35% OFF) | $227.000 al contado |
+| TG-01 | Bicicleta de spinning Randers ARG-845SP (35% OFF) | $280.000 al contado |
 | TG-02 | Bicicleta de spinning indoor Enerfit (negra o blanca) | $420.000 de contado |
 | TG-03 | Simulador de remo Randers (solo 10 unidades) | $895.750 |
 | TG-04 | Airbike Assault Classic Pro | $3.750.000 |

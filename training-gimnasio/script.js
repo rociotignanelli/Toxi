@@ -25,7 +25,7 @@ const PRODUCTOS = [
     marca: "Randers",
     nombre: "Bicicleta de spinning ARG-845SP",
     categoria: "spinning",
-    precio: 227000,
+    precio: 280000,
     condicion: "Al contado",
     etiqueta: "35% OFF · Super oferta",
     resumen: "Bicicleta de spinning con cuadro de acero rojo, volante de inercia protegido y monitor digital. Ideal para entrenar en casa.",
