@@ -45,32 +45,32 @@ function html(p, W, H) {
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { width: ${W}px; height: ${H}px; overflow: hidden; background: #07060a; color: #fff; font-family: Cond, sans-serif; position: relative; }
 .bg { position: absolute; inset: 0; background:
-  radial-gradient(circle at 78% 42%, rgba(176,38,255,.35), transparent 55%),
+  radial-gradient(circle at 78% 42%, rgba(255,106,0,.35), transparent 55%),
   repeating-linear-gradient(-55deg, transparent 0 46px, rgba(255,255,255,.025) 46px 92px); }
-.band { position: absolute; left: 0; right: 0; bottom: 0; height: ${vertical ? 150 : 118}px; background: #b026ff; }
+.band { position: absolute; left: 0; right: 0; bottom: 0; height: ${vertical ? 150 : 118}px; background: #ff6a00; }
 .wrap { position: absolute; inset: ${vertical ? "64px 60px 0" : "50px 56px 0"}; display: flex; flex-direction: column; }
 .top { display: flex; justify-content: space-between; align-items: center; }
 .logo { display: flex; align-items: center; gap: 14px; }
-.mark { width: 64px; height: 64px; background: #b026ff; display: grid; place-items: center; font: 700 44px Display; clip-path: polygon(0 0,100% 0,100% 75%,75% 100%,0 100%); }
+.mark { width: 64px; height: 64px; background: #ff6a00; display: grid; place-items: center; font: 700 44px Display; clip-path: polygon(0 0,100% 0,100% 75%,75% 100%,0 100%); }
 .lt { font: 700 40px/0.9 Display; letter-spacing: 1px; }
-.lt small { display: block; font: 700 15px Cond; letter-spacing: 14px; color: #b026ff; text-shadow: 0 0 10px rgba(176,38,255,.8); margin-top: 4px; }
+.lt small { display: block; font: 700 15px Cond; letter-spacing: 14px; color: #ff6a00; text-shadow: 0 0 10px rgba(255,106,0,.8); margin-top: 4px; }
 .code { font: 700 22px Cond; letter-spacing: 3px; color: #999; }
 .main { flex: 1; display: grid; ${vertical ? "grid-template-rows: 46% 1fr;" : "grid-template-columns: 47% 1fr;"} gap: ${vertical ? 34 : 40}px; margin: ${vertical ? "40px 0 40px" : "34px 0 34px"}; min-height: 0; }
-.photo { background: #fff; border-radius: 14px; border-bottom: 8px solid #b026ff; display: grid; place-items: center; overflow: hidden; min-height: 0; }
+.photo { background: #fff; border-radius: 14px; border-bottom: 8px solid #ff6a00; display: grid; place-items: center; overflow: hidden; min-height: 0; }
 .photo img { width: 100%; height: 100%; object-fit: contain; padding: 22px; }
 .info { display: flex; flex-direction: column; min-height: 0; }
-.cat { font: 700 22px Cond; letter-spacing: 4px; text-transform: uppercase; color: #b026ff; }
+.cat { font: 700 22px Cond; letter-spacing: 4px; text-transform: uppercase; color: #ff6a00; }
 .brand { font: 700 30px Display; letter-spacing: 1px; color: #bbb; text-transform: uppercase; margin-top: 6px; }
 h1 { font: 700 ${vertical ? 66 : 58}px/1.0 Display; text-transform: uppercase; margin-top: 4px; }
 ul { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
 li { font-size: ${vertical ? 30 : 26}px; line-height: 1.15; padding-left: 28px; position: relative; color: #e8e8e8; }
-li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; height: 13px; background: #b026ff; transform: rotate(45deg); }
+li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; height: 13px; background: #ff6a00; transform: rotate(45deg); }
 .price { margin-top: auto; padding-top: 18px; }
-.old { font: 700 30px Cond; color: #888; text-decoration: line-through; text-decoration-color: #b026ff; text-decoration-thickness: 3px; }
+.old { font: 700 30px Cond; color: #888; text-decoration: line-through; text-decoration-color: #ff6a00; text-decoration-thickness: 3px; }
 .now { font: 700 ${vertical ? 104 : 92}px/1 Display; color: #fff; }
-.now span { color: #b026ff; text-shadow: 0 0 18px rgba(176,38,255,.8); }
-.mark { box-shadow: 0 0 22px rgba(176,38,255,.8); }
-.tag { display: inline-block; background: #b026ff; font: 700 26px Display; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 8px; text-transform: uppercase; }
+.now span { color: #ff6a00; text-shadow: 0 0 18px rgba(255,106,0,.8); }
+.mark { box-shadow: 0 0 22px rgba(255,106,0,.8); }
+.tag { display: inline-block; background: #ff6a00; font: 700 26px Display; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 8px; text-transform: uppercase; }
 .cuotas { font: 700 26px Cond; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; color: ${oferta ? "#ccc" : "#25d366"}; }
 .foot { position: relative; height: ${vertical ? 150 : 118}px; display: flex; align-items: center; justify-content: space-between; font: 700 ${vertical ? 30 : 27}px Cond; letter-spacing: 1px; text-transform: uppercase; }
 .foot b { font: 700 ${vertical ? 40 : 36}px Display; letter-spacing: 1px; display: block; }
