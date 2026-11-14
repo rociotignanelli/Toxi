@@ -29,11 +29,11 @@ El catálogo tiene 29 productos con sus precios:
 | TG-18 | Kit barra, mancuernas y discos | $110.000 de contado |
 | TG-19 | Mancuerna hexagonal maciza 5 kg | $30.000 de contado |
 | TG-20 | Cinta de correr Atletis X900 (30% OFF, antes $335.000) | $235.000 |
-| TG-21 | Cinta profesional Movement LX160 G4 | $2.800.000 en 18 cuotas sin interés |
-| TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $500.000) | $325.000 · 3 cuotas sin interés con tarjeta de crédito |
-| TG-23 | Multigimnasio Body Skull | $1.000.500 en 12 cuotas sin interés |
-| TG-24 | Rack multifuncional Body Skull | $820.000 en 12 cuotas sin interés |
-| TG-25 | Prensa 45° Sonnos M100 | $2.800.000 en 18 cuotas sin interés |
+| TG-21 | Cinta profesional Movement LX160 G4 | $2.800.000 en 18 cuotas con interés |
+| TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $500.000) | $325.000 · 3 cuotas con interés con tarjeta de crédito |
+| TG-23 | Multigimnasio Body Skull | $1.000.500 en 12 cuotas con interés |
+| TG-24 | Rack multifuncional Body Skull | $820.000 en 12 cuotas con interés |
+| TG-25 | Prensa 45° Sonnos M100 | $2.800.000 en 18 cuotas con interés |
 | TG-26 | Barra de dominadas (torre de calistenia) | $200.000 |
 | TG-27 | Mini tramp MIR Fitness | Consultar precio |
 | TG-28 | Tatami encastrable de goma EVA | Consultar precio |
