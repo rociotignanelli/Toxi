@@ -3320,23 +3320,6 @@ window.PRODUCTOS_NUEVOS = [
     ]
   },
   {
-    "codigo": "TG-163",
-    "marca": "",
-    "nombre": "Silicona lubricante para cintas SiliconaTrott",
-    "categoria": "accesorios",
-    "precio": 11340,
-    "condicion": null,
-    "etiqueta": null,
-    "resumen": "Silicona lubricante apta para cintas de correr. Reduce fricción y ruido, y prolonga la vida útil de la banda y el motor.",
-    "descripcion": "Silicona lubricante que provee una película continua y uniforme de larga duración, estable a altas temperaturas. Se aplica entre la banda de desplazamiento y la tabla inferior de la cinta para reducir la fricción durante el funcionamiento, evitar el sobrecalentamiento del motor y de la banda, y disminuir ruidos, tirones y desgaste prematuro. Su uso regular prolonga la vida útil de la cinta, la tabla y los rodillos, y mantiene un desplazamiento más suave y uniforme. Debe utilizarse únicamente silicona apta para cintas de correr, no aceites comunes, grasa ni productos como WD-40. La cantidad y la frecuencia de aplicación dependen del modelo de cinta.",
-    "specs": [
-      "Silicona Lubricante para Cintas"
-    ],
-    "fotos": [
-      "img/prov/tg-163-1.webp"
-    ]
-  },
-  {
     "codigo": "TG-164",
     "marca": "Adidas",
     "nombre": "Set de vinchas x3 AD ADAC-16205",
