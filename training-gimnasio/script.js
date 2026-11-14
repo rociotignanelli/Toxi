@@ -474,7 +474,7 @@ const PRODUCTOS = [
     nombre: "Cinta profesional LX160 G4",
     categoria: "cintas",
     precio: 2800000,
-    condicion: "En 18 cuotas con interés",
+    condicion: null,
     etiqueta: "1 año de garantía",
     fondoOscuro: true,
     resumen: "Cinta de uso profesional y residencial con motor 3,0 HP AC, velocidad de 1,2 a 18 km/h y 6 amortiguadores.",
@@ -503,7 +503,7 @@ const PRODUCTOS = [
     categoria: "fuerza",
     precio: 325000,
     precioAnterior: 500000,
-    condicion: "3 cuotas con interés con tarjeta de crédito",
+    condicion: null,
     etiqueta: "35% OFF",
     resumen: "Multigym para tren superior e inferior con pesas antiruido, peso graduable de a 5 kg y 6 meses de garantía.",
     descripcion: "El Olmo Fit 44 es un multigym completo para entrenar tren superior e inferior en un solo equipo: polea alta para dorsales, mariposa para pecho, banco Scott para bíceps, sillón de cuádriceps y femorales y polea baja con cadena. Está construido en caño de acero con pintura epoxi de alta resistencia, color negro, y sus pesas recubiertas en plástico funcionan con un sistema antiruido. El esfuerzo se gradúa de a 5 kg con un sistema de clavijas y produce una fuerza de tracción de 90 kg. Incluye manual de armado paso a paso; consultá por armado a domicilio o en el local.",
@@ -519,7 +519,7 @@ const PRODUCTOS = [
       "Color negro",
       "Guía de armado paso a paso; armado a domicilio o en el local (consultar)",
       "Garantía oficial: 6 meses",
-      "Todas las tarjetas de crédito en 3 cuotas con interés",
+      "Todas las tarjetas de crédito, en cuotas con interés",
     ],
     fotos: ["img/olmo-fit44-1.jpg", "img/olmo-fit44-promo-2.jpg", "img/olmo-fit44-promo.jpg"],
   },
@@ -529,7 +529,7 @@ const PRODUCTOS = [
     nombre: "Multigimnasio con prensa",
     categoria: "fuerza",
     precio: 1000500,
-    condicion: "En 12 cuotas con interés",
+    condicion: null,
     etiqueta: "50 ejercicios",
     resumen: "Gimnasio completo en casa con 72 kg de pesas, prensa y banco Scott integrados. Más de 50 ejercicios.",
     descripcion: "El multigimnasio Body Skull es un gimnasio completo en casa: permite hacer 50 ejercicios para espalda, hombros, tríceps, bíceps, pecho, glúteos y piernas en un solo equipo. Tiene una carga de pesas de 72 kg para progresar en cada entrenamiento, sistema de poleas y cables reforzados para un movimiento fluido, y prensa y banco Scott integrados para trabajar piernas, bíceps y pecho. La estructura de hierro gris mantiene la estabilidad durante los ejercicios y el tapizado es marrón. Soporta usuarios de hasta 150 kg.",
@@ -552,7 +552,7 @@ const PRODUCTOS = [
     nombre: "Rack multifuncional con poleas, banco y barra",
     categoria: "fuerza",
     precio: 820000,
-    condicion: "En 12 cuotas con interés",
+    condicion: null,
     etiqueta: "Combo completo",
     fondoOscuro: true,
     resumen: "Jaula con sistema de poleas, banca multiángulo y barra olímpica de 2,2 m incluida. Uso residencial y profesional.",
@@ -575,7 +575,7 @@ const PRODUCTOS = [
     nombre: "Prensa 45° a disco M100",
     categoria: "fuerza",
     precio: 2800000,
-    condicion: "En 18 cuotas con interés",
+    condicion: null,
     etiqueta: "Uso profesional",
     fondoOscuro: true,
     resumen: "Prensa 45° de carga con discos para gimnasios. Rodillos de nylon con rodamientos blindados y estructura reforzada.",
@@ -728,9 +728,14 @@ function renderFiltros() {
   ).join("");
 }
 
+/* Cuotas: las ofertas (con % OFF o precio anterior) van en cuotas con interés;
+   el resto, hasta 12 cuotas sin interés. */
+const esOferta = (p) => Boolean(p.precioAnterior) || /off/i.test(p.etiqueta || "");
+const textoCuotas = (p) => esOferta(p) ? "Cuotas con interés" : "Hasta 12 cuotas sin interés";
+
 function precioHTML(p) {
   if (!tienePrecio(p)) return `<span class="price--pending">Consultar precio</span>`;
-  return `<span class="price-box">${p.precioAnterior ? `<s class="price-old">${formatoPrecio(p.precioAnterior)}</s>` : ""}<span class="price">${formatoPrecio(p.precio)}</span>${p.condicion ? `<small>${escapar(p.condicion)}</small>` : ""}</span>`;
+  return `<span class="price-box">${p.precioAnterior ? `<s class="price-old">${formatoPrecio(p.precioAnterior)}</s>` : ""}<span class="price">${formatoPrecio(p.precio)}</span>${p.condicion ? `<small>${escapar(p.condicion)}</small>` : ""}<small class="cuotas${esOferta(p) ? "" : " cuotas--sin"}">${textoCuotas(p)}</small></span>`;
 }
 
 function renderGrid() {
@@ -913,6 +918,7 @@ function renderCarrito() {
           <p class="cart-item__name">${escapar(nombreCompleto(p))}</p>
           <p class="cart-item__price">${tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "Precio a consultar"}</p>
           ${p.condicion ? `<p class="cart-item__cond">${escapar(p.condicion)}</p>` : ""}
+          ${tienePrecio(p) ? `<p class="cart-item__cond">${textoCuotas(p)}</p>` : ""}
           <div class="qty">
             <button data-menos="${p.codigo}" aria-label="Quitar uno">−</button>
             <span>${i.cantidad}</span>
@@ -940,7 +946,7 @@ function mensajePedido(datos) {
   const lineas = carrito.map((i) => {
     const p = buscarProducto(i.codigo);
     const precio = tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "precio a consultar";
-    const linea = `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""}`;
+    const linea = `• ${i.cantidad} x ${p.codigo} ${nombreCompleto(p)} — ${precio}${p.condicion ? ` (${p.condicion.toLowerCase()})` : ""} · ${textoCuotas(p).toLowerCase()}`;
     const foto = urlFoto(p);
     return foto ? `${linea}\n   Foto: ${foto}` : linea;
   });

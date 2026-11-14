@@ -308,6 +308,9 @@ img, svg { display: block; }
 .more-wrap { display: flex; justify-content: center; margin-top: 32px; }
 .more-wrap .btn[hidden] { display: none; }
 
+.price-box .cuotas { color: var(--muted); }
+.price-box .cuotas--sin { color: #25d366; }
+
 /* Aviso */
 .toast { position: fixed; left: 50%; top: 86px; z-index: 130; transform: translate(-50%, -20px); background: #fff; color: var(--black); padding: 12px 20px; border-radius: var(--radius); font-weight: 600; font-size: .9rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100% - 40px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
