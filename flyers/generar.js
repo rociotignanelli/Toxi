@@ -18,6 +18,9 @@ const base = fs.readFileSync(path.join(SITE, "script.js"), "utf8").split("/* Pro
 const PRODUCTOS = eval(base.slice(base.indexOf("const PRODUCTOS = ") + "const PRODUCTOS = ".length).trim().replace(/;\s*$/, ""));
 PRODUCTOS.push(...window.PRODUCTOS_NUEVOS);
 
+// Foto del producto a usar en el aviso cuando la primera no sirve
+const FOTO_AVISO = { "TG-05": "img/rack-randers-154-2.jpg" };
+
 const esOferta = (p) => Boolean(p.precioAnterior) || /off/i.test(p.etiqueta || "");
 const precio = (n) => "$" + Number(n).toLocaleString("es-AR");
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -78,7 +81,7 @@ li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; 
     <div class="code">${esc(p.codigo)}</div>
   </div>
   <div class="main">
-    <div class="photo"><img src="${"file://" + path.join(SITE, p.fotos.find((f) => !/promo/.test(f)) || p.fotos[0])}"></div>
+    <div class="photo"><img src="${"file://" + path.join(SITE, FOTO_AVISO[p.codigo] || p.fotos.find((f) => !/promo|flyers\//.test(f)) || p.fotos[0])}"></div>
     <div class="info">
       ${p.marca ? `<div class="brand">${esc(p.marca)}</div>` : `<div class="cat">Training Gimnasio</div>`}
       <h1>${esc(nombre)}</h1>
@@ -86,7 +89,7 @@ li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; 
       <div class="price">
         ${oferta && p.etiqueta ? `<div class="tag">${esc(p.etiqueta.split("·")[0].trim())}</div>` : ""}
         ${p.precioAnterior ? `<div class="old">${precio(p.precioAnterior)}</div>` : ""}
-        <div class="now">${typeof p.precio === "number" ? `<span>$</span>${Number(p.precio).toLocaleString("es-AR")}` : "CONSULTAR PRECIO"}</div>
+        <div class="now"${typeof p.precio === "number" ? "" : ' style="font-size:64px"'}>${typeof p.precio === "number" ? `<span>$</span>${Number(p.precio).toLocaleString("es-AR")}` : "CONSULTAR PRECIO"}</div>
         ${typeof p.precio === "number" ? `<div class="cuotas">${oferta ? "Cuotas con interés" : "Hasta 12 cuotas sin interés"}</div>` : ""}
       </div>
     </div>

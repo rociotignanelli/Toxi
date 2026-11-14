@@ -60,3 +60,6 @@ Cada producto tiene su propio enlace, que abre directamente su detalle: el códi
 
 ## Cuotas
 Los productos en oferta (los que tienen una etiqueta con "% OFF" o un precio anterior tachado) muestran "Cuotas con interés". Todos los demás muestran "Hasta 12 cuotas sin interés". Se calcula solo en `script.js` (`esOferta` y `textoCuotas`).
+
+## Avisos (flyers)
+Cada producto muestra primero un aviso con el mismo diseño (logo, foto del producto en fondo blanco, nombre, características, precio, cuotas, envío gratis y WhatsApp), en `img/flyers/`. Se generan con `node flyers/generar.js <carpeta>`; si cambiás precios o productos, hay que volver a generarlos y copiarlos a `img/flyers/` en formato .webp.

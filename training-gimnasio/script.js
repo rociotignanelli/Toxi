@@ -684,6 +684,14 @@ const PRODUCTOS = [
 /* Productos del proveedor (archivo productos-nuevos.js) */
 PRODUCTOS.push(...(window.PRODUCTOS_NUEVOS || []));
 
+/* Aviso de Training Gimnasio (img/flyers/tg-XX.webp) como primera imagen de cada producto.
+   Se generan con flyers/generar.js. */
+PRODUCTOS.forEach((p) => {
+  const fotos = p.fotos.filter((f) => !/promo/.test(f));
+  const avisosViejos = p.fotos.filter((f) => /promo/.test(f));
+  p.fotos = [`img/flyers/${p.codigo.toLowerCase()}.webp`, ...fotos, ...avisosViejos];
+});
+
 const CATEGORIAS = [
   { id: "todos", nombre: "Todos" },
   { id: "cintas", nombre: "Cintas de correr" },
@@ -757,7 +765,7 @@ function renderGrid() {
   $("#verMas").textContent = `Ver más productos (${filtrada.length - lista.length} restantes)`;
   $("#grid").innerHTML = lista.map((p, i) => `
     <article class="card" style="animation-delay:${Math.min(i % POR_PAGINA, 12) * 50}ms">
-      <button class="card__media${p.fondoOscuro ? " card__media--dark" : ""}" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
+      <button class="card__media card__media--flyer" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
         <span class="card__code">${p.codigo}</span>
         ${p.etiqueta ? `<span class="card__tag">${escapar(p.etiqueta)}</span>` : ""}
         <img src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" loading="lazy" />
@@ -798,7 +806,7 @@ function abrirDetalle(codigo) {
   if (!p) return;
   $("#modalBody").innerHTML = `
     <div class="detail__gallery">
-      <div class="detail__main${p.fondoOscuro ? " detail__main--dark" : ""}"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" /></div>
+      <div class="detail__main detail__main--flyer"><img id="detailMain" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" /></div>
       <div class="detail__thumbs">
         ${p.fotos.map((f, i) => `<button class="detail__thumb${i === 0 ? " active" : ""}" data-foto="${f}"><img src="${f}" alt="Foto ${i + 1}" /></button>`).join("")}
       </div>
@@ -831,6 +839,7 @@ $("#modal").addEventListener("click", (e) => {
   const thumb = e.target.closest(".detail__thumb");
   if (thumb) {
     $("#detailMain").src = thumb.dataset.foto;
+    $(".detail__main").classList.toggle("detail__main--flyer", thumb.dataset.foto.includes("img/flyers/"));
     document.querySelectorAll(".detail__thumb").forEach((t) => t.classList.toggle("active", t === thumb));
   }
 });
@@ -913,7 +922,7 @@ function renderCarrito() {
     const p = buscarProducto(i.codigo);
     return `
       <div class="cart-item">
-        <img class="${p.fondoOscuro ? "is-dark" : ""}" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" />
+        <img class="is-dark" src="${p.fotos[0]}" alt="${escapar(nombreCompleto(p))}" />
         <div class="cart-item__info">
           <p class="cart-item__name">${escapar(nombreCompleto(p))}</p>
           <p class="cart-item__price">${tienePrecio(p) ? formatoPrecio(p.precio * i.cantidad) : "Precio a consultar"}</p>

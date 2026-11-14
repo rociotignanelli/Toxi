@@ -311,6 +311,10 @@ img, svg { display: block; }
 .price-box .cuotas { color: var(--muted); }
 .price-box .cuotas--sin { color: #25d366; }
 
+.card__media.card__media--flyer, .detail__main.detail__main--flyer { background: #0b0b0c; }
+.card__media.card__media--flyer img, .detail__main.detail__main--flyer img { padding: 0; object-fit: cover; }
+.card__media--flyer .card__code, .card__media--flyer .card__tag { display: none; }
+
 /* Aviso */
 .toast { position: fixed; left: 50%; top: 86px; z-index: 130; transform: translate(-50%, -20px); background: #fff; color: var(--black); padding: 12px 20px; border-radius: var(--radius); font-weight: 600; font-size: .9rem; box-shadow: 0 10px 30px rgba(0,0,0,.4); opacity: 0; pointer-events: none; transition: opacity .25s, transform .25s; max-width: calc(100% - 40px); text-align: center; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
