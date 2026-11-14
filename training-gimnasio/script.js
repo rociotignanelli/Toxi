@@ -64,7 +64,7 @@ const PRODUCTOS = [
       "Pedales con correas de sujeción",
       "Ruedas para trasladarla y patas niveladoras",
     ],
-    fotos: ["img/enerfit-spinning-negra.jpg", "img/enerfit-spinning-blanca.jpg", "img/enerfit-spinning-promo.jpg"],
+    fotos: ["img/enerfit-spinning-promo.jpg", "img/enerfit-spinning-negra.jpg", "img/enerfit-spinning-blanca.jpg"],
   },
   {
     codigo: "TG-03",
@@ -87,7 +87,7 @@ const PRODUCTOS = [
       "Peso máximo del usuario: 120 kg",
       "Apto para usuarios de hasta 190 cm de altura",
     ],
-    fotos: ["img/randers-remo-1.jpg", "img/randers-remo-2.jpg", "img/randers-remo-promo.jpg"],
+    fotos: ["img/randers-remo-promo.jpg", "img/randers-remo-1.jpg", "img/randers-remo-2.jpg"],
   },
   {
     codigo: "TG-04",
@@ -110,7 +110,7 @@ const PRODUCTOS = [
       "Peso: 50 kg",
       "Estructura de acero",
     ],
-    fotos: ["img/airbike-assault-1.jpg", "img/airbike-assault-2.jpg", "img/airbike-assault-promo.jpg"],
+    fotos: ["img/airbike-assault-promo.jpg", "img/airbike-assault-1.jpg", "img/airbike-assault-2.jpg"],
   },
   {
     codigo: "TG-05",
@@ -133,7 +133,7 @@ const PRODUCTOS = [
       "Peso del producto: 37 kg",
       "Bulto: 1,24 x 0,46 x 0,18 m · 38 kg",
     ],
-    fotos: ["img/rack-randers-154-1.jpg", "img/rack-randers-154-2.jpg", "img/rack-randers-154-promo.jpg"],
+    fotos: ["img/rack-randers-154-promo.jpg", "img/rack-randers-154-1.jpg", "img/rack-randers-154-2.jpg"],
   },
   {
     codigo: "TG-06",
@@ -156,7 +156,7 @@ const PRODUCTOS = [
       "Portabotella",
       "Ruedas de traslado para moverla y guardarla fácil",
     ],
-    fotos: ["img/olmo-spirit80-1.jpg", "img/olmo-spirit80-2.jpg", "img/olmo-spirit80-promo.jpg"],
+    fotos: ["img/olmo-spirit80-promo.jpg", "img/olmo-spirit80-1.jpg", "img/olmo-spirit80-2.jpg"],
   },
   {
     codigo: "TG-07",
@@ -179,7 +179,7 @@ const PRODUCTOS = [
       "Medidas: 117 x 122 x 215 cm",
       "Uso residencial",
     ],
-    fotos: ["img/multigym-randers-1.jpg", "img/multigym-randers-3.jpg", "img/multigym-randers-2.jpg", "img/multigym-randers-promo.jpg", "img/multigym-randers-promo-2.jpg", "img/multigym-randers-promo-3.jpg"],
+    fotos: ["img/multigym-randers-promo.jpg", "img/multigym-randers-promo-2.jpg", "img/multigym-randers-promo-3.jpg", "img/multigym-randers-1.jpg", "img/multigym-randers-3.jpg", "img/multigym-randers-2.jpg"],
   },
   {
     codigo: "TG-08",
@@ -199,7 +199,7 @@ const PRODUCTOS = [
       "Peso del producto: 6,5 kg",
       "Pies antideslizantes",
     ],
-    fotos: ["img/banco-randers-202-1.jpg", "img/banco-randers-202-promo.jpg", "img/banco-randers-202-promo-2.jpg"],
+    fotos: ["img/banco-randers-202-promo.jpg", "img/banco-randers-202-promo-2.jpg", "img/banco-randers-202-1.jpg"],
   },
   {
     codigo: "TG-09",
@@ -223,7 +223,7 @@ const PRODUCTOS = [
       "Caños estructurales: 25 x 1,5 mm",
       "Caño de las patas: 25 x 2 mm",
     ],
-    fotos: ["img/mini-tramp-west-1.jpg", "img/mini-tramp-west-2.jpg", "img/mini-tramp-west-promo.jpg"],
+    fotos: ["img/mini-tramp-west-promo.jpg", "img/mini-tramp-west-1.jpg", "img/mini-tramp-west-2.jpg"],
   },
   {
     codigo: "TG-10",
@@ -246,7 +246,7 @@ const PRODUCTOS = [
       "Rueda de inercia de 4 kg",
       "Asiento con respaldo, regulable en distancia",
     ],
-    fotos: ["img/fitage-vital-stroll-1.jpg", "img/fitage-vital-stroll-2.jpg", "img/fitage-vital-stroll-promo.jpg"],
+    fotos: ["img/fitage-vital-stroll-promo.jpg", "img/fitage-vital-stroll-1.jpg", "img/fitage-vital-stroll-2.jpg"],
   },
   {
     codigo: "TG-11",
@@ -267,7 +267,7 @@ const PRODUCTOS = [
       "Estructura de acero negro",
       "Barra estabilizadora con regatones",
     ],
-    fotos: ["img/eliptico-daiwa-1.jpg", "img/eliptico-daiwa-2.jpg", "img/eliptico-daiwa-3.jpg", "img/eliptico-daiwa-promo.jpg"],
+    fotos: ["img/eliptico-daiwa-promo.jpg", "img/eliptico-daiwa-1.jpg", "img/eliptico-daiwa-2.jpg", "img/eliptico-daiwa-3.jpg"],
   },
   {
     codigo: "TG-12",
@@ -290,7 +290,7 @@ const PRODUCTOS = [
       "Transmisión cubierta",
       "Barras estabilizadoras con regatones",
     ],
-    fotos: ["img/eliptico-olmo-305-1.jpg", "img/eliptico-olmo-305-2.jpg", "img/eliptico-olmo-305-promo.jpg"],
+    fotos: ["img/eliptico-olmo-305-promo.jpg", "img/eliptico-olmo-305-1.jpg", "img/eliptico-olmo-305-2.jpg"],
   },
   {
     codigo: "TG-13",
@@ -310,7 +310,7 @@ const PRODUCTOS = [
       "Superficie texturada antideslizante",
       "Uso para gimnasios y hogares",
     ],
-    fotos: ["img/piso-eva-1.jpg", "img/piso-eva-2.jpg", "img/piso-eva-promo.jpg"],
+    fotos: ["img/piso-eva-promo.jpg", "img/piso-eva-1.jpg", "img/piso-eva-2.jpg"],
   },
   {
     codigo: "TG-14",
@@ -329,7 +329,7 @@ const PRODUCTOS = [
       "Protege el piso y amortigua impactos",
       "Uso para gimnasios y hogares",
     ],
-    fotos: ["img/piso-caucho-1.jpg", "img/piso-caucho-2.jpg", "img/piso-caucho-promo.jpg"],
+    fotos: ["img/piso-caucho-promo.jpg", "img/piso-caucho-1.jpg", "img/piso-caucho-2.jpg"],
   },
   {
     codigo: "TG-15",
@@ -352,7 +352,7 @@ const PRODUCTOS = [
       "Pedales con correas de sujeción",
       "Ruedas de traslado en la base",
     ],
-    fotos: ["img/mdk-13882-1.jpg", "img/mdk-13882-2.jpg", "img/mdk-13882-promo.jpg"],
+    fotos: ["img/mdk-13882-promo.jpg", "img/mdk-13882-1.jpg", "img/mdk-13882-2.jpg"],
   },
   {
     codigo: "TG-16",
@@ -375,7 +375,7 @@ const PRODUCTOS = [
       "Asiento y respaldo tapizados",
       "Estructura de acero",
     ],
-    fotos: ["img/athletic-460m-1.jpg", "img/athletic-460m-promo.jpg"],
+    fotos: ["img/athletic-460m-promo.jpg", "img/athletic-460m-1.jpg"],
   },
   {
     codigo: "TG-17",
@@ -396,7 +396,7 @@ const PRODUCTOS = [
       "Tapizado rojo",
       "Estructura de acero negro con regatones",
     ],
-    fotos: ["img/banco-abd-203-1.jpg", "img/banco-abd-203-2.jpg", "img/banco-abd-203-promo.jpg"],
+    fotos: ["img/banco-abd-203-promo.jpg", "img/banco-abd-203-1.jpg", "img/banco-abd-203-2.jpg"],
   },
   {
     codigo: "TG-18",
@@ -415,7 +415,7 @@ const PRODUCTOS = [
       "Mancuernas con cierre de tuerca estrella a rosca",
       "Topes de acero para la barra",
     ],
-    fotos: ["img/kit-barra-1.jpg", "img/kit-barra-2.jpg", "img/kit-barra-topes.jpg", "img/kit-barra-promo.jpg"],
+    fotos: ["img/kit-barra-promo.jpg", "img/kit-barra-1.jpg", "img/kit-barra-2.jpg", "img/kit-barra-topes.jpg"],
   },
   {
     codigo: "TG-19",
@@ -435,7 +435,7 @@ const PRODUCTOS = [
       "Mango cromado moleteado",
       "Peso marcado en las cabezas",
     ],
-    fotos: ["img/mancuerna-hex-1.jpg", "img/mancuerna-hex-2.jpg", "img/mancuerna-hex-promo.jpg"],
+    fotos: ["img/mancuerna-hex-promo.jpg", "img/mancuerna-hex-1.jpg", "img/mancuerna-hex-2.jpg"],
   },
   {
     codigo: "TG-20",
@@ -466,7 +466,7 @@ const PRODUCTOS = [
       "Peso neto: 64 kg · Peso bruto: 74 kg",
       "Embalaje: 32,5 x 76 x 169 cm",
     ],
-    fotos: ["img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg", "img/atletis-x900-promo-3.jpg", "img/atletis-x900-promo.jpg", "img/atletis-x900-promo-2.jpg"],
+    fotos: ["img/atletis-x900-promo-3.jpg", "img/atletis-x900-promo.jpg", "img/atletis-x900-promo-2.jpg", "img/atletis-x900-1.jpg", "img/atletis-x900-2.jpg"],
   },
   {
     codigo: "TG-21",
@@ -494,7 +494,7 @@ const PRODUCTOS = [
       "Lubricación manual",
       "Uso profesional y residencial · 1 año de garantía",
     ],
-    fotos: ["img/movement-lx160-1.jpg", "img/movement-lx160-promo.jpg"],
+    fotos: ["img/movement-lx160-promo.jpg", "img/movement-lx160-1.jpg"],
   },
   {
     codigo: "TG-22",
@@ -521,7 +521,7 @@ const PRODUCTOS = [
       "Garantía oficial: 6 meses",
       "Todas las tarjetas de crédito, en cuotas con interés",
     ],
-    fotos: ["img/olmo-fit44-1.jpg", "img/olmo-fit44-promo-2.jpg", "img/olmo-fit44-promo.jpg"],
+    fotos: ["img/olmo-fit44-promo-2.jpg", "img/olmo-fit44-promo.jpg", "img/olmo-fit44-1.jpg"],
   },
   {
     codigo: "TG-23",
@@ -544,7 +544,7 @@ const PRODUCTOS = [
       "Músculos: espalda, hombros, tríceps, bíceps, pecho, glúteos y piernas",
       "Uso recomendado: residencial",
     ],
-    fotos: ["img/bodyskull-multigym-1.jpg", "img/bodyskull-multigym-promo.jpg"],
+    fotos: ["img/bodyskull-multigym-promo.jpg", "img/bodyskull-multigym-1.jpg"],
   },
   {
     codigo: "TG-24",
@@ -567,7 +567,7 @@ const PRODUCTOS = [
       "Peso aproximado: 85 kg",
       "Uso residencial y profesional",
     ],
-    fotos: ["img/bodyskull-rack-1.jpg", "img/bodyskull-rack-promo.jpg"],
+    fotos: ["img/bodyskull-rack-promo.jpg", "img/bodyskull-rack-1.jpg"],
   },
   {
     codigo: "TG-25",
@@ -591,7 +591,7 @@ const PRODUCTOS = [
       "Regatones de caucho antideslizantes",
       "Uso profesional: ideal para gimnasios",
     ],
-    fotos: ["img/sonnos-m100-1.jpg", "img/sonnos-m100-promo.jpg"],
+    fotos: ["img/sonnos-m100-promo.jpg", "img/sonnos-m100-1.jpg"],
   },
   {
     codigo: "TG-26",
@@ -615,7 +615,7 @@ const PRODUCTOS = [
       "Regatones antideslizantes",
       "Incluye kit de instalación, tornillería, herramientas y manual",
     ],
-    fotos: ["img/dominadas-1.jpg", "img/dominadas-promo.jpg"],
+    fotos: ["img/dominadas-promo.jpg", "img/dominadas-1.jpg"],
   },
   {
     codigo: "TG-27",
@@ -677,7 +677,7 @@ const PRODUCTOS = [
       "Medidas: largo total 185 cm · largo hasta la base de apoyo 138 cm · ancho trasero 30 cm · ancho delantero 58 cm · alto máximo 50 cm",
       "Incluye: cama completa, caja de resortes, correas, poleas y agarres, barra ajustable, ruedas de transporte y manual de armado y mantenimiento",
     ],
-    fotos: ["img/pilates-1.jpg", "img/pilates-promo.jpg"],
+    fotos: ["img/pilates-promo.jpg", "img/pilates-1.jpg"],
   },
 ];
 
