@@ -39,6 +39,7 @@ function html(p, W, H) {
   const specs = caracteristicas(p);
   const nombre = p.nombre.length > 38 ? p.nombre.slice(0, 36).replace(/\s+\S*$/, "") + "…" : p.nombre;
   const vertical = H > W;
+  const alto = H >= 1800; // historia 9:16; el 4:5 es más compacto
   return `<!DOCTYPE html><html><head><meta charset="utf-8"><style>
 @font-face { font-family: Display; src: url("${font("oswald-latin-700-normal.ttf")}"); }
 @font-face { font-family: Cond; src: url("${font("roboto-condensed-latin-700-normal.ttf")}"); }
@@ -55,19 +56,20 @@ body { width: ${W}px; height: ${H}px; overflow: hidden; background: #0b0b0c; col
 .lt { font: 700 40px/0.9 Display; letter-spacing: 1px; }
 .lt small { display: block; font: 700 15px Cond; letter-spacing: 9px; color: #e10600; margin-top: 4px; }
 .code { font: 700 22px Cond; letter-spacing: 3px; color: #999; }
-.main { flex: 1; display: grid; ${vertical ? "grid-template-rows: 46% 1fr;" : "grid-template-columns: 47% 1fr;"} gap: ${vertical ? 34 : 40}px; margin: ${vertical ? "40px 0 40px" : "34px 0 34px"}; min-height: 0; }
-.photo { background: #fff; border-radius: 14px; border-bottom: 8px solid #e10600; display: grid; place-items: center; overflow: hidden; min-height: 0; }
-.photo img { width: 100%; height: 100%; object-fit: contain; padding: 22px; }
+.main { flex: 1; display: grid; ${vertical ? `grid-template-rows: ${alto ? "46%" : "47%"} 1fr;` : "grid-template-columns: 47% 1fr;"} gap: ${alto ? 34 : vertical ? 24 : 40}px; margin: ${alto ? "40px 0 40px" : vertical ? "28px 0 26px" : "34px 0 34px"}; min-height: 0; }
+.photo { position: relative; background: #fff; border-radius: 14px; border-bottom: 8px solid #e10600; overflow: hidden; min-height: 0; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 22px; }
 .info { display: flex; flex-direction: column; min-height: 0; }
 .cat { font: 700 22px Cond; letter-spacing: 4px; text-transform: uppercase; color: #e10600; }
 .brand { font: 700 30px Display; letter-spacing: 1px; color: #bbb; text-transform: uppercase; margin-top: 6px; }
-h1 { font: 700 ${vertical ? 66 : 58}px/1.0 Display; text-transform: uppercase; margin-top: 4px; }
+h1 { font: 700 ${alto ? 66 : vertical ? 54 : 58}px/1.0 Display; text-transform: uppercase; margin-top: 4px; }
 ul { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
-li { font-size: ${vertical ? 30 : 26}px; line-height: 1.15; padding-left: 28px; position: relative; color: #e8e8e8; }
+li { font-size: ${alto ? 30 : vertical ? 25 : 26}px; line-height: 1.15; padding-left: 28px; position: relative; color: #e8e8e8; }
 li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; height: 13px; background: #e10600; transform: rotate(45deg); }
 .price { margin-top: auto; padding-top: 18px; }
 .old { font: 700 30px Cond; color: #888; text-decoration: line-through; text-decoration-color: #e10600; text-decoration-thickness: 3px; }
-.now { font: 700 ${vertical ? 104 : 92}px/1 Display; color: #fff; }
+ul { ${vertical && !alto ? 'margin-top: 14px; gap: 7px;' : ''} }
+.now { font: 700 ${alto ? 104 : vertical ? 88 : 92}px/1 Display; color: #fff; }
 .now span { color: #e10600; }
 .tag { display: inline-block; background: #e10600; font: 700 26px Display; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 8px; text-transform: uppercase; }
 .cuotas { font: 700 26px Cond; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; color: ${oferta ? "#ccc" : "#25d366"}; }
