@@ -28,7 +28,7 @@ El catálogo tiene 29 productos con sus precios:
 | TG-17 | Banco de abdominales Randers ARG-203 | $110.000 de contado |
 | TG-18 | Kit barra, mancuernas y discos | $110.000 de contado |
 | TG-19 | Mancuerna hexagonal maciza 5 kg | $30.000 de contado |
-| TG-20 | Cinta de correr Atletis X900 (30% OFF, antes $335.000) | $235.000 |
+| TG-20 | Cinta de correr Atletis X900 (30% OFF, antes $857.143) | $600.000 |
 | TG-21 | Cinta profesional Movement LX160 G4 | $2.800.000 · hasta 12 cuotas sin interés |
 | TG-22 | Multigym Olmo Fit 44 (35% OFF, antes $500.000) | $325.000 · cuotas con interés |
 | TG-23 | Multigimnasio Body Skull | $1.000.500 · hasta 12 cuotas sin interés |
