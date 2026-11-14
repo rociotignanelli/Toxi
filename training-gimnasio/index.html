@@ -79,7 +79,7 @@
       <div class="hero__content">
         <p class="eyebrow">Equipamiento para gimnasios y hogares</p>
         <h1>Training Gimnasio<br /><span>Maquinaria</span> para gimnasios</h1>
-        <p class="hero__text">Cintas de correr, bicicletas, elípticos, remos, airbikes, multigyms, racks, prensas, camas de Pilates, bancos, mancuernas, mini tramps y pisos para gimnasio de las mejores marcas: Movement, Sonnos, Body Skull, Atletis, Randers, Olmo, Athletic, Enerfit, Fitage, MDK, Daiwa, West, MIR y Assault.</p>
+        <p class="hero__text">Cintas de correr, bicicletas, elípticos, remos, multigyms, racks, bancos, mancuernas, discos, camas de Pilates, boxeo, entrenamiento funcional, yoga y pisos para gimnasio. Trabajamos con Randers, Fitage, Zellens, Corplus, Omiko, Olmo, Sonnos, Movement, Body Skull, Athletic, Atletis y más.</p>
         <div class="hero__actions">
           <a href="#catalogo" class="btn btn--red">Ver maquinaria</a>
           <a href="#contacto" class="btn btn--ghost">Consultar por WhatsApp</a>
@@ -112,8 +112,19 @@
         </label>
       </div>
 
+      <div class="results-bar">
+        <span id="resultCount"></span>
+        <label class="sort">Ordenar por
+          <select id="orden">
+            <option value="destacados">Destacados</option>
+            <option value="menor">Menor precio</option>
+            <option value="mayor">Mayor precio</option>
+          </select>
+        </label>
+      </div>
       <div class="grid" id="grid"></div>
       <p class="empty" id="empty" hidden>No encontramos equipos con esa búsqueda.</p>
+      <div class="more-wrap"><button class="btn btn--ghost" id="verMas" hidden>Ver más productos</button></div>
     </div>
   </section>
 
@@ -130,6 +141,7 @@
           <tbody id="priceTable"></tbody>
         </table>
       </div>
+      <div class="more-wrap"><button class="btn btn--ghost" id="tablaToggle">Ver lista completa</button></div>
     </div>
   </section>
 
@@ -261,6 +273,7 @@
   </div>
 
   <script src="localidades.js"></script>
+  <script src="productos-nuevos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

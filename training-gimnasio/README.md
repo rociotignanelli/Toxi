@@ -41,6 +41,9 @@ El catálogo tiene 29 productos con sus precios:
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
+## Productos del proveedor
+Además de los 29 productos de arriba (TG-01 a TG-29), la página tiene 151 productos del catálogo del proveedor (TG-30 en adelante), en `productos-nuevos.js`, con sus fotos en `img/prov/`. Solo se cargaron los que el proveedor tenía con stock. Su precio es el precio con tarjeta del proveedor con un 30% menos, sin mostrarlo como descuento.
+
 ## Cómo editar productos y precios
 Todo está en la lista `PRODUCTOS`, al principio de `script.js`. Para cambiar un precio, escribí el número sin puntos en `precio` (por ejemplo `precio: 227000`). Si querés mostrar el precio anterior tachado, agregá `precioAnterior`. Si `precio` es `null`, se muestra "Consultar precio". Para agregar un producto, copiá un bloque completo, cambiale el código y guardá sus fotos en `img/`.
 

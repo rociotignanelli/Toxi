@@ -681,6 +681,9 @@ const PRODUCTOS = [
   },
 ];
 
+/* Productos del proveedor (archivo productos-nuevos.js) */
+PRODUCTOS.push(...(window.PRODUCTOS_NUEVOS || []));
+
 const CATEGORIAS = [
   { id: "todos", nombre: "Todos" },
   { id: "cintas", nombre: "Cintas de correr" },
@@ -691,9 +694,14 @@ const CATEGORIAS = [
   { id: "airbike", nombre: "Airbike" },
   { id: "fuerza", nombre: "Fuerza" },
   { id: "peso-libre", nombre: "Peso libre" },
+  { id: "funcional", nombre: "Entrenamiento funcional" },
+  { id: "boxeo", nombre: "Boxeo" },
   { id: "pilates", nombre: "Pilates" },
+  { id: "yoga", nombre: "Yoga y rehabilitación" },
   { id: "jumping", nombre: "Jumping" },
   { id: "pisos", nombre: "Pisos" },
+  { id: "accesorios", nombre: "Accesorios" },
+  { id: "urbanas", nombre: "Bicicletas urbanas" },
 ];
 
 /* ---------------- Utilidades ---------------- */
@@ -706,6 +714,10 @@ const nombreCompleto = (p) => [p.marca, p.nombre].filter(Boolean).join(" ");
 const buscarProducto = (codigo) => PRODUCTOS.find((p) => p.codigo === codigo);
 
 let filtroActivo = "todos";
+const POR_PAGINA = 24;
+let mostrando = POR_PAGINA;
+let orden = "destacados";
+const sinAcentos = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 let busqueda = "";
 
 /* ---------------- Render ---------------- */
@@ -722,14 +734,24 @@ function precioHTML(p) {
 }
 
 function renderGrid() {
-  const q = busqueda.trim().toLowerCase();
-  const lista = PRODUCTOS.filter((p) =>
+  const q = sinAcentos(busqueda.trim());
+  const filtrada = PRODUCTOS.filter((p) =>
     (filtroActivo === "todos" || p.categoria === filtroActivo) &&
-    (!q || `${p.codigo} ${p.marca} ${p.nombre} ${p.resumen}`.toLowerCase().includes(q))
+    (!q || sinAcentos(`${p.codigo} ${p.marca} ${p.nombre} ${p.resumen} ${nombreCategoria(p.categoria)}`).includes(q))
   );
+  if (orden !== "destacados") {
+    filtrada.sort((a, b) => {
+      const pa = tienePrecio(a) ? a.precio : Infinity, pb = tienePrecio(b) ? b.precio : Infinity;
+      return orden === "menor" ? pa - pb : (pb === Infinity ? -1 : pa === Infinity ? 1 : pb - pa);
+    });
+  }
+  const lista = filtrada.slice(0, mostrando);
 
+  $("#resultCount").textContent = `${filtrada.length} ${filtrada.length === 1 ? "producto" : "productos"}`;
+  $("#verMas").hidden = filtrada.length <= mostrando;
+  $("#verMas").textContent = `Ver más productos (${filtrada.length - lista.length} restantes)`;
   $("#grid").innerHTML = lista.map((p, i) => `
-    <article class="card" style="animation-delay:${Math.min(i, 12) * 60}ms">
+    <article class="card" style="animation-delay:${Math.min(i % POR_PAGINA, 12) * 50}ms">
       <button class="card__media${p.fondoOscuro ? " card__media--dark" : ""}" data-detalle="${p.codigo}" aria-label="Ver detalle de ${escapar(p.nombre)}">
         <span class="card__code">${p.codigo}</span>
         ${p.etiqueta ? `<span class="card__tag">${escapar(p.etiqueta)}</span>` : ""}
@@ -749,11 +771,14 @@ function renderGrid() {
       </div>
     </article>`).join("");
 
-  $("#empty").hidden = lista.length > 0;
+  $("#empty").hidden = filtrada.length > 0;
 }
 
+let tablaCompleta = false;
 function renderTabla() {
-  $("#priceTable").innerHTML = PRODUCTOS.map((p) => `
+  const filas = tablaCompleta ? PRODUCTOS : PRODUCTOS.slice(0, 15);
+  $("#tablaToggle").textContent = tablaCompleta ? "Ver menos" : `Ver lista completa (${PRODUCTOS.length} productos)`;
+  $("#priceTable").innerHTML = filas.map((p) => `
     <tr>
       <td>${p.codigo}</td>
       <td>${escapar(nombreCompleto(p))}</td>
@@ -811,12 +836,14 @@ $("#filters").addEventListener("click", (e) => {
   const btn = e.target.closest(".filter");
   if (!btn) return;
   filtroActivo = btn.dataset.cat;
+  mostrando = POR_PAGINA;
   renderFiltros();
   renderGrid();
 });
 
 $("#search").addEventListener("input", (e) => {
   busqueda = e.target.value;
+  mostrando = POR_PAGINA;
   renderGrid();
 });
 
@@ -1168,6 +1195,14 @@ $("#cartClear").addEventListener("click", () => { carrito = []; guardarCarrito()
 document.addEventListener("keydown", (e) => { if (e.key === "Escape" && $("#cart").classList.contains("open")) cerrarCarrito(); });
 $("#contactWhatsapp").href = WHATSAPP_LINK;
 $("#waFloat").href = WHATSAPP_LINK;
+
+$("#orden").addEventListener("change", (e) => { orden = e.target.value; mostrando = POR_PAGINA; renderGrid(); });
+$("#verMas").addEventListener("click", () => { mostrando += POR_PAGINA; renderGrid(); });
+$("#tablaToggle").addEventListener("click", () => {
+  tablaCompleta = !tablaCompleta;
+  renderTabla();
+  if (!tablaCompleta) $("#precios").scrollIntoView({ behavior: "smooth" });
+});
 
 $("#menuToggle").addEventListener("click", () => $("#nav").classList.toggle("open"));
 $("#nav").addEventListener("click", (e) => { if (e.target.tagName === "A") $("#nav").classList.remove("open"); });
