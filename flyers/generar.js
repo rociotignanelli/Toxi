@@ -1,15 +1,15 @@
 /* Genera avisos (flyers) de los productos de la página Axion Fit.
    Uso: node generar.js <carpeta-salida> [TG-01 TG-42 ...]   (sin códigos = todos)
-   Toma los datos de ../training-gimnasio (script.js + productos-nuevos.js). */
+   Toma los datos de ../axion-fit (script.js + productos-nuevos.js). */
 const fs = require("fs");
 const path = require("path");
 const { chromium } = require("playwright");
 
-const SITE = path.resolve(__dirname, "../training-gimnasio");
+const SITE = path.resolve(__dirname, "../axion-fit");
 const OUT = path.resolve(process.argv[2] || path.join(__dirname, "salida"));
 const PEDIDOS = process.argv.slice(3);
 const WHATSAPP = "+54 9 3765 53-0096";
-const WEB = "traininggimnacio.netlify.app";
+const WEB = "Posadas, Misiones";
 
 // ---- cargar productos desde la página ----
 global.window = {};
