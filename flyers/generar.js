@@ -1,4 +1,4 @@
-/* Genera avisos (flyers) de los productos de la página Action Fit.
+/* Genera avisos (flyers) de los productos de la página Axion Fit.
    Uso: node generar.js <carpeta-salida> [TG-01 TG-42 ...]   (sin códigos = todos)
    Toma los datos de ../training-gimnasio (script.js + productos-nuevos.js). */
 const fs = require("fs");
@@ -78,13 +78,13 @@ li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; 
 </style></head><body><div class="bg"></div><div class="band"></div>
 <div class="wrap">
   <div class="top">
-    <div class="logo"><div class="mark">A</div><div class="lt">ACTION<small>FIT</small></div></div>
+    <div class="logo"><div class="mark">A</div><div class="lt">AXION<small>FIT</small></div></div>
     <div class="code">${esc(p.codigo)}</div>
   </div>
   <div class="main">
     <div class="photo"><img src="${"file://" + path.join(SITE, FOTO_AVISO[p.codigo] || p.fotos.find((f) => !/promo|flyers\//.test(f)) || p.fotos[0])}"></div>
     <div class="info">
-      ${p.marca ? `<div class="brand">${esc(p.marca)}</div>` : `<div class="cat">Action Fit</div>`}
+      ${p.marca ? `<div class="brand">${esc(p.marca)}</div>` : `<div class="cat">Axion Fit</div>`}
       <h1>${esc(nombre)}</h1>
       <ul>${specs.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       <div class="price">

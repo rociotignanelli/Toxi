@@ -1,4 +1,4 @@
-# Action Fit
+# Axion Fit
 
 Página de venta de maquinaria profesional para gimnasios, en negro y rojo. Está hecha con HTML, CSS y JavaScript puros, sin dependencias.
 
