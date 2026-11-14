@@ -1,5 +1,5 @@
 /* =========================================================
-   TRAINING GIMNASIO — Catálogo de maquinaria
+   ACTION FIT — Catálogo de maquinaria
    ---------------------------------------------------------
    PARA CAMBIAR UN PRECIO: buscá el producto por su código y
    escribí el número en "precio" (sin puntos ni signo $).
@@ -684,7 +684,7 @@ const PRODUCTOS = [
 /* Productos del proveedor (archivo productos-nuevos.js) */
 PRODUCTOS.push(...(window.PRODUCTOS_NUEVOS || []));
 
-/* Aviso de Training Gimnasio (img/flyers/tg-XX.webp) como primera imagen de cada producto.
+/* Aviso de Action Fit (img/flyers/tg-XX.webp) como primera imagen de cada producto.
    Se generan con flyers/generar.js. */
 PRODUCTOS.forEach((p) => {
   const fotos = p.fotos.filter((f) => !/promo/.test(f));
@@ -960,7 +960,7 @@ function mensajePedido(datos) {
     return foto ? `${linea}\n   Foto: ${foto}` : linea;
   });
   const msg = [
-    "¡Hola Training Gimnasio! Quiero realizar esta compra desde la página web:",
+    "¡Hola Action Fit! Quiero realizar esta compra desde la página web:",
     "",
     "*PEDIDO*",
     ...lineas,

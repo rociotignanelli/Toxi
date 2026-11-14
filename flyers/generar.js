@@ -1,4 +1,4 @@
-/* Genera avisos (flyers) de los productos de la página Training Gimnasio.
+/* Genera avisos (flyers) de los productos de la página Action Fit.
    Uso: node generar.js <carpeta-salida> [TG-01 TG-42 ...]   (sin códigos = todos)
    Toma los datos de ../training-gimnasio (script.js + productos-nuevos.js). */
 const fs = require("fs");
@@ -43,33 +43,34 @@ function html(p, W, H) {
 @font-face { font-family: Display; src: url("${font("oswald-latin-700-normal.ttf")}"); }
 @font-face { font-family: Cond; src: url("${font("roboto-condensed-latin-700-normal.ttf")}"); }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { width: ${W}px; height: ${H}px; overflow: hidden; background: #0b0b0c; color: #fff; font-family: Cond, sans-serif; position: relative; }
+body { width: ${W}px; height: ${H}px; overflow: hidden; background: #07060a; color: #fff; font-family: Cond, sans-serif; position: relative; }
 .bg { position: absolute; inset: 0; background:
-  radial-gradient(circle at 78% 42%, rgba(225,6,0,.35), transparent 55%),
+  radial-gradient(circle at 78% 42%, rgba(176,38,255,.35), transparent 55%),
   repeating-linear-gradient(-55deg, transparent 0 46px, rgba(255,255,255,.025) 46px 92px); }
-.band { position: absolute; left: 0; right: 0; bottom: 0; height: ${vertical ? 150 : 118}px; background: #e10600; }
+.band { position: absolute; left: 0; right: 0; bottom: 0; height: ${vertical ? 150 : 118}px; background: #b026ff; }
 .wrap { position: absolute; inset: ${vertical ? "64px 60px 0" : "50px 56px 0"}; display: flex; flex-direction: column; }
 .top { display: flex; justify-content: space-between; align-items: center; }
 .logo { display: flex; align-items: center; gap: 14px; }
-.mark { width: 64px; height: 64px; background: #e10600; display: grid; place-items: center; font: 700 44px Display; clip-path: polygon(0 0,100% 0,100% 75%,75% 100%,0 100%); }
+.mark { width: 64px; height: 64px; background: #b026ff; display: grid; place-items: center; font: 700 44px Display; clip-path: polygon(0 0,100% 0,100% 75%,75% 100%,0 100%); }
 .lt { font: 700 40px/0.9 Display; letter-spacing: 1px; }
-.lt small { display: block; font: 700 15px Cond; letter-spacing: 9px; color: #e10600; margin-top: 4px; }
+.lt small { display: block; font: 700 15px Cond; letter-spacing: 14px; color: #b026ff; text-shadow: 0 0 10px rgba(176,38,255,.8); margin-top: 4px; }
 .code { font: 700 22px Cond; letter-spacing: 3px; color: #999; }
 .main { flex: 1; display: grid; ${vertical ? "grid-template-rows: 46% 1fr;" : "grid-template-columns: 47% 1fr;"} gap: ${vertical ? 34 : 40}px; margin: ${vertical ? "40px 0 40px" : "34px 0 34px"}; min-height: 0; }
-.photo { background: #fff; border-radius: 14px; border-bottom: 8px solid #e10600; display: grid; place-items: center; overflow: hidden; min-height: 0; }
+.photo { background: #fff; border-radius: 14px; border-bottom: 8px solid #b026ff; display: grid; place-items: center; overflow: hidden; min-height: 0; }
 .photo img { width: 100%; height: 100%; object-fit: contain; padding: 22px; }
 .info { display: flex; flex-direction: column; min-height: 0; }
-.cat { font: 700 22px Cond; letter-spacing: 4px; text-transform: uppercase; color: #e10600; }
+.cat { font: 700 22px Cond; letter-spacing: 4px; text-transform: uppercase; color: #b026ff; }
 .brand { font: 700 30px Display; letter-spacing: 1px; color: #bbb; text-transform: uppercase; margin-top: 6px; }
 h1 { font: 700 ${vertical ? 66 : 58}px/1.0 Display; text-transform: uppercase; margin-top: 4px; }
 ul { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
 li { font-size: ${vertical ? 30 : 26}px; line-height: 1.15; padding-left: 28px; position: relative; color: #e8e8e8; }
-li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; height: 13px; background: #e10600; transform: rotate(45deg); }
+li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; height: 13px; background: #b026ff; transform: rotate(45deg); }
 .price { margin-top: auto; padding-top: 18px; }
-.old { font: 700 30px Cond; color: #888; text-decoration: line-through; text-decoration-color: #e10600; text-decoration-thickness: 3px; }
+.old { font: 700 30px Cond; color: #888; text-decoration: line-through; text-decoration-color: #b026ff; text-decoration-thickness: 3px; }
 .now { font: 700 ${vertical ? 104 : 92}px/1 Display; color: #fff; }
-.now span { color: #e10600; }
-.tag { display: inline-block; background: #e10600; font: 700 26px Display; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 8px; text-transform: uppercase; }
+.now span { color: #b026ff; text-shadow: 0 0 18px rgba(176,38,255,.8); }
+.mark { box-shadow: 0 0 22px rgba(176,38,255,.8); }
+.tag { display: inline-block; background: #b026ff; font: 700 26px Display; letter-spacing: 1px; padding: 4px 14px; margin-bottom: 8px; text-transform: uppercase; }
 .cuotas { font: 700 26px Cond; letter-spacing: 2px; text-transform: uppercase; margin-top: 8px; color: ${oferta ? "#ccc" : "#25d366"}; }
 .foot { position: relative; height: ${vertical ? 150 : 118}px; display: flex; align-items: center; justify-content: space-between; font: 700 ${vertical ? 30 : 27}px Cond; letter-spacing: 1px; text-transform: uppercase; }
 .foot b { font: 700 ${vertical ? 40 : 36}px Display; letter-spacing: 1px; display: block; }
@@ -77,13 +78,13 @@ li::before { content: ""; position: absolute; left: 0; top: .42em; width: 13px; 
 </style></head><body><div class="bg"></div><div class="band"></div>
 <div class="wrap">
   <div class="top">
-    <div class="logo"><div class="mark">T</div><div class="lt">TRAINING<small>GIMNASIO</small></div></div>
+    <div class="logo"><div class="mark">A</div><div class="lt">ACTION<small>FIT</small></div></div>
     <div class="code">${esc(p.codigo)}</div>
   </div>
   <div class="main">
     <div class="photo"><img src="${"file://" + path.join(SITE, FOTO_AVISO[p.codigo] || p.fotos.find((f) => !/promo|flyers\//.test(f)) || p.fotos[0])}"></div>
     <div class="info">
-      ${p.marca ? `<div class="brand">${esc(p.marca)}</div>` : `<div class="cat">Training Gimnasio</div>`}
+      ${p.marca ? `<div class="brand">${esc(p.marca)}</div>` : `<div class="cat">Action Fit</div>`}
       <h1>${esc(nombre)}</h1>
       <ul>${specs.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
       <div class="price">
