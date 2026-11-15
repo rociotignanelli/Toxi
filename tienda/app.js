@@ -28,9 +28,11 @@
 
   // Chips de categorías
   var cats = CAT_ORDER.filter(function (c) { return P.some(function (p) { return p.c === c; }); });
-  $('#chips').innerHTML = ['Todos'].concat(cats).map(function (c) {
-    var n = c === 'Todos' ? P.length : P.filter(function (p) { return p.c === c; }).length;
-    return '<button class="chip' + (c === 'Todos' ? ' is-active' : '') + '" data-cat="' + esc(c) + '">' + esc(c) + ' <small>' + n + '</small></button>';
+  var PROMO = 'Promociones y descuentos';
+  var hasPromo = P.some(function (p) { return p.off; });
+  $('#chips').innerHTML = ['Todos'].concat(hasPromo ? [PROMO] : [], cats).map(function (c) {
+    var n = c === 'Todos' ? P.length : c === PROMO ? P.filter(function (p) { return p.off; }).length : P.filter(function (p) { return p.c === c; }).length;
+    return '<button class="chip' + (c === 'Todos' ? ' is-active' : '') + (c === PROMO ? ' chip--promo' : '') + '" data-cat="' + esc(c) + '">' + esc(c) + ' <small>' + n + '</small></button>';
   }).join('');
   $('#statCount').textContent = P.length;
   $('#statCats').textContent = cats.length;
@@ -39,7 +41,8 @@
   function render() {
     var q = norm(state.q.trim());
     var list = P.filter(function (p) {
-      if (state.cat !== 'Todos' && p.c !== state.cat) return false;
+      if (state.cat === PROMO) { if (!p.off) return false; }
+      else if (state.cat !== 'Todos' && p.c !== state.cat) return false;
       if (state.stock && !p.s) return false;
       if (q && q.split(/\s+/).some(function (w) { return p.key.indexOf(w) === -1; })) return false;
       return true;
@@ -61,7 +64,7 @@
           '<img loading="lazy" src="' + src(img, '480-0') + '" alt="' + esc(p.n) + '" />' +
           (img2 ? '<img loading="lazy" class="card__alt" src="' + src(img2, '480-0') + '" alt="" />' : '') +
           (p.vid.length ? '<span class="badge badge--video">▶ Video</span>' : '') +
-          (p.off ? '<span class="badge badge--off">' + p.off + '% OFF</span>' : '') +
+          (p.off ? '<span class="badge badge--off">Promoción ' + p.off + '% OFF</span>' : '') +
           (p.last ? '<span class="badge badge--last">Últimas 10</span>' : '') +
           (p.s ? '' : '<span class="badge badge--out">Sin stock</span>') +
         '</div>' +
@@ -123,7 +126,7 @@
     current = P.filter(function (p) { return p.id === id; })[0];
     if (!current) return;
     var p = current;
-    $('#mCat').textContent = p.c;
+    $('#mCat').innerHTML = esc(p.c) + (p.off ? ' <span class="promo-tag">¡En promoción!</span>' : '');
     $('#mName').textContent = p.n;
     $('#mThumbs').innerHTML = mediaItems(p).map(function (m, i) {
       if (m.t === 'img') return '<button data-i="' + i + '"><img loading="lazy" src="' + src(m.u, '100-0') + '" alt="" /></button>';

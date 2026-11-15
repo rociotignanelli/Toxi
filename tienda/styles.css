@@ -239,3 +239,10 @@ select {
 .info__was { display: block; font-size: 1.05rem; font-weight: 500; letter-spacing: 0; }
 .info__price:has(.info__was) { color: #e11d48; }
 .info__price .info__was s { color: var(--muted); }
+
+.chip--promo { border-color: #e11d48; color: #e11d48; font-weight: 600; }
+.chip--promo small { color: #e11d48; }
+.chip--promo.is-active { background: #e11d48; border-color: #e11d48; color: #fff; }
+.chip--promo.is-active small { color: rgba(255,255,255,.75); }
+.promo-tag { display: inline-block; margin-left: 6px; background: #e11d48; color: #fff; border-radius: 999px; padding: 2px 9px; font-size: .72rem; letter-spacing: .04em; vertical-align: middle; }
+.badge--off ~ .badge--last { top: 40px; left: 10px; right: auto; }
