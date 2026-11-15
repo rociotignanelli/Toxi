@@ -100,13 +100,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .cat__icon { font-size: 2rem; width: 66px; height: 66px; margin: 0 auto .7rem; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, #e7f0ff, #f5f8ff); }
 .cat strong { font-size: .88rem; display: block; }
 
-/* Promo */
-.promo { background: var(--grad); color: #fff; position: relative; overflow: hidden; }
-.promo::before { content: "⚡"; position: absolute; right: 8%; top: 50%; transform: translateY(-50%); font-size: 12rem; opacity: .12; }
-.promo__inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding: 3rem 0; position: relative; }
-.promo h2 { font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; font-style: italic; }
-.promo h2 span { background: var(--black); padding: 0 .4rem; border-radius: 6px; }
-.promo p { opacity: .9; }
 
 /* Filters & products */
 .filters { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-bottom: 2rem; }
