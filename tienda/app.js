@@ -61,7 +61,8 @@
           '<img loading="lazy" src="' + src(img, '480-0') + '" alt="' + esc(p.n) + '" />' +
           (img2 ? '<img loading="lazy" class="card__alt" src="' + src(img2, '480-0') + '" alt="" />' : '') +
           (p.vid.length ? '<span class="badge badge--video">▶ Video</span>' : '') +
-          (p.s ? '<span class="badge badge--last">Últimas 10</span>' : '<span class="badge badge--out">Sin stock</span>') +
+          (p.last ? '<span class="badge badge--last">Últimas 10</span>' : '') +
+          (p.s ? '' : '<span class="badge badge--out">Sin stock</span>') +
         '</div>' +
         '<div class="card__body">' +
           '<p class="card__cat">' + esc(p.c) + '</p>' +
@@ -102,8 +103,9 @@
     var v = current.v[i];
     $('#mPrice').textContent = money(v ? v.p : current.min);
     var ok = v ? v.s : current.s;
-    $('#mStock').textContent = ok ? '¡Últimas 10 unidades!' : 'Sin stock';
-    $('#mStock').className = 'info__stock ' + (ok ? 'is-ok' : 'is-out');
+    var last = current.last && ok;
+    $('#mStock').textContent = last ? '¡Últimas 10 unidades!' : (ok ? 'Disponible' : 'Sin stock');
+    $('#mStock').className = 'info__stock ' + (last ? 'is-last' : (ok ? 'is-ok' : 'is-out'));
     Array.prototype.forEach.call($('#mVariants').querySelectorAll('button'), function (b, k) { b.classList.toggle('is-active', k === i); });
   }
 
@@ -156,6 +158,7 @@
     if (this.value && window.scrollY < $('#catalogo').offsetTop - 80) $('#catalogo').scrollIntoView({ behavior: 'smooth' });
   });
   $('#sort').addEventListener('change', function () { state.sort = this.value; render(); });
+  $('#onlyStock').addEventListener('change', function () { state.stock = this.checked; render(); });
   $('#grid').addEventListener('click', function (e) {
     var c = e.target.closest('.card'); if (c) open(c.dataset.id);
   });

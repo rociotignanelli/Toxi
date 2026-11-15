@@ -177,7 +177,7 @@ select {
 .info h2 { font-size: 1.55rem; line-height: 1.2; letter-spacing: -.01em; margin: 6px 0 14px; padding-right: 30px; }
 .info__price { font-size: 2.1rem; font-weight: 800; letter-spacing: -.02em; }
 .info__stock { font-size: .9rem; font-weight: 600; margin: 4px 0 18px; }
-.info__stock.is-ok { color: var(--brand); font-size: 1rem; }
+.info__stock.is-ok { color: #16a34a; }
 .info__stock.is-out { color: var(--muted); }
 .variants { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
 .variants p { width: 100%; font-size: .85rem; color: var(--muted); font-weight: 500; }
@@ -228,5 +228,5 @@ select {
 }
 .modal__body > * { min-width: 0; }
 
+.info__stock.is-last { color: var(--brand); font-size: 1rem; }
 .badge--last { right: 10px; background: var(--brand); color: #fff; }
-.badge--video { display: none; }
