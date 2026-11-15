@@ -61,12 +61,14 @@
           '<img loading="lazy" src="' + src(img, '480-0') + '" alt="' + esc(p.n) + '" />' +
           (img2 ? '<img loading="lazy" class="card__alt" src="' + src(img2, '480-0') + '" alt="" />' : '') +
           (p.vid.length ? '<span class="badge badge--video">▶ Video</span>' : '') +
+          (p.off ? '<span class="badge badge--off">' + p.off + '% OFF</span>' : '') +
           (p.last ? '<span class="badge badge--last">Últimas 10</span>' : '') +
           (p.s ? '' : '<span class="badge badge--out">Sin stock</span>') +
         '</div>' +
         '<div class="card__body">' +
           '<p class="card__cat">' + esc(p.c) + '</p>' +
           '<h3>' + esc(p.n) + '</h3>' +
+          (p.off ? '<p class="card__was"><s>' + money(p.w) + '</s> <b>' + p.off + '% OFF</b></p>' : '') +
           '<p class="card__price">' + (p.v.length > 1 && p.v.some(function (v) { return v.p !== p.min; }) ? '<small>desde</small> ' : '') + money(p.min) + '</p>' +
           (p.v.length > 1 ? '<p class="card__opts">' + p.v.length + ' opciones</p>' : '') +
         '</div>' +
@@ -101,7 +103,7 @@
 
   function setVariant(i) {
     var v = current.v[i];
-    $('#mPrice').textContent = money(v ? v.p : current.min);
+    $('#mPrice').innerHTML = (current.off ? '<span class="info__was"><s>' + money(v && v.w ? v.w : current.w) + '</s> <b>' + current.off + '% OFF</b></span>' : '') + money(v ? v.p : current.min);
     var ok = v ? v.s : current.s;
     var last = current.last && ok;
     $('#mStock').textContent = last ? '¡Últimas 10 unidades!' : (ok ? 'Disponible' : 'Sin stock');

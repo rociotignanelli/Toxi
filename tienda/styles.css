@@ -230,3 +230,12 @@ select {
 
 .info__stock.is-last { color: var(--brand); font-size: 1rem; }
 .badge--last { right: 10px; background: var(--brand); color: #fff; }
+
+.badge--off { left: 10px; background: #e11d48; color: #fff; }
+.card__was, .info__was { color: var(--muted); font-size: .85rem; }
+.card__was b, .info__was b { color: #e11d48; font-weight: 700; margin-left: 4px; }
+.card__was { margin-top: auto; }
+.card__was + .card__price { margin-top: 0; color: #e11d48; }
+.info__was { display: block; font-size: 1.05rem; font-weight: 500; letter-spacing: 0; }
+.info__price:has(.info__was) { color: #e11d48; }
+.info__price .info__was s { color: var(--muted); }
