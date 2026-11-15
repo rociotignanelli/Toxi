@@ -20,6 +20,6 @@ Para verlo, abre `index.html` en el navegador.
 Catálogo de vehículos a batería (autos, camionetas, motos, cuatriciclos, UTV, kartings y monopatines). Para verlo, abrí `tienda/index.html`.
 
 - 187 productos con fotos, descripción y precio (en ARS, con 30% de descuento ya aplicado)
-- Filtro por categoría, buscador, orden por precio y opción de ver solo lo que tiene stock
+- Filtro por categoría, buscador, orden por precio
 - Ficha de cada producto con galería, videos y opciones de color con su precio
 - Los datos están en `tienda/products.js`
