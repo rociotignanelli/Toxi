@@ -32,7 +32,6 @@ const PRODUCTS = [
   { id: 20, cat: "tomas", name: "Bastidor 10x5 con tapa", price: 1240, icon: "⬛" },
 ];
 
-const TRANSFER_OFF = 0.1;
 const FEES = 6;
 
 const $ = (s, c = document) => c.querySelector(s);
@@ -92,20 +91,16 @@ function renderProducts() {
     (!query || normalize(p.name + " " + catName(p.cat)).includes(query)));
   $("#emptyMsg").hidden = list.length > 0;
   $("#products").innerHTML = list.map((p) => {
-    const off = p.old ? Math.round((1 - p.price / p.old) * 100) : 0;
     return `
     <article class="product">
       <div class="product__img">
-        ${off ? `<span class="product__badge product__badge--off">${off}% OFF</span>` : ""}
         ${p.icon}
       </div>
       <div class="product__body">
         <span class="product__cat">${catName(p.cat)}</span>
         <h3 class="product__name">${p.name}</h3>
-        ${p.old ? `<span class="product__old">${money(p.old)}</span>` : ""}
         <span class="product__price">${money(p.price)}</span>
         <span class="product__fees">${FEES} cuotas sin interés de ${money(p.price / FEES)}</span>
-        <span class="product__transfer">${money(p.price * (1 - TRANSFER_OFF))} con transferencia</span>
         <span class="spacer"></span>
         <button class="btn btn--primary" data-add="${p.id}">Agregar al carrito</button>
       </div>
@@ -134,7 +129,6 @@ function renderCart() {
   const total = cart.reduce((s, i) => s + findProduct(i.id).price * i.qty, 0);
   $("#cartCount").textContent = count;
   $("#cartTotal").textContent = money(total);
-  $("#cartTransfer").textContent = total ? `${money(total * (1 - TRANSFER_OFF))} pagando con transferencia` : "";
   $("#cartItems").innerHTML = cart.length ? cart.map((i, idx) => {
     const p = findProduct(i.id);
     return `
@@ -189,16 +183,6 @@ $("#checkoutBtn").addEventListener("click", () => {
 /* Menú móvil */
 $("#menuToggle").addEventListener("click", () => $("#nav").classList.toggle("is-open"));
 $$("#nav a").forEach((a) => a.addEventListener("click", () => $("#nav").classList.remove("is-open")));
-
-/* Newsletter */
-$("#newsletter").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const msg = $("#nlMsg");
-  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($("#nlEmail").value.trim());
-  msg.className = ok ? "ok" : "err";
-  msg.textContent = ok ? "¡Listo! Vas a recibir nuestras ofertas." : "Ingresá un email válido.";
-  if (ok) $("#nlEmail").value = "";
-});
 
 /* Toast */
 let toastTimer;
