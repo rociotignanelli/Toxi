@@ -214,7 +214,6 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   .hero__visual img { width: 260px; }
   .products { grid-template-columns: repeat(2, 1fr); gap: .8rem; }
   .cats { grid-template-columns: repeat(2, 1fr); }
-  .promo__inner { flex-direction: column; text-align: center; }
   .product__price { font-size: 1.1rem; }
 }
 @media (max-width: 480px) {
