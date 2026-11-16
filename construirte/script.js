@@ -12,30 +12,49 @@ const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<
 
 const media = (p) =>
   p.imagen
-    ? `<img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" loading="lazy" />`
+    ? `<img src="${esc(p.imagen)}" alt="${esc(p.nombre)}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'placeholder',innerHTML:'<img src=&quot;logo.svg&quot; alt=&quot;&quot;>'}))" />`
     : `<div class="placeholder"><img src="logo.svg" alt="" /></div>`;
 
 /* ---------- Catálogo ---------- */
+const POR_PAGINA = 24;
 let filtro = "Todos";
+let subfiltro = "";
 let busqueda = "";
+let orden = "";
+let visibles = POR_PAGINA;
+const norm = (t = "") => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const resumen = (p) => (p.descripcion || "").split("\n").slice(0, 3).join(" · ");
 
 function renderFilters() {
   const cats = ["Todos", ...new Set(PRODUCTS.map((p) => p.categoria).filter(Boolean))];
   $("#filters").innerHTML = cats
     .map((c) => {
       const n = c === "Todos" ? PRODUCTS.length : PRODUCTS.filter((p) => p.categoria === c).length;
-      return `<li><button class="filter ${c === filtro ? "is-active" : ""}" data-cat="${esc(c)}">${esc(c)} <span>${n}</span></button></li>`;
+      let subs = "";
+      if (c === filtro && c !== "Todos") {
+        const sc = [...new Set(PRODUCTS.filter((p) => p.categoria === c && p.subcategoria).map((p) => p.subcategoria))].sort();
+        if (sc.length > 1)
+          subs = `<ul class="subfilters">${sc
+            .map((x) => `<li><button class="subfilter ${x === subfiltro ? "is-active" : ""}" data-sub="${esc(x)}">${esc(x)} <span>${PRODUCTS.filter((p) => p.categoria === c && p.subcategoria === x).length}</span></button></li>`)
+            .join("")}</ul>`;
+      }
+      return `<li><button class="filter ${c === filtro ? "is-active" : ""}" data-cat="${esc(c)}">${esc(c)} <span>${n}</span></button>${subs}</li>`;
     })
     .join("");
 }
 
 function renderProducts() {
-  const q = busqueda.trim().toLowerCase();
+  const q = norm(busqueda.trim());
   const list = PRODUCTS.filter(
     (p) =>
       (filtro === "Todos" || p.categoria === filtro) &&
-      (!q || `${p.nombre} ${p.descripcion}`.toLowerCase().includes(q))
+      (!subfiltro || p.subcategoria === subfiltro) &&
+      (!q || norm(`${p.nombre} ${p.codigo} ${p.subcategoria} ${p.descripcion}`).includes(q))
   );
+  if (orden === "precio-asc") list.sort((a, b) => a.precio - b.precio);
+  if (orden === "precio-desc") list.sort((a, b) => b.precio - a.precio);
+  if (orden === "az") list.sort((a, b) => a.nombre.localeCompare(b.nombre, "es"));
+  if (orden === "za") list.sort((a, b) => b.nombre.localeCompare(a.nombre, "es"));
   $("#results").textContent = PRODUCTS.length
     ? `${list.length} producto${list.length === 1 ? "" : "s"}`
     : "";
@@ -43,16 +62,18 @@ function renderProducts() {
     $("#products").innerHTML = `<p class="empty">${PRODUCTS.length ? "No hay productos que coincidan con la búsqueda." : "Catálogo en preparación."}</p>`;
     return;
   }
+  $("#more").hidden = list.length <= visibles;
   $("#products").innerHTML = list
+    .slice(0, visibles)
     .map(
       (p) => `
     <article class="product">
       <button class="product__media" data-view="${esc(p.id)}" aria-label="Ver ${esc(p.nombre)}">${media(p)}</button>
       <div class="product__info">
-        ${p.categoria ? `<p class="product__cat">${esc(p.categoria)}</p>` : ""}
+        <p class="product__cat">${esc(p.subcategoria || p.categoria)}</p>
         <h3 class="product__name">${esc(p.nombre)}</h3>
-        ${p.presentacion ? `<p class="product__pres">${esc(p.presentacion)}</p>` : ""}
-        <p class="product__desc">${esc(p.descripcion)}</p>
+        ${p.codigo ? `<p class="product__pres">Cód. ${esc(p.codigo)}</p>` : ""}
+        <p class="product__desc">${esc(resumen(p))}</p>
         <div class="product__row">
           <span class="product__price">${money(precio(p))}</span>
           <button class="btn btn--sm" data-add="${esc(p.id)}">Agregar</button>
@@ -67,11 +88,31 @@ $("#filters").addEventListener("click", (e) => {
   const b = e.target.closest("[data-cat]");
   if (!b) return;
   filtro = b.dataset.cat;
+  subfiltro = "";
+  visibles = POR_PAGINA;
   renderFilters();
+  renderProducts();
+});
+$("#filters").addEventListener("click", (e) => {
+  const b = e.target.closest("[data-sub]");
+  if (!b) return;
+  subfiltro = subfiltro === b.dataset.sub ? "" : b.dataset.sub;
+  visibles = POR_PAGINA;
+  renderFilters();
+  renderProducts();
+});
+$("#orden").addEventListener("change", (e) => {
+  orden = e.target.value;
+  visibles = POR_PAGINA;
+  renderProducts();
+});
+$("#more").addEventListener("click", () => {
+  visibles += POR_PAGINA;
   renderProducts();
 });
 $("#search").addEventListener("input", (e) => {
   busqueda = e.target.value;
+  visibles = POR_PAGINA;
   renderProducts();
 });
 
@@ -83,10 +124,10 @@ function openModal(id) {
     <button class="close" data-close aria-label="Cerrar">&times;</button>
     <div class="modal__media">${media(p)}</div>
     <div class="modal__info">
-      ${p.categoria ? `<p class="product__cat">${esc(p.categoria)}</p>` : ""}
+      <p class="product__cat">${esc(p.categoria)}${p.subcategoria ? " / " + esc(p.subcategoria) : ""}</p>
       <h2>${esc(p.nombre)}</h2>
-      ${p.presentacion ? `<p class="product__pres">${esc(p.presentacion)}</p>` : ""}
-      <p>${esc(p.descripcion)}</p>
+      ${p.codigo ? `<p class="product__pres">Cód. ${esc(p.codigo)}</p>` : ""}
+      <div class="modal__desc">${esc(p.descripcion)}</div>
       <p class="product__price product__price--lg">${money(precio(p))}</p>
       <button class="btn" data-add="${esc(p.id)}" data-close>Agregar al pedido</button>
     </div>`;

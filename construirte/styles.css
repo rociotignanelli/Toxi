@@ -29,6 +29,7 @@ button{font:inherit;cursor:pointer}
 .catalog{display:grid;grid-template-columns:240px 1fr;gap:2.5rem;padding:3rem 0 4rem}
 .sidebar h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin:0 0 1rem;padding-bottom:.6rem;border-bottom:2px solid var(--negro)}
 .sidebar ul{list-style:none;margin:0 0 2rem;padding:0}
+.sidebar .subfilters{margin:0}
 .filter{width:100%;display:flex;justify-content:space-between;background:none;border:0;border-bottom:1px solid var(--linea);padding:.65rem .2rem;text-align:left;color:var(--texto)}
 .filter span{color:var(--suave);font-size:.85rem}
 .filter:hover,.filter.is-active{font-weight:700}
@@ -36,12 +37,24 @@ button{font:inherit;cursor:pointer}
 .filter.is-active span{color:#ccc}
 .search span{display:block;font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:.5rem}
 .search input{width:100%;padding:.7rem;border:2px solid var(--negro);font:inherit}
-.results{margin:0 0 1rem;color:var(--suave);font-size:.9rem}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1rem;flex-wrap:wrap}
+.results{margin:0;color:var(--suave);font-size:.9rem}
+.sort{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.sort select{border:2px solid var(--negro);padding:.45rem .6rem;font:inherit;background:var(--blanco)}
+.subfilters{list-style:none;margin:0;padding:.3rem 0 .3rem .8rem;border-left:2px solid var(--negro)}
+.subfilter{width:100%;display:flex;justify-content:space-between;gap:.5rem;background:none;border:0;padding:.35rem .2rem;text-align:left;font-size:.85rem;color:var(--suave)}
+.subfilter span{font-size:.8rem}
+.subfilter:hover,.subfilter.is-active{color:var(--negro);font-weight:700}
+.sidebar>ul{max-height:none}
+.more{display:flex;justify-content:center;margin-top:2rem}
+.btn--outline{background:var(--blanco);color:var(--negro)}
+.btn--outline:hover{background:var(--negro);color:var(--blanco)}
+.modal__desc{white-space:pre-line;font-size:.92rem;color:var(--texto);max-height:40vh;overflow:auto;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:.8rem 0;margin-top:.8rem}
 .products{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
 .product{border:1px solid var(--linea);display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
 .product:hover{border-color:var(--negro);transform:translateY(-3px)}
 .product__media{border:0;padding:0;background:var(--gris);aspect-ratio:4/3;overflow:hidden}
-.product__media img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.product__media>img{width:100%;height:100%;object-fit:contain;background:var(--blanco);padding:.8rem;filter:grayscale(1)}
 .placeholder{width:100%;height:100%;display:grid;place-items:center}
 .placeholder img{width:60%;height:auto;object-fit:contain;opacity:.15}
 .product__info{padding:1.1rem;display:flex;flex-direction:column;flex:1}
@@ -69,7 +82,7 @@ button{font:inherit;cursor:pointer}
 .modal__box{position:relative;background:var(--blanco);width:min(860px,92%);max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--negro)}
 .modal__box>.close{position:absolute;top:.5rem;right:.8rem}
 .modal__media{background:var(--gris);min-height:300px}
-.modal__media>img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.modal__media>img{width:100%;height:100%;object-fit:contain;background:var(--blanco);padding:1rem;filter:grayscale(1)}
 .modal__info{padding:2rem}
 .modal__info h2{margin:.3rem 0}
 
@@ -103,7 +116,10 @@ button{font:inherit;cursor:pointer}
 
 @media (max-width:820px){
   .catalog{grid-template-columns:1fr;gap:1.5rem}
-  .sidebar ul{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+  .sidebar>ul{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;max-height:220px;overflow-y:auto;padding-bottom:.4rem;border-bottom:1px solid var(--linea)}
+  .sidebar>ul>li:has(.subfilters){width:100%}
+  .subfilters{display:flex;flex-wrap:wrap;gap:.3rem;border:0;padding:.4rem 0 0}
+  .subfilter{border:1px solid var(--linea);width:auto;padding:.3rem .6rem}
   .filter{border:1px solid var(--negro);padding:.4rem .7rem;gap:.5rem}
   .modal__box{grid-template-columns:1fr}
   .logo img{height:34px}

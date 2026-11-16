@@ -26,7 +26,7 @@
     <section class="banner">
       <div class="container">
         <h1>Productos</h1>
-        <p>Materiales y soluciones para construir con calidad.</p>
+        <p>Máquinas, herramientas y equipos para la construcción.</p>
       </div>
     </section>
 
@@ -40,8 +40,20 @@
         </label>
       </aside>
       <div>
-        <p class="results" id="results"></p>
+        <div class="toolbar">
+          <p class="results" id="results"></p>
+          <label class="sort">Ordenar por
+            <select id="orden">
+              <option value="">Destacados</option>
+              <option value="precio-asc">Menor precio</option>
+              <option value="precio-desc">Mayor precio</option>
+              <option value="az">A - Z</option>
+              <option value="za">Z - A</option>
+            </select>
+          </label>
+        </div>
         <div class="products" id="products"></div>
+        <div class="more"><button class="btn btn--outline" id="more" hidden>Ver más productos</button></div>
       </div>
     </section>
   </main>
