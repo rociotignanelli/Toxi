@@ -1,12 +1,14 @@
-# Construirte
+# TOXI Parfums
 
-Catálogo de productos hecho con HTML, CSS y JavaScript puros, sin dependencias. Diseño en blanco y negro.
+Sitio web de una perfumería de lujo hecho con HTML, CSS y JavaScript puros, sin dependencias.
 
-Para verlo, abrí `index.html` en el navegador.
+Para verlo, abre `index.html` en el navegador.
 
-## Archivos
-- `index.html`: estructura de la página
-- `styles.css`: estilos
-- `script.js`: catálogo, filtros por categoría, buscador, detalle del producto y carrito (se guarda en el navegador)
-- `productos.js`: lista de productos. Cada producto se carga con su precio de lista; la página muestra el precio ya ajustado.
-- `logo.svg`: logo de Construirte
+## Qué incluye
+- Portada con un frasco animado y las ventajas de la marca
+- Catálogo de 8 fragancias con filtro por familia olfativa (amaderados, florales, orientales y frescos)
+- Vista rápida de cada perfume con sus notas de salida, corazón y fondo, y elección de tamaño (50 / 100 ml)
+- Carrito lateral que se guarda en el navegador (localStorage)
+- Test de 3 preguntas que recomienda un perfume
+- Secciones de historia de la marca, opiniones de clientes y suscripción al boletín con validación del correo
+- Diseño adaptado a móvil y animaciones al hacer scroll
