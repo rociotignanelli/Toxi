@@ -1,6 +1,6 @@
 # Construirte
 
-Catálogo de productos hecho con HTML, CSS y JavaScript puros, sin dependencias. Diseño en blanco y negro.
+Catálogo de productos hecho con HTML, CSS y JavaScript puros, sin dependencias. Diseño en negro y rojo.
 
 Para verlo, abrí `construirte/index.html` en el navegador.
 
