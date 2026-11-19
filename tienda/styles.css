@@ -246,3 +246,21 @@ select {
 .chip--promo.is-active small { color: rgba(255,255,255,.75); }
 .promo-tag { display: inline-block; margin-left: 6px; background: #e11d48; color: #fff; border-radius: 999px; padding: 2px 9px; font-size: .72rem; letter-spacing: .04em; vertical-align: middle; }
 .badge--off ~ .badge--last { top: 40px; left: 10px; right: auto; }
+
+/* Video de portada */
+.hero { position: relative; overflow: hidden; min-height: min(640px, 82vh); display: flex; align-items: flex-end; background: var(--dark) url("media/portada.jpg") center / cover no-repeat; }
+.hero__video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; }
+.hero__shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(18, 20, 26, .88) 0%, rgba(18, 20, 26, .6) 45%, rgba(18, 20, 26, .15) 100%),
+    linear-gradient(0deg, rgba(18, 20, 26, .75) 0%, transparent 45%);
+}
+.hero__inner { position: relative; z-index: 1; width: min(1240px, 100% - 32px); }
+.hero__lead { color: rgba(255, 255, 255, .85); }
+.hero__stats div { background: rgba(18, 20, 26, .45); backdrop-filter: blur(6px); }
+@media (max-width: 900px) {
+  .hero { min-height: 88vh; }
+  .hero__shade { background: linear-gradient(0deg, rgba(18, 20, 26, .92) 0%, rgba(18, 20, 26, .6) 55%, rgba(18, 20, 26, .2) 100%); }
+}
+@media (prefers-reduced-motion: reduce) { .hero__video { display: none; } }

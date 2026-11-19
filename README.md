@@ -23,5 +23,6 @@ Catálogo de vehículos a batería (autos, camionetas, motos, cuatriciclos, UTV,
 - Categoría "Promociones y descuentos" (35% OFF en 6 productos), filtro por categoría, buscador, orden por precio y opción de ver solo lo que tiene stock
 - Ficha de cada producto con galería, videos y opciones de color con su precio
 - Los datos están en `tienda/products.js`
+- Video de portada en `tienda/media/portada.mp4`
 - Logo en `tienda/marca/` (SVG y PNG): `logo` con el nombre e `icono` solo
 - `vista-previa-mini-motion.html`: la misma página en un solo archivo, con las fotos adentro
