@@ -26,3 +26,8 @@ Catálogo de vehículos a batería (autos, camionetas, motos, cuatriciclos, UTV,
 - Video de portada en `tienda/media/portada.mp4`
 - Logo en `tienda/marca/` (SVG y PNG): `logo` con el nombre e `icono` solo
 - `vista-previa-mini-motion.html`: la misma página en un solo archivo, con las fotos adentro
+
+## Publicar en Netlify
+
+- **Arrastrando el archivo:** entrá a https://app.netlify.com/drop y soltá `mini-motion-netlify.zip` (o la carpeta `tienda/`).
+- **Conectado a GitHub:** "Add new site → Import an existing project", elegí este repositorio y esta rama. `netlify.toml` ya le indica que publique la carpeta `tienda/`; no hace falta comando de build.
