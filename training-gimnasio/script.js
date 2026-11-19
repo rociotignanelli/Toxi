@@ -679,6 +679,31 @@ const PRODUCTOS = [
     ],
     fotos: ["img/pilates-promo.jpg", "img/pilates-1.jpg"],
   },
+  {
+    codigo: "TG-181",
+    marca: "Atletis",
+    nombre: "Home Gym TF-3000 con poleas 45 kg",
+    categoria: "fuerza",
+    precio: 513500,
+    precioAnterior: 790000,
+    condicion: null,
+    etiqueta: "35% OFF",
+    resumen: "Estación multifunción con pila de 45 kg, polea alta y baja, mariposa, sillón de piernas y banco. Para entrenar todo el cuerpo en casa.",
+    descripcion: "El Home Gym Atletis TF-3000 reúne en un solo equipo las estaciones básicas para entrenar todo el cuerpo: polea alta con barra para dorsales, polea baja para remo y bíceps, mariposa para pecho y hombros, y sillón con rodillos para cuádriceps y femorales. Trabaja con una pila de pesas de 45 kg que se regula con un selector, así que cambiar la carga es rápido y seguro. La estructura es de tubo de acero negro, el respaldo y el asiento son acolchados y las manijas tienen agarre de espuma. Es una opción completa y compacta para armar un gimnasio en casa.",
+    specs: [
+      "Marca Atletis, modelo TF-3000",
+      "Pila de pesas: 45 kg",
+      "Poleas alta y baja incluidas",
+      "Estaciones: dorsales, remo, mariposa, cuádriceps y femorales",
+      "Estructura de tubo de acero",
+      "Respaldo y asiento acolchados, manijas con agarre de espuma",
+      "Peso máximo del usuario: 100 kg",
+      "Medidas aproximadas: 148 x 109 x 200 cm (largo x ancho x alto)",
+      "Peso del equipo: 77,5 kg",
+      "Requiere armado",
+    ],
+    fotos: ["img/atletis-tf3000-1.jpg", "img/atletis-tf3000-2.jpg", "img/atletis-tf3000-3.jpg", "img/atletis-tf3000-4.jpg", "img/atletis-tf3000-5.jpg", "img/atletis-tf3000-6.jpg"],
+  },
 ];
 
 /* Productos del proveedor (archivo productos-nuevos.js) */
