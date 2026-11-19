@@ -38,7 +38,7 @@ El catálogo tiene 29 productos con sus precios:
 | TG-27 | Mini tramp MIR Fitness | Consultar precio |
 | TG-28 | Tatami encastrable de goma EVA | Consultar precio |
 | TG-29 | Cama de Pilates reformer completa (35% OFF, antes $350.000) | $227.500 |
-| TG-181 | Home Gym Atletis TF-3000 con poleas 45 kg (35% OFF, antes $790.000) | $513.500 |
+| TG-181 | Home Gym Atletis TF-3000 con poleas 45 kg (35% OFF, antes $692.308) | $450.000 |
 
 Cada producto tiene una ventana de detalle con galería de fotos, descripción completa y características.
 
