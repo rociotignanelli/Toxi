@@ -15,7 +15,7 @@ Para verlo, abre `index.html` en el navegador.
 
 ---
 
-# TOXI Motors (`tienda/`)
+# Mini Motion (`tienda/`)
 
 Catálogo de vehículos a batería (autos, camionetas, motos, cuatriciclos, UTV, kartings y monopatines). Para verlo, abrí `tienda/index.html`.
 
@@ -23,3 +23,5 @@ Catálogo de vehículos a batería (autos, camionetas, motos, cuatriciclos, UTV,
 - Categoría "Promociones y descuentos" (35% OFF en 6 productos), filtro por categoría, buscador, orden por precio y opción de ver solo lo que tiene stock
 - Ficha de cada producto con galería, videos y opciones de color con su precio
 - Los datos están en `tienda/products.js`
+- Logo en `tienda/marca/` (SVG y PNG): `logo` con el nombre e `icono` solo
+- `vista-previa-mini-motion.html`: la misma página en un solo archivo, con las fotos adentro
