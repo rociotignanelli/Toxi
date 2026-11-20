@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos | Trex Pilates — Equipamiento de Pilates Profesional</title>
+  <meta name="description" content="Trex Pilates: reformers, cadillacs, sillas, barrels, packs para estudios y accesorios de Pilates profesional. Envíos a todo el país." />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="topbar">Envíos a todo el país · Hasta 6 cuotas · Fabricación nacional con garantía</div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+      <a href="#" class="logo"><img src="logo.svg" alt="Trex Pilates" width="170" height="51" /></a>
+      <nav class="nav" id="nav">
+        <a href="#productos" data-nav="todos">Productos</a>
+        <a href="#productos" data-nav="reformer">Reformer</a>
+        <a href="#productos" data-nav="cadillac">Cadillac y Torres</a>
+        <a href="#productos" data-nav="sillas">Sillas y Barrels</a>
+        <a href="#productos" data-nav="packs">Packs Estudio</a>
+        <a href="#productos" data-nav="accesorios">Accesorios</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L22 7H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="breadcrumb"><a href="#">Inicio</a> / Productos</p>
+        <h1>Equipamiento de <span class="neon">Pilates Profesional</span></h1>
+        <p class="page-hero__lead">Reformers, cadillacs, sillas, barrels y accesorios pensados para estudios, centros de rehabilitación y uso en casa.</p>
+      </div>
+    </section>
+
+    <section class="shop container" id="productos">
+      <aside class="filters" id="filters">
+        <h2>Categorías</h2>
+        <ul class="cat-list" id="catList"></ul>
+      </aside>
+
+      <div class="shop__main">
+        <div class="toolbar">
+          <input type="search" id="search" placeholder="Buscar productos…" aria-label="Buscar productos" />
+          <p class="toolbar__count" id="resultCount"></p>
+          <select id="sort" aria-label="Ordenar">
+            <option value="default">Orden predeterminado</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name">Nombre A–Z</option>
+          </select>
+        </div>
+        <ul class="grid" id="grid"></ul>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="container benefits__inner">
+        <div><strong>Envíos a todo el país</strong><span>Coordinamos la entrega e instalación</span></div>
+        <div><strong>Garantía oficial</strong><span>Estructuras de acero y aluminio</span></div>
+        <div><strong>Hasta 6 cuotas</strong><span>Transferencia, tarjeta o efectivo</span></div>
+        <div><strong>Asesoramiento</strong><span>Te ayudamos a armar tu estudio</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacto">
+    <div class="container footer__inner">
+      <div>
+        <img src="logo.svg" alt="Trex Pilates" width="180" height="54" />
+        <p>Equipamiento de Pilates profesional para estudios, clínicas y hogares.</p>
+      </div>
+      <div>
+        <h3>Productos</h3>
+        <a href="#productos" data-nav="reformer">Reformer</a>
+        <a href="#productos" data-nav="cadillac">Cadillac y Torres</a>
+        <a href="#productos" data-nav="sillas">Sillas y Barrels</a>
+        <a href="#productos" data-nav="packs">Packs Estudio</a>
+        <a href="#productos" data-nav="accesorios">Accesorios</a>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <a href="#" id="waLink">WhatsApp</a>
+        <a href="mailto:hola@trexpilates.com.ar">hola@trexpilates.com.ar</a>
+        <span>Buenos Aires, Argentina</span>
+      </div>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Trex Pilates. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Carrito -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="cart" id="cart" aria-label="Carrito">
+    <div class="cart__head">
+      <h2>Tu carrito</h2>
+      <button class="icon-btn" id="cartClose" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <ul class="cart__items" id="cartItems"></ul>
+    <div class="cart__foot">
+      <div class="cart__total"><span>Total</span><strong id="cartTotal">$0</strong></div>
+      <button class="btn btn--primary btn--block" id="checkout">Finalizar compra por WhatsApp</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
