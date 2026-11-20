@@ -141,7 +141,7 @@ button, input, select { font: inherit; }
 
 /* Footer */
 .footer { padding: 3rem 0 1.5rem; }
-.footer__inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; }
+.footer__inner { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
 .footer p { color: var(--muted); font-size: .9rem; margin-top: 1rem; max-width: 320px; }
 .footer h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .15em; color: var(--neon); margin-bottom: .8rem; }
 .footer__inner > div:not(:first-child) { display: flex; flex-direction: column; gap: .45rem; font-size: .9rem; color: var(--muted); }

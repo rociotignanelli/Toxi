@@ -299,7 +299,6 @@ $("#checkout").addEventListener("click", () => {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
 });
 
-$("#waLink").href = `https://wa.me/${WHATSAPP}`;
 $("#year").textContent = new Date().getFullYear();
 
 renderCategories();
