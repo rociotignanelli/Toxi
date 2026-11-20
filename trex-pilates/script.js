@@ -330,6 +330,13 @@ $("#checkout").addEventListener("click", () => {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, "_blank");
 });
 
+// Menú transparente sobre el video de portada; se vuelve sólido al bajar
+const header = document.querySelector(".header");
+const syncHeader = () => header.classList.toggle("header--clear", window.scrollY < 40 && !$("#nav").classList.contains("open"));
+window.addEventListener("scroll", syncHeader, { passive: true });
+$("#menuToggle").addEventListener("click", syncHeader);
+syncHeader();
+
 $("#year").textContent = new Date().getFullYear();
 
 renderCategories();
