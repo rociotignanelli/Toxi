@@ -116,8 +116,7 @@ button, input, select { font: inherit; }
 .card__body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
 .card__cat { font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--neon); }
 .card__title { font-size: .98rem; font-weight: 600; line-height: 1.35; }
-.card__price { font-size: 1.25rem; font-weight: 800; margin-top: auto; }
-.card__fees { font-size: .75rem; color: var(--muted); }
+.card__price { font-size: 1.25rem; font-weight: 800; margin-top: auto; margin-bottom: .4rem; }
 
 .btn {
   display: inline-flex; justify-content: center; align-items: center; gap: .5rem;
@@ -135,7 +134,7 @@ button, input, select { font: inherit; }
 
 /* Benefits */
 .benefits { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--panel); }
-.benefits__inner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 2rem 0; }
+.benefits__inner { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 2rem 0; }
 .benefits strong { display: block; color: var(--neon); font-size: .95rem; }
 .benefits span { color: var(--muted); font-size: .85rem; }
 
@@ -146,7 +145,7 @@ button, input, select { font: inherit; }
 .footer h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .15em; color: var(--neon); margin-bottom: .8rem; }
 .footer__inner > div:not(:first-child) { display: flex; flex-direction: column; gap: .45rem; font-size: .9rem; color: var(--muted); }
 .footer__inner a:hover { color: var(--neon); }
-.footer__copy { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+.footer__copy { max-width: none !important; width: min(1240px, 92%); margin-inline: auto; text-align: center; color: var(--muted); font-size: .8rem; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
 
 /* Cart */
 .overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, .6); opacity: 0; pointer-events: none; transition: opacity .3s; z-index: 50; }
@@ -204,7 +203,7 @@ button, input, select { font: inherit; }
   .filters { min-width: 0; }
   .cat-list { position: static; display: flex; overflow-x: auto; gap: .5rem; padding-bottom: .4rem; }
   .cat-list button { white-space: nowrap; gap: .5rem; border-color: var(--line); }
-  .benefits__inner { grid-template-columns: repeat(2, 1fr); }
+  .benefits__inner { grid-template-columns: 1fr; }
   .footer__inner { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {

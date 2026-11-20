@@ -201,7 +201,6 @@ function renderGrid() {
           <span class="card__cat">${CATEGORIES.find((c) => c.id === p.cats[0]).name}</span>
           <h3 class="card__title">${p.name}</h3>
           <p class="card__price">${fmt(p.price)}</p>
-          <p class="card__fees">Hasta 6 cuotas de ${fmt(p.price / 6)}</p>
           <button class="btn btn--ghost" data-add="${p.id}">Agregar al carrito</button>
         </div>
       </li>`).join("")
