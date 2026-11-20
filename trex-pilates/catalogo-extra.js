@@ -1,5 +1,5 @@
 // Productos sumados al catálogo de Trex Pilates.
-// price: null muestra "Consultar precio" (botón a WhatsApp). Para poner precio, reemplazá null por el número.
+// price: precio en pesos. Si se pone null, el producto muestra "Consultar precio".
 window.EXTRA_PRODUCTS = [
  {
   "id": 1000,
@@ -7,7 +7,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 274000,
   "img": "img/dr/000_0.webp",
   "gallery": [
    "img/dr/000_0.webp"
@@ -20,7 +20,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 712000,
   "img": "img/dr/001_0.webp",
   "gallery": [
    "img/dr/001_0.webp"
@@ -33,7 +33,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 26600,
   "img": "img/dr/002_0.webp",
   "gallery": [
    "img/dr/002_0.webp"
@@ -46,7 +46,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 22400,
   "img": "img/dr/003_0.webp",
   "gallery": [
    "img/dr/003_0.webp"
@@ -59,7 +59,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 54000,
   "img": "img/dr/004_0.webp",
   "gallery": [
    "img/dr/004_0.webp"
@@ -72,7 +72,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 57600,
   "img": "img/dr/005_0.webp",
   "gallery": [
    "img/dr/005_0.webp"
@@ -85,7 +85,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 37400,
   "img": "img/dr/006_0.webp",
   "gallery": [
    "img/dr/006_0.webp"
@@ -98,7 +98,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 40300,
   "img": "img/dr/007_0.webp",
   "gallery": [
    "img/dr/007_0.webp"
@@ -111,7 +111,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 12600,
   "img": "img/dr/008_0.webp",
   "gallery": [
    "img/dr/008_0.webp"
@@ -124,7 +124,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/009_0.webp",
   "gallery": [
    "img/dr/009_0.webp"
@@ -137,7 +137,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/010_0.webp",
   "gallery": [
    "img/dr/010_0.webp"
@@ -150,7 +150,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 18200,
   "img": "img/dr/011_0.webp",
   "gallery": [
    "img/dr/011_0.webp"
@@ -163,7 +163,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 61200,
   "img": "img/dr/012_0.webp",
   "gallery": [
    "img/dr/012_0.webp"
@@ -176,7 +176,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 68400,
   "img": "img/dr/013_0.webp",
   "gallery": [
    "img/dr/013_0.webp"
@@ -189,7 +189,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/014_0.webp",
   "gallery": [
    "img/dr/014_0.webp"
@@ -202,7 +202,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 33600,
   "img": "img/dr/015_0.webp",
   "gallery": [
    "img/dr/015_0.webp"
@@ -215,7 +215,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "sillas"
   ],
-  "price": null,
+  "price": 1120000,
   "img": "img/dr/016_0.webp",
   "gallery": [
    "img/dr/016_0.webp",
@@ -231,7 +231,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/017_0.webp",
   "gallery": [
    "img/dr/017_0.webp"
@@ -244,7 +244,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 19600,
   "img": "img/dr/018_0.webp",
   "gallery": [
    "img/dr/018_0.webp"
@@ -257,7 +257,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 68400,
   "img": "img/dr/019_0.webp",
   "gallery": [
    "img/dr/019_0.webp"
@@ -270,7 +270,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 46800,
   "img": "img/dr/020_0.webp",
   "gallery": [
    "img/dr/020_0.webp"
@@ -283,7 +283,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 61200,
   "img": "img/dr/021_0.webp",
   "gallery": [
    "img/dr/021_0.webp"
@@ -296,7 +296,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 79200,
   "img": "img/dr/022_0.webp",
   "gallery": [
    "img/dr/022_0.webp"
@@ -309,7 +309,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 108000,
   "img": "img/dr/023_0.webp",
   "gallery": [
    "img/dr/023_0.webp"
@@ -322,7 +322,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cadillac"
   ],
-  "price": null,
+  "price": 4880000,
   "img": "img/dr/024_0.webp",
   "gallery": [
    "img/dr/024_0.webp",
@@ -339,7 +339,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 86400,
   "img": "img/dr/025_0.webp",
   "gallery": [
    "img/dr/025_0.webp"
@@ -352,7 +352,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 108000,
   "img": "img/dr/026_0.webp",
   "gallery": [
    "img/dr/026_0.webp"
@@ -365,7 +365,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 2400000,
   "img": "img/dr/027_0.webp",
   "gallery": [
    "img/dr/027_0.webp",
@@ -384,7 +384,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 130000,
   "img": "img/dr/028_0.webp",
   "gallery": [
    "img/dr/028_0.webp"
@@ -397,7 +397,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 11200,
   "img": "img/dr/029_0.webp",
   "gallery": [
    "img/dr/029_0.webp"
@@ -410,7 +410,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 19600,
   "img": "img/dr/030_0.webp",
   "gallery": [
    "img/dr/030_0.webp"
@@ -423,7 +423,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 4900,
   "img": "img/dr/031_0.webp",
   "gallery": [
    "img/dr/031_0.webp"
@@ -436,7 +436,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 6300,
   "img": "img/dr/032_0.webp",
   "gallery": [
    "img/dr/032_0.webp"
@@ -449,7 +449,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 7700,
   "img": "img/dr/033_0.webp",
   "gallery": [
    "img/dr/033_0.webp"
@@ -462,7 +462,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 9100,
   "img": "img/dr/034_0.webp",
   "gallery": [
    "img/dr/034_0.webp"
@@ -475,7 +475,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 10200,
   "img": "img/dr/035_0.webp",
   "gallery": [
    "img/dr/035_0.webp"
@@ -488,7 +488,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 5600,
   "img": "img/dr/036_0.webp",
   "gallery": [
    "img/dr/036_0.webp"
@@ -501,7 +501,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 7000,
   "img": "img/dr/037_0.webp",
   "gallery": [
    "img/dr/037_0.webp"
@@ -514,7 +514,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 8400,
   "img": "img/dr/038_0.webp",
   "gallery": [
    "img/dr/038_0.webp"
@@ -527,7 +527,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/039_0.webp",
   "gallery": [
    "img/dr/039_0.webp"
@@ -540,7 +540,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 11200,
   "img": "img/dr/040_0.webp",
   "gallery": [
    "img/dr/040_0.webp"
@@ -553,7 +553,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 12600,
   "img": "img/dr/041_0.webp",
   "gallery": [
    "img/dr/041_0.webp"
@@ -566,7 +566,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 7000,
   "img": "img/dr/042_0.webp",
   "gallery": [
    "img/dr/042_0.webp"
@@ -579,7 +579,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 8800,
   "img": "img/dr/043_0.webp",
   "gallery": [
    "img/dr/043_0.webp"
@@ -592,7 +592,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 10500,
   "img": "img/dr/044_0.webp",
   "gallery": [
    "img/dr/044_0.webp"
@@ -605,7 +605,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 12200,
   "img": "img/dr/045_0.webp",
   "gallery": [
    "img/dr/045_0.webp"
@@ -618,7 +618,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 14000,
   "img": "img/dr/046_0.webp",
   "gallery": [
    "img/dr/046_0.webp"
@@ -631,7 +631,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 15700,
   "img": "img/dr/047_0.webp",
   "gallery": [
    "img/dr/047_0.webp"
@@ -644,7 +644,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 8400,
   "img": "img/dr/048_0.webp",
   "gallery": [
    "img/dr/048_0.webp"
@@ -657,7 +657,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 10500,
   "img": "img/dr/049_0.webp",
   "gallery": [
    "img/dr/049_0.webp"
@@ -670,7 +670,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 12600,
   "img": "img/dr/050_0.webp",
   "gallery": [
    "img/dr/050_0.webp"
@@ -683,7 +683,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 14700,
   "img": "img/dr/051_0.webp",
   "gallery": [
    "img/dr/051_0.webp"
@@ -696,7 +696,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 16800,
   "img": "img/dr/052_0.webp",
   "gallery": [
    "img/dr/052_0.webp"
@@ -709,7 +709,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 18900,
   "img": "img/dr/053_0.webp",
   "gallery": [
    "img/dr/053_0.webp"
@@ -722,7 +722,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/054_0.webp",
   "gallery": [
    "img/dr/054_0.webp"
@@ -735,7 +735,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 13300,
   "img": "img/dr/055_0.webp",
   "gallery": [
    "img/dr/055_0.webp"
@@ -748,7 +748,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/056_0.webp",
   "gallery": [
    "img/dr/056_0.webp"
@@ -761,7 +761,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 187000,
   "img": "img/dr/057_0.webp",
   "gallery": [
    "img/dr/057_0.webp"
@@ -774,7 +774,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 130000,
   "img": "img/dr/058_0.webp",
   "gallery": [
    "img/dr/058_0.webp"
@@ -787,7 +787,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "sillas"
   ],
-  "price": null,
+  "price": 1420000,
   "img": "img/dr/059_0.webp",
   "gallery": [
    "img/dr/059_0.webp",
@@ -805,7 +805,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 1800,
   "img": "img/dr/060_0.webp",
   "gallery": [
    "img/dr/060_0.webp"
@@ -818,7 +818,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "sillas"
   ],
-  "price": null,
+  "price": 390000,
   "img": "img/dr/061_0.webp",
   "gallery": [
    "img/dr/061_0.webp",
@@ -834,7 +834,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 21000,
   "img": "img/dr/062_0.webp",
   "gallery": [
    "img/dr/062_0.webp"
@@ -847,7 +847,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/063_0.webp",
   "gallery": [
    "img/dr/063_0.webp"
@@ -860,7 +860,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 14000,
   "img": "img/dr/064_0.webp",
   "gallery": [
    "img/dr/064_0.webp"
@@ -873,7 +873,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 16800,
   "img": "img/dr/065_0.webp",
   "gallery": [
    "img/dr/065_0.webp"
@@ -886,7 +886,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 17500,
   "img": "img/dr/066_0.webp",
   "gallery": [
    "img/dr/066_0.webp"
@@ -899,7 +899,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 115000,
   "img": "img/dr/067_0.webp",
   "gallery": [
    "img/dr/067_0.webp"
@@ -912,7 +912,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 151000,
   "img": "img/dr/068_0.webp",
   "gallery": [
    "img/dr/068_0.webp"
@@ -925,7 +925,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 3200,
   "img": "img/dr/069_0.webp",
   "gallery": [
    "img/dr/069_0.webp"
@@ -938,7 +938,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 3500,
   "img": "img/dr/070_0.webp",
   "gallery": [
    "img/dr/070_0.webp"
@@ -951,7 +951,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 4200,
   "img": "img/dr/071_0.webp",
   "gallery": [
    "img/dr/071_0.webp"
@@ -964,7 +964,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 4900,
   "img": "img/dr/072_0.webp",
   "gallery": [
    "img/dr/072_0.webp"
@@ -977,7 +977,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 22400,
   "img": "img/dr/073_0.webp",
   "gallery": [
    "img/dr/073_0.webp"
@@ -990,7 +990,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 92900,
   "img": "img/dr/074_0.webp",
   "gallery": [
    "img/dr/074_0.webp"
@@ -1003,7 +1003,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 22400,
   "img": "img/dr/075_0.webp",
   "gallery": [
    "img/dr/075_0.webp"
@@ -1016,7 +1016,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 61200,
   "img": "img/dr/076_0.webp",
   "gallery": [
    "img/dr/076_0.webp"
@@ -1029,7 +1029,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 24500,
   "img": "img/dr/077_0.webp",
   "gallery": [
    "img/dr/077_0.webp"
@@ -1042,7 +1042,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 4600,
   "img": "img/dr/078_0.webp",
   "gallery": [
    "img/dr/078_0.webp"
@@ -1055,7 +1055,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 8400,
   "img": "img/dr/079_0.webp",
   "gallery": [
    "img/dr/079_0.webp"
@@ -1068,7 +1068,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 10500,
   "img": "img/dr/080_0.webp",
   "gallery": [
    "img/dr/080_0.webp"
@@ -1081,7 +1081,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/081_0.webp",
   "gallery": [
    "img/dr/081_0.webp"
@@ -1094,7 +1094,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 13300,
   "img": "img/dr/082_0.webp",
   "gallery": [
    "img/dr/082_0.webp"
@@ -1107,7 +1107,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cadillac"
   ],
-  "price": null,
+  "price": 3900000,
   "img": "img/dr/083_0.webp",
   "gallery": [
    "img/dr/083_0.webp",
@@ -1124,7 +1124,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/084_0.webp",
   "gallery": [
    "img/dr/084_0.webp"
@@ -1137,7 +1137,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/085_0.webp",
   "gallery": [
    "img/dr/085_0.webp"
@@ -1150,7 +1150,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 37400,
   "img": "img/dr/086_0.webp",
   "gallery": [
    "img/dr/086_0.webp"
@@ -1163,7 +1163,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/087_0.webp",
   "gallery": [
    "img/dr/087_0.webp"
@@ -1176,7 +1176,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 12600,
   "img": "img/dr/088_0.webp",
   "gallery": [
    "img/dr/088_0.webp"
@@ -1189,7 +1189,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 14000,
   "img": "img/dr/089_0.webp",
   "gallery": [
    "img/dr/089_0.webp"
@@ -1202,7 +1202,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/090_0.webp",
   "gallery": [
    "img/dr/090_0.webp"
@@ -1215,7 +1215,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 18200,
   "img": "img/dr/091_0.webp",
   "gallery": [
    "img/dr/091_0.webp"
@@ -1228,7 +1228,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 22400,
   "img": "img/dr/092_0.webp",
   "gallery": [
    "img/dr/092_0.webp"
@@ -1241,7 +1241,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 6300,
   "img": "img/dr/093_0.webp",
   "gallery": [
    "img/dr/093_0.webp"
@@ -1254,7 +1254,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 5600,
   "img": "img/dr/094_0.webp",
   "gallery": [
    "img/dr/094_0.webp"
@@ -1267,7 +1267,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 31500,
   "img": "img/dr/095_0.webp",
   "gallery": [
    "img/dr/095_0.webp"
@@ -1280,7 +1280,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 3450000,
   "img": "img/dr/096_0.webp",
   "gallery": [
    "img/dr/096_0.webp",
@@ -1300,7 +1300,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 4120000,
   "img": "img/dr/097_0.webp",
   "gallery": [
    "img/dr/097_0.webp",
@@ -1314,7 +1314,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 2920000,
   "img": "img/dr/098_0.webp",
   "gallery": [
    "img/dr/098_0.webp",
@@ -1332,7 +1332,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 1420000,
   "img": "img/dr/099_0.webp",
   "gallery": [
    "img/dr/099_0.webp",
@@ -1347,7 +1347,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "reformer"
   ],
-  "price": null,
+  "price": 2550000,
   "img": "img/dr/100_0.webp",
   "gallery": [
    "img/dr/100_0.webp",
@@ -1363,7 +1363,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 115000,
   "img": "img/dr/101_0.webp",
   "gallery": [
    "img/dr/101_0.webp"
@@ -1376,7 +1376,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 158000,
   "img": "img/dr/102_0.webp",
   "gallery": [
    "img/dr/102_0.webp"
@@ -1389,7 +1389,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 1800,
   "img": "img/dr/103_0.webp",
   "gallery": [
    "img/dr/103_0.webp"
@@ -1402,7 +1402,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 2000,
   "img": "img/dr/104_0.webp",
   "gallery": [
    "img/dr/104_0.webp"
@@ -1415,7 +1415,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 26600,
   "img": "img/dr/105_0.webp",
   "gallery": [
    "img/dr/105_0.webp"
@@ -1428,7 +1428,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 24500,
   "img": "img/dr/106_0.webp",
   "gallery": [
    "img/dr/106_0.webp"
@@ -1441,7 +1441,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 24500,
   "img": "img/dr/107_0.webp",
   "gallery": [
    "img/dr/107_0.webp"
@@ -1454,7 +1454,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 24500,
   "img": "img/dr/108_0.webp",
   "gallery": [
    "img/dr/108_0.webp"
@@ -1467,7 +1467,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 24500,
   "img": "img/dr/109_0.webp",
   "gallery": [
    "img/dr/109_0.webp"
@@ -1480,7 +1480,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 126000,
   "img": "img/dr/110_0.webp",
   "gallery": [
    "img/dr/110_0.webp"
@@ -1493,7 +1493,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 29400,
   "img": "img/dr/111_0.webp",
   "gallery": [
    "img/dr/111_0.webp"
@@ -1506,7 +1506,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 19600,
   "img": "img/dr/112_0.webp",
   "gallery": [
    "img/dr/112_0.webp"
@@ -1519,7 +1519,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 15400,
   "img": "img/dr/113_0.webp",
   "gallery": [
    "img/dr/113_0.webp"
@@ -1532,7 +1532,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 22400,
   "img": "img/dr/114_0.webp",
   "gallery": [
    "img/dr/114_0.webp"
@@ -1545,7 +1545,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 11900,
   "img": "img/dr/115_0.webp",
   "gallery": [
    "img/dr/115_0.webp"
@@ -1558,7 +1558,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 10500,
   "img": "img/dr/116_0.webp",
   "gallery": [
    "img/dr/116_0.webp"
@@ -1571,7 +1571,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 11900,
   "img": "img/dr/117_0.webp",
   "gallery": [
    "img/dr/117_0.webp"
@@ -1584,7 +1584,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/118_0.webp",
   "gallery": [
    "img/dr/118_0.webp"
@@ -1597,7 +1597,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 11200,
   "img": "img/dr/119_0.webp",
   "gallery": [
    "img/dr/119_0.webp"
@@ -1610,7 +1610,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 26600,
   "img": "img/dr/120_0.webp",
   "gallery": [
    "img/dr/120_0.webp"
@@ -1623,7 +1623,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/121_0.webp",
   "gallery": [
    "img/dr/121_0.webp"
@@ -1636,7 +1636,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 16800,
   "img": "img/dr/122_0.webp",
   "gallery": [
    "img/dr/122_0.webp"
@@ -1649,7 +1649,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 6300,
   "img": "img/dr/123_0.webp",
   "gallery": [
    "img/dr/123_0.webp"
@@ -1662,7 +1662,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cintas"
   ],
-  "price": null,
+  "price": 8400,
   "img": "img/dr/124_0.webp",
   "gallery": [
    "img/dr/124_0.webp"
@@ -1675,7 +1675,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cadillac"
   ],
-  "price": null,
+  "price": 518000,
   "img": "img/dr/125_0.webp",
   "gallery": [
    "img/dr/125_0.webp",
@@ -1691,7 +1691,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 86400,
   "img": "img/dr/126_0.webp",
   "gallery": [
    "img/dr/126_0.webp"
@@ -1704,7 +1704,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "accesorios"
   ],
-  "price": null,
+  "price": 122000,
   "img": "img/dr/127_0.webp",
   "gallery": [
    "img/dr/127_0.webp"
@@ -1717,7 +1717,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "yoga"
   ],
-  "price": null,
+  "price": 8400,
   "img": "img/dr/128_0.webp",
   "gallery": [
    "img/dr/128_0.webp"
@@ -1730,7 +1730,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 130000,
   "img": "img/dr/129_0.webp",
   "gallery": [
    "img/dr/129_0.webp"
@@ -1743,7 +1743,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 11200,
   "img": "img/dr/130_0.webp",
   "gallery": [
    "img/dr/130_0.webp"
@@ -1756,7 +1756,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/131_0.webp",
   "gallery": [
    "img/dr/131_0.webp"
@@ -1769,7 +1769,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 6300,
   "img": "img/dr/132_0.webp",
   "gallery": [
    "img/dr/132_0.webp"
@@ -1782,7 +1782,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 7000,
   "img": "img/dr/133_0.webp",
   "gallery": [
    "img/dr/133_0.webp"
@@ -1795,7 +1795,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 9800,
   "img": "img/dr/134_0.webp",
   "gallery": [
    "img/dr/134_0.webp"
@@ -1808,7 +1808,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "repuestos"
   ],
-  "price": null,
+  "price": 4200,
   "img": "img/dr/135_0.webp",
   "gallery": [
    "img/dr/135_0.webp"
@@ -1821,7 +1821,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 5600,
   "img": "img/dr/136_0.webp",
   "gallery": [
    "img/dr/136_0.webp"
@@ -1834,7 +1834,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cadillac"
   ],
-  "price": null,
+  "price": 3680000,
   "img": "img/dr/137_0.webp",
   "gallery": [
    "img/dr/137_0.webp",
@@ -1850,7 +1850,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "cadillac"
   ],
-  "price": null,
+  "price": 1650000,
   "img": "img/dr/138_0.webp",
   "gallery": [
    "img/dr/138_0.webp",
@@ -1865,7 +1865,7 @@ window.EXTRA_PRODUCTS = [
   "cats": [
    "funcional"
   ],
-  "price": null,
+  "price": 19600,
   "img": "img/dr/139_0.webp",
   "gallery": [
    "img/dr/139_0.webp"

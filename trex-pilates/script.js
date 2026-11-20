@@ -366,6 +366,41 @@ window.addEventListener("scroll", syncHeader, { passive: true });
 $("#menuToggle").addEventListener("click", syncHeader);
 syncHeader();
 
+/* ---------- Contador animado ---------- */
+{
+  const section = $("#stats");
+  const nums = [...section.querySelectorAll("[data-count]")];
+  const yearsEl = section.querySelector("[data-years-since]");
+  if (yearsEl.dataset.yearsSince) {
+    // "Desde AAAA": los años se calculan solos cada año
+    yearsEl.dataset.target = new Date().getFullYear() - +yearsEl.dataset.yearsSince;
+    section.querySelector("[data-since]").textContent = yearsEl.dataset.yearsSince;
+  }
+  const ready = nums.every((n) => n.dataset.target !== "" && !isNaN(+n.dataset.target));
+  if (ready) {
+    section.hidden = false;
+    const show = (el, v) => { el.textContent = Math.round(v).toLocaleString("es-AR"); };
+    nums.forEach((n) => show(n, 0));
+    const run = () => {
+      const t0 = performance.now(), dur = 2200;
+      const tick = (t) => {
+        const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        nums.forEach((n) => show(n, +n.dataset.target * e));
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+      nums.forEach((n) => show(n, +n.dataset.target));
+    } else {
+      const statsObserver = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) { statsObserver.disconnect(); run(); }
+      }, { threshold: 0.4 });
+      statsObserver.observe(section);
+    }
+  }
+}
+
 $("#year").textContent = new Date().getFullYear();
 
 renderCategories();
