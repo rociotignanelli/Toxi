@@ -105,8 +105,25 @@
     </div>
   </aside>
 
+  <!-- Ficha de producto -->
+  <div class="pm-wrap" id="pmWrap">
+    <div class="pm-backdrop" data-close></div>
+    <div class="pm" id="pm" role="dialog" aria-modal="true" aria-labelledby="pmTitle">
+      <button class="icon-btn pm__close" id="pmClose" data-close aria-label="Cerrar">✕</button>
+      <div class="pm__media" id="pmMedia"></div>
+      <div class="pm__info">
+        <p class="card__cat" id="pmCat"></p>
+        <h2 class="pm__title" id="pmTitle"></h2>
+        <p class="pm__price" id="pmPrice"></p>
+        <button class="btn btn--primary btn--block" id="pmAdd" data-add="">Agregar al carrito</button>
+        <div class="pm__desc" id="pmDesc"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status"></div>
 
+  <script src="descriptions.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

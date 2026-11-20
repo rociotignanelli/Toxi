@@ -196,10 +196,10 @@ function renderGrid() {
   $("#grid").innerHTML = list.length
     ? list.map((p) => `
       <li class="card">
-        <div class="card__media${p.img ? " card__media--photo" : ""}">${media(p)}</div>
+        <button class="card__media${p.img ? " card__media--photo" : ""}" data-open="${p.id}" aria-label="Ver ${p.name}">${media(p)}</button>
         <div class="card__body">
           <span class="card__cat">${CATEGORIES.find((c) => c.id === p.cats[0]).name}</span>
-          <h3 class="card__title">${p.name}</h3>
+          <h3 class="card__title"><button class="card__link" data-open="${p.id}">${p.name}</button></h3>
           <p class="card__price">${fmt(p.price)}</p>
           <button class="btn btn--ghost" data-add="${p.id}">Agregar al carrito</button>
         </div>
@@ -211,6 +211,36 @@ function setCategory(cat) {
   state.cat = cat;
   renderCategories();
   renderGrid();
+}
+
+/* ---------- Ficha de producto ---------- */
+const DESC = window.DESCRIPTIONS || {};
+let lastFocus = null;
+
+function openProduct(id) {
+  const p = PRODUCTS.find((x) => x.id === id);
+  if (!p) return;
+  lastFocus = document.activeElement;
+  const cat = CATEGORIES.find((c) => c.id === p.cats[0]).name;
+  $("#pmMedia").className = "pm__media" + (p.img ? " pm__media--photo" : "");
+  $("#pmMedia").innerHTML = media(p);
+  $("#pmCat").textContent = cat;
+  $("#pmTitle").textContent = p.name;
+  $("#pmPrice").textContent = fmt(p.price);
+  $("#pmAdd").dataset.add = p.id;
+  $("#pmDesc").innerHTML = DESC[p.id] || "<p>Consultanos por WhatsApp para más información sobre este producto.</p>";
+  $("#pm").scrollTop = 0;
+  $("#pmDesc").scrollTop = 0;
+  $("#pmWrap").classList.add("open");
+  document.body.classList.add("no-scroll");
+  $("#pmClose").focus();
+}
+
+function closeProduct() {
+  if (!$("#pmWrap").classList.contains("open")) return;
+  $("#pmWrap").classList.remove("open");
+  document.body.classList.remove("no-scroll");
+  if (lastFocus) lastFocus.focus();
 }
 
 /* ---------- Carrito ---------- */
@@ -264,6 +294,7 @@ function toast(msg) {
 
 /* ---------- Eventos ---------- */
 document.addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]")) { closeProduct(); return; }
   const el = e.target.closest("button, a");
   if (!el) return;
   if (el.dataset.cat) setCategory(el.dataset.cat);
@@ -276,6 +307,7 @@ document.addEventListener("click", (e) => {
     if (item.qty <= 0) cart = cart.filter((i) => i !== item);
     saveCart();
   }
+  if (el.dataset.open) openProduct(+el.dataset.open);
   if (el.dataset.remove) { cart = cart.filter((i) => i.id !== +el.dataset.remove); saveCart(); }
 });
 
@@ -285,7 +317,7 @@ $("#cartBtn").addEventListener("click", () => openCart(true));
 $("#cartClose").addEventListener("click", () => openCart(false));
 $("#overlay").addEventListener("click", () => openCart(false));
 $("#menuToggle").addEventListener("click", () => $("#nav").classList.toggle("open"));
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") openCart(false); });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeProduct(); openCart(false); } });
 
 $("#checkout").addEventListener("click", () => {
   if (!cart.length) return toast("Tu carrito está vacío");
