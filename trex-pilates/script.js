@@ -12,38 +12,38 @@ const CATEGORIES = [
   { id: "accesorios", name: "Accesorios de Pilates" },
 ];
 
-// Para usar fotos propias: guardá la imagen en /img y completá "img", p. ej. img: "img/reformer.jpg"
+// Cada producto toma su foto de la carpeta img/. Si "img" falta, se muestra una ilustración.
 const PRODUCTS = [
-  { id: 1,  name: "Cama Pilates Reformer Profesional – Trex Reformer", cats: ["reformer"], price: 3150000, art: "reformer" },
-  { id: 2,  name: "Reformer Pilates con Trapecio Completo", cats: ["reformer", "cadillac"], price: 5175000, art: "torre" },
-  { id: 3,  name: "Reformer Clínico Completo", cats: ["reformer"], price: 3375000, art: "clinico" },
-  { id: 4,  name: "Reformer con Medio Trapecio – Cama de Pilates Profesional", cats: ["reformer", "cadillac"], price: 4275000, art: "medio" },
-  { id: 5,  name: "Cadillac Pilates Profesional – Trapecio de Pilates", cats: ["cadillac"], price: 3675000, art: "cadillac" },
-  { id: 6,  name: "Unidad de Pared – Wall Unit – Estructura de Acero Inoxidable", cats: ["cadillac"], price: 1650000, art: "wall" },
-  { id: 7,  name: "Tabla de Resortes", cats: ["cadillac"], price: 517500, art: "springboard" },
-  { id: 8,  name: "Tabla de Resortes con Barra", cats: ["cadillac"], price: 742500, art: "springboardBar" },
-  { id: 9,  name: "Barril (Ladder Barrel)", cats: ["sillas"], price: 1125000, art: "barrel" },
-  { id: 10, name: "Silla (Combo Chair)", cats: ["sillas"], price: 1425000, art: "chair" },
-  { id: 11, name: "Pack Studio – 4 Reformers + Cadillac + Silla + Ladder Barrel", cats: ["packs"], price: 17550000, art: "packFull" },
-  { id: 12, name: "Pack Starter – 3 Reformers", cats: ["packs"], price: 8925000, art: "pack", n: 3 },
-  { id: 13, name: "Pack Studio – 4 Reformers", cats: ["packs"], price: 11775000, art: "pack", n: 4 },
-  { id: 14, name: "Pack Advanced – 6 Reformers", cats: ["packs"], price: 17025000, art: "pack", n: 6 },
-  { id: 15, name: "Pack Studio Plus – 5 Reformers", cats: ["packs"], price: 14175000, art: "pack", n: 5 },
-  { id: 16, name: "Pack Elite – 8 Reformers", cats: ["packs"], price: 22680000, art: "pack", n: 8 },
-  { id: 17, name: "Kit de Accesorios para Cama de Pilates con Sogas y Manijas", cats: ["accesorios"], price: 96750, art: "kit" },
-  { id: 18, name: "Kit de 8 Ruedas Siliconadas para Cama de Pilates 76 × 24 mm", cats: ["accesorios"], price: 111750, art: "wheels" },
-  { id: 19, name: "Correas para Reformer con Doble Loop", cats: ["accesorios"], price: 36750, art: "straps" },
-  { id: 20, name: "Fuzzies de Piel de Cordero Natural para Cadillac", cats: ["accesorios"], price: 120000, art: "fuzzies" },
-  { id: 21, name: "Juego de Resortes para Cama Pilates Reformer", cats: ["accesorios"], price: 179250, art: "springs", n: 5 },
-  { id: 22, name: "Juego de 6 Resortes para Medio Trapecio", cats: ["accesorios"], price: 187500, art: "springs", n: 6 },
-  { id: 23, name: "Juego de 12 Resortes para Trapecio Cadillac", cats: ["accesorios"], price: 292500, art: "springs", n: 8 },
-  { id: 24, name: "Juego de Resortes para Silla de Pilates", cats: ["accesorios"], price: 150000, art: "springs", n: 4 },
-  { id: 25, name: "Box para Reformer", cats: ["accesorios"], price: 112500, art: "box" },
-  { id: 26, name: "Arco Pilates", cats: ["accesorios"], price: 142500, art: "arc" },
-  { id: 27, name: "Tabla de Salto para Pilates Reformer", cats: ["accesorios"], price: 127500, art: "jump" },
-  { id: 28, name: "Corrector de Columna", cats: ["accesorios"], price: 240000, art: "spine" },
-  { id: 29, name: "Extensor de Pie para Reformer", cats: ["accesorios"], price: 90000, art: "extender" },
-  { id: 30, name: "Plataforma para Ladder Barrel", cats: ["accesorios"], price: 120000, art: "platform" },
+  { id: 1,  img: "img/01.webp", name: "Cama Pilates Reformer Profesional – Trex Reformer", cats: ["reformer"], price: 3150000, art: "reformer" },
+  { id: 2,  img: "img/02.webp", name: "Reformer Pilates con Trapecio Completo", cats: ["reformer", "cadillac"], price: 5175000, art: "torre" },
+  { id: 3,  img: "img/03.webp", name: "Reformer Clínico Completo", cats: ["reformer"], price: 3375000, art: "clinico" },
+  { id: 4,  img: "img/04.webp", name: "Reformer con Medio Trapecio – Cama de Pilates Profesional", cats: ["reformer", "cadillac"], price: 4275000, art: "medio" },
+  { id: 5,  img: "img/05.webp", name: "Cadillac Pilates Profesional – Trapecio de Pilates", cats: ["cadillac"], price: 3675000, art: "cadillac" },
+  { id: 6,  img: "img/06.webp", name: "Unidad de Pared – Wall Unit – Estructura de Acero Inoxidable", cats: ["cadillac"], price: 1650000, art: "wall" },
+  { id: 7,  img: "img/07.webp", name: "Tabla de Resortes", cats: ["cadillac"], price: 517500, art: "springboard" },
+  { id: 8,  img: "img/08.webp", name: "Tabla de Resortes con Barra", cats: ["cadillac"], price: 742500, art: "springboardBar" },
+  { id: 9,  img: "img/09.webp", name: "Barril (Ladder Barrel)", cats: ["sillas"], price: 1125000, art: "barrel" },
+  { id: 10,  img: "img/10.webp",name: "Silla (Combo Chair)", cats: ["sillas"], price: 1425000, art: "chair" },
+  { id: 11,  img: "img/11.webp",name: "Pack Studio – 4 Reformers + Cadillac + Silla + Ladder Barrel", cats: ["packs"], price: 17550000, art: "packFull" },
+  { id: 12,  img: "img/12.webp",name: "Pack Starter – 3 Reformers", cats: ["packs"], price: 8925000, art: "pack", n: 3 },
+  { id: 13,  img: "img/13.webp",name: "Pack Studio – 4 Reformers", cats: ["packs"], price: 11775000, art: "pack", n: 4 },
+  { id: 14,  img: "img/14.webp",name: "Pack Advanced – 6 Reformers", cats: ["packs"], price: 17025000, art: "pack", n: 6 },
+  { id: 15,  img: "img/15.webp",name: "Pack Studio Plus – 5 Reformers", cats: ["packs"], price: 14175000, art: "pack", n: 5 },
+  { id: 16,  img: "img/16.webp",name: "Pack Elite – 8 Reformers", cats: ["packs"], price: 22680000, art: "pack", n: 8 },
+  { id: 17,  img: "img/17.webp",name: "Kit de Accesorios para Cama de Pilates con Sogas y Manijas", cats: ["accesorios"], price: 96750, art: "kit" },
+  { id: 18,  img: "img/18.webp",name: "Kit de 8 Ruedas Siliconadas para Cama de Pilates 76 × 24 mm", cats: ["accesorios"], price: 111750, art: "wheels" },
+  { id: 19,  img: "img/19.webp",name: "Correas para Reformer con Doble Loop", cats: ["accesorios"], price: 36750, art: "straps" },
+  { id: 20,  img: "img/20.webp",name: "Fuzzies de Piel de Cordero Natural para Cadillac", cats: ["accesorios"], price: 120000, art: "fuzzies" },
+  { id: 21,  img: "img/21.webp",name: "Juego de Resortes para Cama Pilates Reformer", cats: ["accesorios"], price: 179250, art: "springs", n: 5 },
+  { id: 22,  img: "img/22.webp",name: "Juego de 6 Resortes para Medio Trapecio", cats: ["accesorios"], price: 187500, art: "springs", n: 6 },
+  { id: 23,  img: "img/23.webp",name: "Juego de 12 Resortes para Trapecio Cadillac", cats: ["accesorios"], price: 292500, art: "springs", n: 8 },
+  { id: 24,  img: "img/24.webp",name: "Juego de Resortes para Silla de Pilates", cats: ["accesorios"], price: 150000, art: "springs", n: 4 },
+  { id: 25,  img: "img/25.webp",name: "Box para Reformer", cats: ["accesorios"], price: 112500, art: "box" },
+  { id: 26,  img: "img/26.webp",name: "Arco Pilates", cats: ["accesorios"], price: 142500, art: "arc" },
+  { id: 27,  img: "img/27.webp",name: "Tabla de Salto para Pilates Reformer", cats: ["accesorios"], price: 127500, art: "jump" },
+  { id: 28,  img: "img/28.webp",name: "Corrector de Columna", cats: ["accesorios"], price: 240000, art: "spine" },
+  { id: 29,  img: "img/29.webp",name: "Extensor de Pie para Reformer", cats: ["accesorios"], price: 90000, art: "extender" },
+  { id: 30,  img: "img/30.webp",name: "Plataforma para Ladder Barrel", cats: ["accesorios"], price: 120000, art: "platform" },
 ];
 
 /* ---------- Ilustraciones (línea neón) ---------- */
@@ -196,7 +196,7 @@ function renderGrid() {
   $("#grid").innerHTML = list.length
     ? list.map((p) => `
       <li class="card">
-        <div class="card__media">${media(p)}<img class="card__wm" src="logo.svg" alt="" /></div>
+        <div class="card__media${p.img ? " card__media--photo" : ""}">${media(p)}</div>
         <div class="card__body">
           <span class="card__cat">${CATEGORIES.find((c) => c.id === p.cats[0]).name}</span>
           <h3 class="card__title">${p.name}</h3>
