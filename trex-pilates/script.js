@@ -10,6 +10,10 @@ const CATEGORIES = [
   { id: "sillas", name: "Sillas y Barrels" },
   { id: "packs", name: "Packs para Estudios" },
   { id: "accesorios", name: "Accesorios de Pilates" },
+  { id: "repuestos", name: "Repuestos" },
+  { id: "funcional", name: "Entrenamiento funcional" },
+  { id: "yoga", name: "Pelotas, yoga y columpios" },
+  { id: "cintas", name: "Cintas, hebillas y soportes" },
 ];
 
 // Cada producto toma su foto de la carpeta img/. Si "img" falta, se muestra una ilustración.
@@ -45,6 +49,13 @@ const PRODUCTS = [
   { id: 29,  img: "img/29.webp",name: "Extensor de Pie para Reformer", cats: ["accesorios"], price: 90000, art: "extender" },
   { id: 30,  img: "img/30.webp",name: "Plataforma para Ladder Barrel", cats: ["accesorios"], price: 120000, art: "platform" },
 ];
+
+// Productos sumados desde catalogo-extra.js (price: null = "Consultar precio")
+PRODUCTS.push(...(window.EXTRA_PRODUCTS || []));
+const hasPrice = (p) => typeof p.price === "number";
+const consultUrl = (p) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Hola Trex Pilates! Quiero consultar el precio de: ${p.name}`)}`;
+const priceHTML = (p) => (hasPrice(p) ? fmt(p.price) : `<span class="price-ask">Consultar precio</span>`);
+const PAGE = 24;
 
 /* ---------- Ilustraciones (línea neón) ---------- */
 const coil = (x, y, len, turns = 6) => {
@@ -176,7 +187,7 @@ const storage = {
 };
 
 /* ---------- Catálogo ---------- */
-const state = { cat: "todos", q: "", sort: "default" };
+const state = { cat: "todos", q: "", sort: "default", limit: PAGE };
 
 function renderCategories() {
   $("#catList").innerHTML = CATEGORIES.map((c) => {
@@ -188,20 +199,26 @@ function renderCategories() {
 function renderGrid() {
   const q = state.q.trim().toLowerCase();
   let list = PRODUCTS.filter((p) => (state.cat === "todos" || p.cats.includes(state.cat)) && p.name.toLowerCase().includes(q));
-  if (state.sort === "price-asc") list = [...list].sort((a, b) => a.price - b.price);
-  if (state.sort === "price-desc") list = [...list].sort((a, b) => b.price - a.price);
+  const pv = (p, dir) => (hasPrice(p) ? p.price * dir : Infinity);
+  if (state.sort === "price-asc") list = [...list].sort((a, b) => pv(a, 1) - pv(b, 1));
+  if (state.sort === "price-desc") list = [...list].sort((a, b) => pv(a, -1) - pv(b, -1));
   if (state.sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "es"));
 
   $("#resultCount").textContent = `${list.length} producto${list.length === 1 ? "" : "s"}`;
+  const shown = list.slice(0, state.limit);
+  $("#more").hidden = list.length <= state.limit;
+  $("#more").textContent = `Mostrar más productos (${list.length - shown.length})`;
   $("#grid").innerHTML = list.length
-    ? list.map((p) => `
+    ? shown.map((p) => `
       <li class="card">
         <button class="card__media${p.img ? " card__media--photo" : ""}" data-open="${p.id}" aria-label="Ver ${p.name}">${media(p)}</button>
         <div class="card__body">
           <span class="card__cat">${CATEGORIES.find((c) => c.id === p.cats[0]).name}</span>
           <h3 class="card__title"><button class="card__link" data-open="${p.id}">${p.name}</button></h3>
-          <p class="card__price">${fmt(p.price)}</p>
-          <button class="btn btn--ghost" data-add="${p.id}">Agregar al carrito</button>
+          <p class="card__price">${priceHTML(p)}</p>
+          ${hasPrice(p)
+            ? `<button class="btn btn--ghost" data-add="${p.id}">Agregar al carrito</button>`
+            : `<a class="btn btn--ghost" href="${consultUrl(p)}" target="_blank" rel="noopener">Consultar por WhatsApp</a>`}
         </div>
       </li>`).join("")
     : `<li class="empty">No encontramos productos con esa búsqueda.</li>`;
@@ -209,6 +226,7 @@ function renderGrid() {
 
 function setCategory(cat) {
   state.cat = cat;
+  state.limit = PAGE;
   renderCategories();
   renderGrid();
 }
@@ -223,12 +241,18 @@ function openProduct(id) {
   lastFocus = document.activeElement;
   const cat = CATEGORIES.find((c) => c.id === p.cats[0]).name;
   $("#pmMedia").className = "pm__media" + (p.img ? " pm__media--photo" : "");
-  $("#pmMedia").innerHTML = media(p);
+  const pics = p.gallery && p.gallery.length > 1 ? p.gallery : null;
+  $("#pmMedia").innerHTML = media(p) + (pics
+    ? `<div class="pm__thumbs">${pics.map((src, i) => `<button class="pm__thumb${i ? "" : " active"}" data-pic="${src}" aria-label="Foto ${i + 1}"><img src="${src}" alt="" loading="lazy" /></button>`).join("")}</div>`
+    : "");
   $("#pmCat").textContent = cat;
   $("#pmTitle").textContent = p.name;
-  $("#pmPrice").textContent = fmt(p.price);
+  $("#pmPrice").innerHTML = priceHTML(p);
+  $("#pmAdd").hidden = !hasPrice(p);
   $("#pmAdd").dataset.add = p.id;
-  $("#pmDesc").innerHTML = DESC[p.id] || "<p>Consultanos por WhatsApp para más información sobre este producto.</p>";
+  $("#pmAsk").hidden = hasPrice(p);
+  $("#pmAsk").href = consultUrl(p);
+  $("#pmDesc").innerHTML = p.desc || DESC[p.id] || "<p>Consultanos por WhatsApp para más información sobre este producto.</p>";
   $("#pm").scrollTop = 0;
   $("#pmDesc").scrollTop = 0;
   $("#pmWrap").classList.add("open");
@@ -246,7 +270,7 @@ function closeProduct() {
 /* ---------- Carrito ---------- */
 let cart = storage.get("trex-cart", []);
 if (!Array.isArray(cart)) cart = [];
-cart = cart.filter((i) => PRODUCTS.some((p) => p.id === i.id) && i.qty > 0);
+cart = cart.filter((i) => PRODUCTS.some((p) => p.id === i.id && hasPrice(p)) && i.qty > 0);
 
 const saveCart = () => { storage.set("trex-cart", cart); renderCart(); };
 
@@ -308,11 +332,16 @@ document.addEventListener("click", (e) => {
     saveCart();
   }
   if (el.dataset.open) openProduct(+el.dataset.open);
+  if (el.dataset.pic) {
+    $("#pmMedia > img").src = el.dataset.pic;
+    document.querySelectorAll(".pm__thumb").forEach((t) => t.classList.toggle("active", t === el));
+  }
+  if (el.id === "more") { state.limit += PAGE; renderGrid(); }
   if (el.dataset.remove) { cart = cart.filter((i) => i.id !== +el.dataset.remove); saveCart(); }
 });
 
-$("#search").addEventListener("input", (e) => { state.q = e.target.value; renderGrid(); });
-$("#sort").addEventListener("change", (e) => { state.sort = e.target.value; renderGrid(); });
+$("#search").addEventListener("input", (e) => { state.q = e.target.value; state.limit = PAGE; renderGrid(); });
+$("#sort").addEventListener("change", (e) => { state.sort = e.target.value; state.limit = PAGE; renderGrid(); });
 $("#cartBtn").addEventListener("click", () => openCart(true));
 $("#cartClose").addEventListener("click", () => openCart(false));
 $("#overlay").addEventListener("click", () => openCart(false));

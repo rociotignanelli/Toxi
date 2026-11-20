@@ -199,6 +199,17 @@ button, input, select { font: inherit; }
 }
 .toast.show { transform: translate(-50%, 0); opacity: 1; visibility: visible; }
 
+/* Consultar precio y paginado */
+.price-ask { font-size: 1rem; font-weight: 700; color: var(--neon); }
+.pm__price .price-ask { font-size: 1.3rem; }
+.more { display: flex; margin: 2rem auto 0; min-width: 260px; }
+.more[hidden], .btn[hidden] { display: none; }
+.pm__media { position: relative; }
+.pm__thumbs { position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; gap: 8px; overflow-x: auto; }
+.pm__thumb { flex: none; width: 56px; height: 56px; border-radius: 8px; border: 2px solid transparent; background: #fff; padding: 0; cursor: pointer; overflow: hidden; }
+.pm__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pm__thumb.active { border-color: var(--neon); }
+
 /* Tarjeta clickeable */
 button.card__media { border: 0; width: 100%; cursor: zoom-in; font: inherit; color: inherit; }
 .card__link { background: none; border: 0; padding: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }

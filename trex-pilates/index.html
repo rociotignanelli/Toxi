@@ -22,10 +22,13 @@
       <nav class="nav" id="nav">
         <a href="#productos" data-nav="todos">Productos</a>
         <a href="#productos" data-nav="reformer">Reformer</a>
-        <a href="#productos" data-nav="cadillac">Cadillac y Torres</a>
+        <a href="#productos" data-nav="cadillac">Cadillac</a>
         <a href="#productos" data-nav="sillas">Sillas y Barrels</a>
-        <a href="#productos" data-nav="packs">Packs Estudio</a>
+        <a href="#productos" data-nav="packs">Packs</a>
         <a href="#productos" data-nav="accesorios">Accesorios</a>
+        <a href="#productos" data-nav="repuestos">Repuestos</a>
+        <a href="#productos" data-nav="funcional">Funcional</a>
+        <a href="#productos" data-nav="yoga">Yoga</a>
       </nav>
       <button class="icon-btn cart-btn" id="cartBtn" aria-label="Abrir carrito">
         <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L22 7H6"/></svg>
@@ -64,6 +67,7 @@
           </select>
         </div>
         <ul class="grid" id="grid"></ul>
+        <button class="btn btn--ghost more" id="more" hidden>Mostrar más productos</button>
       </div>
     </section>
 
@@ -89,6 +93,10 @@
         <a href="#productos" data-nav="sillas">Sillas y Barrels</a>
         <a href="#productos" data-nav="packs">Packs Estudio</a>
         <a href="#productos" data-nav="accesorios">Accesorios</a>
+        <a href="#productos" data-nav="repuestos">Repuestos</a>
+        <a href="#productos" data-nav="funcional">Entrenamiento funcional</a>
+        <a href="#productos" data-nav="yoga">Pelotas, yoga y columpios</a>
+        <a href="#productos" data-nav="cintas">Cintas, hebillas y soportes</a>
       </div>
     </div>
     <p class="footer__copy">© <span id="year"></span> Trex Pilates. Todos los derechos reservados.</p>
@@ -119,6 +127,7 @@
         <h2 class="pm__title" id="pmTitle"></h2>
         <p class="pm__price" id="pmPrice"></p>
         <button class="btn btn--primary btn--block" id="pmAdd" data-add="">Agregar al carrito</button>
+        <a class="btn btn--primary btn--block" id="pmAsk" href="#" target="_blank" rel="noopener" hidden>Consultar precio por WhatsApp</a>
         <div class="pm__desc" id="pmDesc"></div>
       </div>
     </div>
@@ -127,6 +136,7 @@
   <div class="toast" id="toast" role="status"></div>
 
   <script src="descriptions.js"></script>
+  <script src="catalogo-extra.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
